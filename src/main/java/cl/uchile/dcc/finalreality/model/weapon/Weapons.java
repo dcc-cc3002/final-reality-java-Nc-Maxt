@@ -14,4 +14,6 @@ public interface Weapons {
 
     int getWeight();
 
+    String toString();
+
 }
