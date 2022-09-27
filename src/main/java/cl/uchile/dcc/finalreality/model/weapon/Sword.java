@@ -2,6 +2,13 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import java.util.Objects;
 
+
+/**
+ * A Sword Class that can be used to create instances of Axe's
+ * and implements methods to work with that instance of the class.
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author ~Matias Nunez~
+ */
 public class Sword implements Weapons{
     private final String name;
     private final int damage;
