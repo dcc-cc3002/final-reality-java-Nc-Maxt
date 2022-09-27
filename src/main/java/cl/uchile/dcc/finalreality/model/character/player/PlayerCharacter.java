@@ -1,6 +1,6 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
-/*
+/**
  * "Final Reality" (c) by R8V and ~Your name~
  * "Final Reality" is licensed under a
  * Creative Commons Attribution 4.0 International License.
