@@ -56,7 +56,7 @@ public class Staff implements Weapons{
      */
     public int hashCode() {
 
-        return Objects.hash(Sword.class, name, damage, weight);
+        return Objects.hash(Staff.class, name, damage, weight);
     }
 
     /**
