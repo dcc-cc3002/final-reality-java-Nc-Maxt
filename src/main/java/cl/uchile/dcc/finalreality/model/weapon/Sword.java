@@ -45,7 +45,7 @@ public class Sword implements Weapons{
         if (!(this.getClass() == obj.getClass())) {
             return false;
         }
-        Axe other = (Axe) obj;
+        Sword other = (Sword) obj;
         return hashCode() == other.hashCode()
                 && damage == other.getDamage()
                 && weight == other.getWeight()
