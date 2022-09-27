@@ -4,6 +4,12 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ScheduledExecutorService;
+
+
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -13,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ~Your name~
  */
 public class Enemy extends AbstractCharacter {
-
+  private ScheduledExecutorService scheduledExecutor;
   private final int weight;
 
   /**
@@ -26,6 +32,32 @@ public class Enemy extends AbstractCharacter {
     super(name, maxHp, defense, turnsQueue);
     Require.statValueAtLeast(1, weight, "Weight");
     this.weight = weight;
+  }
+
+  /**
+   * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
+   * seconds before adding the character to the queue.
+   */
+
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+    var enemy = (Enemy) this;
+    scheduledExecutor.schedule(
+              /* command = */ this::addToQueue,
+              /* delay = */ enemy.getWeight() / 10,
+              /* unit = */ TimeUnit.SECONDS);
+    }
+
+  /**
+   * Adds this character to the turns queue.
+   */
+  private void addToQueue() {
+    try {
+      turnsQueue.put(this);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    scheduledExecutor.shutdown();
   }
 
   /**
