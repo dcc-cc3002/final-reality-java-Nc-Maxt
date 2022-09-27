@@ -1,18 +1,19 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
 /**
- * A class that holds all the information of a weapon.
+ * An interface that set obligatory getters for the weapons
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author ~Matias Nunez~
  */
 
 public interface Weapons {
-    void getName();
+    String getName();
 
-    void getDamage();
+    int getDamage();
 
-    void getWeight();
+    int getWeight();
 
-    void getType();
+    String toString();
+
 }
