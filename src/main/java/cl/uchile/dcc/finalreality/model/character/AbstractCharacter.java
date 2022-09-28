@@ -1,31 +1,35 @@
 package cl.uchile.dcc.finalreality.model.character;
 
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
+
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
- * @author ~Matias Nunez~
+ * @author Matias Nunez
  */
 public abstract class AbstractCharacter implements GameCharacter {
 
-  private int currentHp;
+  protected final String name;
   protected int maxHp;
+  private int currentHp;
   protected int defense;
   protected final BlockingQueue<GameCharacter> turnsQueue;
 
-  protected final String name;
-  private ScheduledExecutorService scheduledExecutor;
-
   /**
    * Creates a new character.
+   * This constructor is <b>protected</b>, because it'll only be used by subclasses.
    *
    * @param name
    *     the character's name
@@ -40,37 +44,55 @@ public abstract class AbstractCharacter implements GameCharacter {
       @NotNull BlockingQueue<GameCharacter> turnsQueue) throws InvalidStatValueException {
     Require.statValueAtLeast(1, maxHp, "Max HP");
     Require.statValueAtLeast(0, defense, "Defense");
+    this.name = name;
     this.maxHp = maxHp;
     this.currentHp = maxHp;
     this.defense = defense;
     this.turnsQueue = turnsQueue;
-    this.name = name;
   }
 
+  // region : ACCESSORS
+
+  /**
+   * Returns the name of the character.
+   */
   @Override
   public String getName() {
     return name;
   }
 
+  /**
+   * Returns the current Hp of the character.
+   */
   @Override
   public int getCurrentHp() {
     return currentHp;
   }
 
+  /**
+   * Returns the max Hp of the character.
+   */
   @Override
   public int getMaxHp() {
     return maxHp;
   }
 
+  /**
+   * Returns the defense of the character.
+   */
   @Override
   public int getDefense() {
     return defense;
   }
 
+  /**
+   * Set the current Hp.
+   */
   @Override
   public void setCurrentHp(int hp) throws InvalidStatValueException {
     Require.statValueAtLeast(0, hp, "Current HP");
     Require.statValueAtMost(maxHp, hp, "Current HP");
     currentHp = hp;
   }
+  // endregion
 }
