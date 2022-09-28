@@ -1,5 +1,14 @@
 package cl.uchile.dcc.finalreality.model.character;
 
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
+
+
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import java.util.Objects;
@@ -12,16 +21,24 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A class that holds all the information of a single enemy of the game.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Matias Nunez~
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
  */
 public class Enemy extends AbstractCharacter {
   private ScheduledExecutorService scheduledExecutor;
   private final int weight;
 
   /**
-   * Creates a new enemy with a name, a weight and the queue with the characters ready to
-   * play.
+   * Creates a new Enemy.
+   *
+   * @param name
+   *     the character's name
+   * @param maxHp
+   *     the character's max hp
+   * @param defense
+   *     the character's defense
+   * @param turnsQueue
+   *     the queue with the characters waiting for their turn
    */
   public Enemy(@NotNull final String name, final int weight, int maxHp, int defense,
       @NotNull final BlockingQueue<GameCharacter> turnsQueue)
@@ -31,11 +48,23 @@ public class Enemy extends AbstractCharacter {
     this.weight = weight;
   }
 
+  // region : ACCESSORS
+
+  /**
+   * Returns the weight of this enemy.
+   */
+  public int getWeight() {
+    return weight;
+  }
+
+  // endregion
+
+  // region : UTILITY METHODS
+
   /**
    * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
    * seconds before adding the character to the queue.
    */
-
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
     var enemy = (Enemy) this;
@@ -47,6 +76,8 @@ public class Enemy extends AbstractCharacter {
 
   /**
    * Adds this character to the turns queue.
+   * this method is <b>private</b>, beacuse it'll be used by
+   * the instance of the class.
    */
   private void addToQueue() {
     try {
@@ -58,18 +89,17 @@ public class Enemy extends AbstractCharacter {
   }
 
   /**
-   * Returns the weight of this enemy.
+   * Returns a boolean that indicates if 2 Enemies are equals
+   *
+   * @param obj
+   *    the object that will be compared with "this"
    */
-  public int getWeight() {
-    return weight;
-  }
-
   @Override
-  public boolean equals(final Object o) {
-    if (this == o) {
+  public boolean equals(final Object obj) {
+    if (this == obj) {
       return true;
     }
-    if (!(o instanceof final Enemy enemy)) {
+    if (!(obj instanceof final Enemy enemy)) {
       return false;
     }
     return hashCode() == enemy.hashCode()
@@ -78,7 +108,9 @@ public class Enemy extends AbstractCharacter {
         && maxHp == enemy.maxHp
         && defense == enemy.defense;
   }
-
+  /**
+   * Returns the Enemy hash.
+   */
   @Override
   public int hashCode() {
     return Objects.hash(Enemy.class, name, weight, maxHp, defense);
