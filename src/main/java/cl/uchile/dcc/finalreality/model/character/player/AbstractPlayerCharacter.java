@@ -1,7 +1,7 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
-/**
- * "Final Reality" (c) by R8V and ~Your name~
+/*
+ * "Final Reality" (c) by R8V and MN
  * "Final Reality" is licensed under a
  * Creative Commons Attribution 4.0 International License.
  * You should have received a copy of the license along with this
@@ -25,8 +25,8 @@ import org.jetbrains.annotations.NotNull;
  * ({@code maxHp}), a {@code defense} value, a queue of {@link GameCharacter}s that are
  * waiting for their turn ({@code turnsQueue}), and can equip a {@link Weapons}.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
  */
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements
     PlayerCharacter {
@@ -52,6 +52,8 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     super(name, maxHp, defense, turnsQueue);
   }
 
+  // region : UTILITY METHODS
+
   /**
    * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
    * seconds before adding the character to the queue.
@@ -68,6 +70,8 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
 
   /**
    * Adds this character to the turns queue.
+   * this method is <b>private</b>, beacuse it'll be used by
+   * other methods in the class.
    */
   private void addToQueue() {
     try {
@@ -78,13 +82,25 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     scheduledExecutor.shutdown();
   }
 
+  /**
+   * Equips a weapon to a character
+   * this method is <b>public</b>, beacuse it'll be used like a setter.
+   *
+   * @param weapon
+   *    the weapon that a character will use
+   */
   @Override
   public void equip(Weapons weapon) {
     this.equippedWeapon = weapon;
   }
 
+  /**
+   * Return the character's equipped weapon
+   * this method is <b>public</b>, beacuse it'll be used for testing.
+   */
   @Override
   public Weapons getEquippedWeapon() {
     return equippedWeapon;
   }
+  // endregion
 }
