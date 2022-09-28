@@ -1,12 +1,20 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
+
 import java.util.Objects;
 
 /**
- * An Axe Class that can be used to create instances of Axe's
- * and implements methods to work with that instance of the class.
+ * A class that holds all the information of an Axe (weapon),
+ * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
- * @author ~Matias Nunez~
+ * @author Matias Nunez
  */
 public class Axe implements Weapons {
     private final String name;
@@ -20,6 +28,8 @@ public class Axe implements Weapons {
         this.damage = damage;
         this.weight = weight;
     }
+
+    // region : ACCESSORS
 
     /**
      * Returns the name of the weapon.
@@ -42,7 +52,16 @@ public class Axe implements Weapons {
         return weight;
     }
 
+    // endregion
 
+    // region : UTILITY METHODS
+
+    /**
+     * Returns a boolean that indicates if 2 Axes are equals
+     *
+     * @param obj
+     *    the object that will be compared with "this"
+     */
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
@@ -65,9 +84,13 @@ public class Axe implements Weapons {
         return Objects.hash(Axe.class, name, damage, weight);
     }
 
+    /**
+     * Returns the weapon and it´s data in a String format.
+     */
     @Override
     public String toString() {
         return "Sword{name='%s', damage=%d, weight=%d}"
                 .formatted(name, damage, weight);
     }
+    // endregion
 }
