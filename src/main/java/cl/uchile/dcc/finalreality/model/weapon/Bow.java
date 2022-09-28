@@ -1,13 +1,21 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
+
 import java.util.Objects;
 
 
 /**
- * A Bow Class that can be used to create instances of Axe's
- * and implements methods to work with that instance of the class.
+ * A class that holds all the information of a Bow (weapon),
+ * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
- * @author ~Matias Nunez~
+ * @author Matias Nunez
  */
 
 public class Bow implements Weapons{
@@ -16,7 +24,16 @@ public class Bow implements Weapons{
     private final int weight;
 
     /**
-     * Creates a weapon with a name, a base damage, speed, and it's type.
+     * Creates a new Bow.
+     * This constructor is <b>public</b>, because it'll be used in testing and the programe.
+     *
+     * @param name
+     *     the weapon's name
+     * @param damage
+     *     the weapon's damage
+     * @param weight
+     *     the weapon's weight
+     *
      */
     public Bow(final String name, final int damage, final int weight) {
         this.name = name;
@@ -25,21 +42,21 @@ public class Bow implements Weapons{
     }
 
     /**
-     * Returns the name of the weapon.
+     * Returns the name of the Bow.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Returns the damage of the weapon.
+     * Returns the damage of the Bow.
      */
     public int getDamage() {
         return damage;
     }
 
     /**
-     * Returns the weight of the weapon.
+     * Returns the weight of the Bow.
      */
     public int getWeight() {
         return weight;
@@ -61,14 +78,14 @@ public class Bow implements Weapons{
     }
 
     /**
-     * Returns the hashcode of the weapon.
+     * Returns the hashcode of the Bow.
      */
     public int hashCode() {
         return Objects.hash(Bow.class, name, damage, weight);
     }
 
     /**
-     * Returns the weapon and it´s data in a String format.
+     * Returns the Bow and it´s data in a String format.
      */
     public String toString() {
         return "Bow{name='%s', damage=%d, weight=%d}"
