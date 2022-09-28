@@ -4,8 +4,8 @@ import java.util.Objects;
 
 
 /**
- * A Sword Class that can be used to create instances of Axe's
- * and implements methods to work with that instance of the class.
+ * A class that holds all the information of a Sword (weapon),
+ * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author ~Matias Nunez~
  */
@@ -15,7 +15,14 @@ public class Sword implements Weapons{
     private final int weight;
 
     /**
-     * Creates a weapon with a name, a base damage, speed, and it's type.
+     * Creates a new Sword.
+     *
+     * @param name
+     *     the weapon's name
+     * @param damage
+     *     the weapon's damage
+     * @param weight
+     *     the weapon's weight
      */
     public Sword(final String name, final int damage, final int weight) {
         this.name = name;
@@ -24,21 +31,21 @@ public class Sword implements Weapons{
     }
 
     /**
-     * Returns the name of the weapon.
+     * Returns the name of the Sword.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Returns the damage of the weapon.
+     * Returns the damage of the Sword.
      */
     public int getDamage() {
         return damage;
     }
 
     /**
-     * Returns the weight of the weapon.
+     * Returns the weight of the Sword.
      */
     public int getWeight() {
         return weight;
