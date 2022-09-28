@@ -1,11 +1,19 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
+
 import java.util.Objects;
 /**
- * A Knife Class that can be used to create instances of Axe's
- * and implements methods to work with that instance of the class.
+ * A class that holds all the information of a Knife (weapon),
+ * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
- * @author ~Matias Nunez~
+ * @author Matias Nunez
  */
 public class Knife implements Weapons{
     private final String name;
@@ -13,13 +21,23 @@ public class Knife implements Weapons{
     private final int weight;
 
     /**
-     * Creates a weapon with a name, a base damage, speed, and it's type.
+     * Creates a new Knife.
+     *
+     * @param name
+     *     the weapon's name
+     * @param damage
+     *     the weapon's damage
+     * @param weight
+     *     the weapon's weight
+     *
      */
     public Knife(final String name, final int damage, final int weight) {
         this.name = name;
         this.damage = damage;
         this.weight = weight;
     }
+
+    // region : ACCESSORS
 
     /**
      * Returns the name of the weapon.
@@ -42,6 +60,16 @@ public class Knife implements Weapons{
         return weight;
     }
 
+    // endregion
+
+    // region : UTILITY METHODS
+
+    /**
+     * Returns a boolean that indicates if 2 Knifes are equals
+     *
+     * @param obj
+     *    the object that will be compared with "this"
+     */
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
@@ -61,7 +89,6 @@ public class Knife implements Weapons{
      * Returns the hashcode of the weapon.
      */
     public int hashCode() {
-
         return Objects.hash(Sword.class, name, damage, weight);
     }
 
@@ -72,4 +99,5 @@ public class Knife implements Weapons{
         return "Knife{name='%s', damage=%d, weight=%d}"
                 .formatted(name, damage, weight);
     }
+    // endregion
 }
