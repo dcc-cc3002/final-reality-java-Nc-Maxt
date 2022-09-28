@@ -1,5 +1,5 @@
 /*
- * "Final Reality" (c) by R8V and ~Your name~
+ * "Final Reality" (c) by R8V and NM
  * "Final Reality" is licensed under a
  * Creative Commons Attribution 4.0 International License.
  * You should have received a copy of the license along with this
@@ -18,11 +18,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A {@link PlayerCharacter} that can equip {@code Staff}s and use <i>white magic</i>.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
  */
 public class WhiteMage extends AbstractPlayerCharacter {
-
   private int currentMp;
   private final int maxMp;
 
@@ -35,6 +34,8 @@ public class WhiteMage extends AbstractPlayerCharacter {
    *     the character's max hp
    * @param defense
    *     the character's defense
+   * @param maxMp
+   *     the character's max mp
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
@@ -46,30 +47,13 @@ public class WhiteMage extends AbstractPlayerCharacter {
     this.currentMp = maxMp;
   }
 
-  @Override
-  public boolean equals(final Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof final WhiteMage that)) {
-      return false;
-    }
-    return hashCode() == that.hashCode()
-        && maxMp == that.maxMp
-        && name.equals(that.name)
-        && maxHp == that.maxHp
-        && defense == that.defense;
-  }
+  // region : ACCESSORS
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(WhiteMage.class, name, maxHp, defense, maxMp);
-  }
-
-  @Override
-  public String toString() {
-    return "WhiteMage{maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
-        .formatted(maxMp, maxHp, defense, name);
+  /**
+   * Returns the max MP of the character.
+   */
+  public int getMaxMp() {
+    return maxMp;
   }
 
   /**
@@ -81,6 +65,9 @@ public class WhiteMage extends AbstractPlayerCharacter {
 
   /**
    * Sets the current MP of the character to {@code newMp}.
+   *
+   * <p>This method should be <b>private</b>, because it must be only used by methods in the class
+   * to change value of {@code MP} when casting a spell but for testing it will be public.</p>
    */
   public void setCurrentMp(final int newMp) throws InvalidStatValueException {
     Require.statValueAtLeast(0, newMp, "Current MP");
@@ -88,10 +75,46 @@ public class WhiteMage extends AbstractPlayerCharacter {
     this.currentMp = newMp;
   }
 
+  // endregion
+
+  // region : UTILITY METHODS
+
   /**
-   * Returns the max MP of the character.
+   * Returns a boolean that indicates if 2 White Mages are equals
+   *
+   * @param obj
+   *    the object that will be compared with "this"
    */
-  public int getMaxMp() {
-    return maxMp;
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof final WhiteMage that)) {
+      return false;
+    }
+    return hashCode() == that.hashCode()
+        && maxMp == that.maxMp
+        && currentMp == that.currentMp
+        && maxHp == that.maxHp
+        && name.equals(that.name)
+        && defense == that.defense;
   }
+
+  /**
+   * return the White Mage's hash number.
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(WhiteMage.class, currentMp, getCurrentHp(), name, maxHp, defense, maxMp);
+  }
+  /**
+   * return a string with information about the White Mage.
+   */
+  @Override
+  public String toString() {
+    return "BlackMage{currentMp=%d, currentHp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
+            .formatted(currentMp, getCurrentHp(), maxMp, maxHp, defense, name);
+  }
+  // endregion
 }
