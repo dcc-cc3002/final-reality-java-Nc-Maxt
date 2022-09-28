@@ -1,12 +1,12 @@
+package cl.uchile.dcc.finalreality.model.character.player;
+
 /*
- * "Final Reality" (c) by R8V and ~Your name~
+ * "Final Reality" (c) by R8V and NM
  * "Final Reality" is licensed under a
  * Creative Commons Attribution 4.0 International License.
  * You should have received a copy of the license along with this
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
-
-package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
@@ -15,11 +15,11 @@ import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A {@link PlayerCharacter} that can equip {@code Sword}s,{@code Knife}s and
+ * A {@link PlayerCharacter} that can equip {@code Sword}s, {@code Knife}s and
  * {@code Bow}s.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
  * @version 2.0
  */
 public class Thief extends AbstractPlayerCharacter {
@@ -42,11 +42,14 @@ public class Thief extends AbstractPlayerCharacter {
     super(name, maxHp, defense, turnsQueue);
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(Thief.class, name, maxHp, defense);
-  }
+  // region : UTILITY METHODS
 
+  /**
+   * Returns a boolean that indicates if 2 BlackMages are equals
+   *
+   * @param o
+   *    the object that will be compared with "this"
+   */
   @Override
   public boolean equals(final Object o) {
     if (this == o) {
@@ -56,13 +59,23 @@ public class Thief extends AbstractPlayerCharacter {
       return false;
     }
     return hashCode() == that.hashCode()
-        && name.equals(that.name)
-        && maxHp == that.maxHp
-        && defense == that.defense;
+            && name.equals(that.name)
+            && maxHp == that.maxHp
+            && defense == that.defense;
   }
-
+  /**
+   * return the Thief's hash number.
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(Thief.class, name, maxHp, defense);
+  }
+  /**
+   * return a string with information about the Thief.
+   */
   @Override
   public String toString() {
     return "Thief{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
   }
+  // endregion
 }
