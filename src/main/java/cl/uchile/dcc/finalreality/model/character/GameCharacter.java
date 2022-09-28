@@ -1,5 +1,13 @@
 package cl.uchile.dcc.finalreality.model.character;
 
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
+
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 
 /**
@@ -7,9 +15,11 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
  * A character can be controlled by the player or by the CPU (an enemy).
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
- * @author ~Matias Nunez~
+ * @author Matias Nunez
  */
 public interface GameCharacter {
+
+  // region : ACCESSORS
 
   /**
    * Returns this character's name.
@@ -35,4 +45,5 @@ public interface GameCharacter {
    * Sets this character's current HP to {@code newHp}.
    */
   void setCurrentHp(int hp) throws InvalidStatValueException;
+  // endregion
 }
