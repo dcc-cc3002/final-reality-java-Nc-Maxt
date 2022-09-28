@@ -1,12 +1,12 @@
+package cl.uchile.dcc.finalreality.model.character.player;
+
 /*
- * "Final Reality" (c) by R8V and ~Your name~
+ * "Final Reality" (c) by R8V and NM
  * "Final Reality" is licensed under a
  * Creative Commons Attribution 4.0 International License.
  * You should have received a copy of the license along with this
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
-
-package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
@@ -16,16 +16,14 @@ import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A Black Mage is a type of player character that can cast black magic.
+ * A {@link PlayerCharacter} that can cast black magic, equip {@code Staff}s and {@code Knife}s.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
- * @version 2.0
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
  */
 public class BlackMage extends AbstractPlayerCharacter {
-
-  private int currentMp;
   private final int maxMp;
+  private int currentMp;
 
   /**
    * Creates a new Black Mage.
@@ -36,10 +34,12 @@ public class BlackMage extends AbstractPlayerCharacter {
    *     the character's max hp
    * @param defense
    *     the character's defense
+   * @param maxMp
+   *     the character's max mp
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
-  protected BlackMage(final @NotNull String name, final int maxHp, final int defense,
+  public BlackMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
     super(name, maxHp, defense, turnsQueue);
@@ -51,36 +51,47 @@ public class BlackMage extends AbstractPlayerCharacter {
   // region : ACCESSORS
 
   /**
-   * Returns the character's current MP.
+   * Returns the Black Mage's max MP.
    */
-  private int getCurrentMp() {
+  public int getMaxMp() {
+    return maxMp;
+  }
+
+  /**
+   * Returns the Black Mage's current MP.
+   */
+  public int getCurrentMp() {
     return currentMp;
   }
 
   /**
-   * Sets the character's current MP.
+   * Sets the Black Mage's current MP to {@code newMp}.
+   *
+   * <p>This method should be <b>private</b>, because it must be only used by methods in the class
+   * to change value of {@code MP} when casting a spell but for testing it will be public.</p>
    */
-  private void setCurrentMp(final int currentMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, currentMp, "Current MP");
-    Require.statValueAtMost(maxMp, currentMp, "Current MP");
-    this.currentMp = currentMp;
+  public void setCurrentMp(final int newMp) throws InvalidStatValueException {
+    Require.statValueAtLeast(0, newMp, "Current MP");
+    Require.statValueAtMost(maxMp, newMp, "Current MP");
+    this.currentMp = newMp;
   }
 
-  /**
-   * Returns the character's max MP.
-   */
-  private int getMaxMp() {
-    return maxMp;
-  }
   // endregion
 
   // region : UTILITY METHODS
+
+  /**
+   * Returns a boolean that indicates if 2 Black Mages are equals
+   *
+   * @param obj
+   *    the object that will be compared with "this"
+   */
   @Override
-  public boolean equals(final Object o) {
-    if (this == o) {
+  public boolean equals(final Object obj) {
+    if (this == obj) {
       return true;
     }
-    if (!(o instanceof final BlackMage that)) {
+    if (!(obj instanceof final BlackMage that)) {
       return false;
     }
     return hashCode() == that.hashCode()
@@ -90,15 +101,21 @@ public class BlackMage extends AbstractPlayerCharacter {
         && maxMp == that.maxMp;
   }
 
-  @Override
-  public String toString() {
-    return "BlackMage{currentMp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
-        .formatted(currentMp, maxMp, maxHp, defense, name);
-  }
-
+  /**
+   * return the Black Mage's hash number.
+   */
   @Override
   public int hashCode() {
     return Objects.hash(BlackMage.class, name, maxHp, defense, maxMp);
+  }
+
+  /**
+   * Returns the character class and it´s data in a String format.
+   */
+  @Override
+  public String toString() {
+    return "BlackMage{currentMp=%d, currentHp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
+            .formatted(currentMp, getCurrentHp(), maxMp, maxHp, defense, name);
   }
   // endregion
 }
