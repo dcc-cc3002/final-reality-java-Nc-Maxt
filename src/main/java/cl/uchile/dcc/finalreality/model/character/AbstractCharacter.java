@@ -8,8 +8,8 @@ package cl.uchile.dcc.finalreality.model.character;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.Require;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractCharacter implements GameCharacter {
 
   protected final String name;
-  protected int maxHp;
+  protected final int maxHp;
   private int currentHp;
   protected int defense;
   protected final BlockingQueue<GameCharacter> turnsQueue;
@@ -86,7 +86,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   }
 
   /**
-   * Set the current Hp.
+   * Set the current Hp of the character.
    */
   @Override
   public void setCurrentHp(int hp) throws InvalidStatValueException {
