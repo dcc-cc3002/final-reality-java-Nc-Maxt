@@ -9,8 +9,8 @@ package cl.uchile.dcc.finalreality.model.character;
  */
 
 
-import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.Require;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -104,15 +104,22 @@ public class Enemy extends AbstractCharacter {
     }
     return hashCode() == enemy.hashCode()
         && name.equals(enemy.name)
-        && weight == enemy.weight
+        && getCurrentHp() == enemy.getCurrentHp()
         && maxHp == enemy.maxHp
-        && defense == enemy.defense;
+        && defense == enemy.defense
+        && weight == enemy.weight;
   }
   /**
    * Returns the Enemy hash.
    */
   @Override
   public int hashCode() {
-    return Objects.hash(Enemy.class, name, weight, maxHp, defense);
+    return Objects.hash(Enemy.class, name, weight, maxHp, getCurrentHp(), defense);
+  }
+
+  @Override
+  public String toString() {
+    return "Enemy{name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
+            .formatted(name, getCurrentHp(), maxHp, defense, weight);
   }
 }
