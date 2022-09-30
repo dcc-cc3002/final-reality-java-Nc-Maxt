@@ -8,8 +8,8 @@
 
 package cl.uchile.dcc.finalreality.model.character.player;
 
-import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -26,7 +26,7 @@ public class WhiteMage extends AbstractPlayerCharacter {
   private final int maxMp;
 
   /**
-   * Creates a new character.
+   * Creates a new White Mage.
    *
    * @param name
    *     the character's name
@@ -38,8 +38,9 @@ public class WhiteMage extends AbstractPlayerCharacter {
    *     the character's max mp
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
+   *
    */
-  protected WhiteMage(final @NotNull String name, final int maxHp, final int defense,
+  public WhiteMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
     super(name, maxHp, defense, turnsQueue);
@@ -94,11 +95,12 @@ public class WhiteMage extends AbstractPlayerCharacter {
       return false;
     }
     return hashCode() == that.hashCode()
-        && maxMp == that.maxMp
-        && currentMp == that.currentMp
-        && maxHp == that.maxHp
-        && name.equals(that.name)
-        && defense == that.defense;
+            && name.equals(that.name)
+            && maxHp == that.maxHp
+            && getCurrentHp() == that.getCurrentHp()
+            && defense == that.defense
+            && maxMp == that.maxMp
+            && currentMp == that.currentMp;
   }
 
   /**
@@ -106,15 +108,15 @@ public class WhiteMage extends AbstractPlayerCharacter {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(WhiteMage.class, currentMp, getCurrentHp(), name, maxHp, defense, maxMp);
+    return Objects.hash(WhiteMage.class, name, maxHp, getCurrentHp(), defense, maxMp, currentMp);
   }
   /**
    * return a string with information about the White Mage.
    */
   @Override
   public String toString() {
-    return "BlackMage{currentMp=%d, currentHp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
-            .formatted(currentMp, getCurrentHp(), maxMp, maxHp, defense, name);
+    return "BlackMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
+            .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense );
   }
   // endregion
 }
