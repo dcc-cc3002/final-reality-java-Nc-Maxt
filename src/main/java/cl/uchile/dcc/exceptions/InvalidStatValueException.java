@@ -6,7 +6,7 @@
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-package cl.uchile.dcc.finalreality.exceptions;
+package cl.uchile.dcc.finalreality.model.weapon.exceptions;
 
 /**
  * This error is used to represent an invalid stat value.
