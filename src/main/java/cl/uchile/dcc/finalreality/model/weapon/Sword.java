@@ -1,18 +1,22 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
-import java.util.Objects;
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
 
+import java.util.Objects;
 
 /**
  * A class that holds all the information of a Sword (weapon),
  * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
- * @author ~Matias Nunez~
+ * @author Matias Nunez
  */
-public class Sword implements Weapons{
-    private final String name;
-    private final int damage;
-    private final int weight;
+public class Sword extends AbstractWeapon{
 
     /**
      * Creates a new Sword.
@@ -23,62 +27,47 @@ public class Sword implements Weapons{
      *     the weapon's damage
      * @param weight
      *     the weapon's weight
+     *
      */
     public Sword(final String name, final int damage, final int weight) {
-        this.name = name;
-        this.damage = damage;
-        this.weight = weight;
+        super(name, damage, weight);
     }
+    // region : UTILITY METHODS
 
     /**
-     * Returns the name of the Sword.
+     * Returns a boolean that indicates if 2 Swords are equals
+     *
+     * @param obj
+     *    the object that will be compared with "this"
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the damage of the Sword.
-     */
-    public int getDamage() {
-        return damage;
-    }
-
-    /**
-     * Returns the weight of the Sword.
-     */
-    public int getWeight() {
-        return weight;
-    }
-
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
-        if (!(this.getClass() == obj.getClass())) {
+        if (!(obj instanceof final Sword that)) {
             return false;
         }
-        Sword other = (Sword) obj;
-        return hashCode() == other.hashCode()
-                && damage == other.getDamage()
-                && weight == other.getWeight()
-                && name.equals(other.getName());
+        return hashCode() == that.hashCode()
+                && getName().equals(that.getName())
+                && getDamage() == that.getDamage()
+                && getWeight() == that.getWeight();
     }
 
     /**
-     * Returns the hashcode of the weapon.
+     * Returns the hashcode of the Sword.
      */
     public int hashCode() {
-
-        return Objects.hash(Sword.class, name, damage, weight);
+        return Objects.hash(Sword.class, getName(), getDamage(), getWeight());
     }
 
     /**
-     * Returns the weapon and it´s data in a String format.
+     * Returns the Sword and it´s data in a String format.
      */
+    @Override
     public String toString() {
         return "Sword{name='%s', damage=%d, weight=%d}"
-                .formatted(name, damage, weight);
+                .formatted(getName(), getDamage(), getWeight());
     }
+    // endregion
 }

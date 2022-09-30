@@ -9,17 +9,14 @@ package cl.uchile.dcc.finalreality.model.weapon;
  */
 
 import java.util.Objects;
+
 /**
  * A class that holds all the information of a Knife (weapon),
  * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class Knife implements Weapons{
-    private final String name;
-    private final int damage;
-    private final int weight;
-
+public class Knife extends AbstractWeapon{
     /**
      * Creates a new Knife.
      *
@@ -32,36 +29,8 @@ public class Knife implements Weapons{
      *
      */
     public Knife(final String name, final int damage, final int weight) {
-        this.name = name;
-        this.damage = damage;
-        this.weight = weight;
+        super(name, damage, weight);
     }
-
-    // region : ACCESSORS
-
-    /**
-     * Returns the name of the weapon.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the damage of the weapon.
-     */
-    public int getDamage() {
-        return damage;
-    }
-
-    /**
-     * Returns the weight of the weapon.
-     */
-    public int getWeight() {
-        return weight;
-    }
-
-    // endregion
-
     // region : UTILITY METHODS
 
     /**
@@ -75,29 +44,29 @@ public class Knife implements Weapons{
         if (this == obj) {
             return true;
         }
-        if (!(this.getClass() == obj.getClass())) {
+        if (!(obj instanceof final Knife that)) {
             return false;
         }
-        Knife other = (Knife) obj;
-        return hashCode() == other.hashCode()
-                && damage == other.getDamage()
-                && weight == other.getWeight()
-                && name.equals(other.getName());
+        return hashCode() == that.hashCode()
+                && getName().equals(that.getName())
+                && getDamage() == that.getDamage()
+                && getWeight() == that.getWeight();
     }
 
     /**
-     * Returns the hashcode of the weapon.
+     * Returns the hashcode of the Knife.
      */
     public int hashCode() {
-        return Objects.hash(Sword.class, name, damage, weight);
+        return Objects.hash(Knife.class, getName(), getDamage(), getWeight());
     }
 
     /**
-     * Returns the weapon and it´s data in a String format.
+     * Returns the Knife and it´s data in a String format.
      */
+    @Override
     public String toString() {
         return "Knife{name='%s', damage=%d, weight=%d}"
-                .formatted(name, damage, weight);
+                .formatted(getName(), getDamage(), getWeight());
     }
     // endregion
 }

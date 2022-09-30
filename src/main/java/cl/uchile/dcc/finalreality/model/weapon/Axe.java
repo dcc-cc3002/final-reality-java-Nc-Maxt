@@ -16,43 +16,22 @@ import java.util.Objects;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class Axe implements Weapons {
-    private final String name;
-    private final int damage;
-    private final int weight;
+public class Axe extends AbstractWeapon {
     /**
-     * Creates an Axe with a name, a base damage, and it's type.
+     * Creates a new Axe.
+     * This constructor is <b>public</b>, because it'll be used in testing and the programe.
+     *
+     * @param name
+     *     the weapon's name
+     * @param damage
+     *     the weapon's damage
+     * @param weight
+     *     the weapon's weight
+     *
      */
     public Axe(final String name, final int damage, final int weight) {
-        this.name = name;
-        this.damage = damage;
-        this.weight = weight;
+        super(name, damage, weight);
     }
-
-    // region : ACCESSORS
-
-    /**
-     * Returns the name of the weapon.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the damage of the weapon.
-     */
-    public int getDamage() {
-        return damage;
-    }
-
-    /**
-     * Returns the weight of the weapon.
-     */
-    public int getWeight() {
-        return weight;
-    }
-
-    // endregion
 
     // region : UTILITY METHODS
 
@@ -67,14 +46,13 @@ public class Axe implements Weapons {
         if (this == obj) {
             return true;
         }
-        if (!(this.getClass() == obj.getClass())) {
+        if (!(obj instanceof final Axe that)) {
             return false;
         }
-        Axe other = (Axe) obj;
-        return hashCode() == other.hashCode()
-                && damage == other.getDamage()
-                && weight == other.getWeight()
-                && name.equals(other.getName());
+        return hashCode() == that.hashCode()
+                && name.equals(that.name)
+                && damage == that.damage
+                && weight == that.weight;
     }
 
     /**

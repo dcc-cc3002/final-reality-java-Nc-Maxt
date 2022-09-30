@@ -10,19 +10,13 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import java.util.Objects;
 
-
 /**
  * A class that holds all the information of a Bow (weapon),
  * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-
-public class Bow implements Weapons{
-    private final String name;
-    private final int damage;
-    private final int weight;
-
+public class Bow extends AbstractWeapon{
     /**
      * Creates a new Bow.
      * This constructor is <b>public</b>, because it'll be used in testing and the programe.
@@ -36,59 +30,44 @@ public class Bow implements Weapons{
      *
      */
     public Bow(final String name, final int damage, final int weight) {
-        this.name = name;
-        this.damage = damage;
-        this.weight = weight;
+        super(name, damage, weight);
     }
+    // region : UTILITY METHODS
 
     /**
-     * Returns the name of the Bow.
+     * Returns a boolean that indicates if 2 Bows are equals
+     *
+     * @param obj
+     *    the object that will be compared with "this"
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the damage of the Bow.
-     */
-    public int getDamage() {
-        return damage;
-    }
-
-    /**
-     * Returns the weight of the Bow.
-     */
-    public int getWeight() {
-        return weight;
-    }
-
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
-        if (!(this.getClass() == obj.getClass())) {
+        if (!(obj instanceof final Bow that)) {
             return false;
         }
-        Bow other = (Bow) obj;
-        return hashCode() == other.hashCode()
-                && damage == other.getDamage()
-                && weight == other.getWeight()
-                && name.equals(other.getName());
+        return hashCode() == that.hashCode()
+                && getName().equals(that.getName())
+                && getDamage() == that.getDamage()
+                && getWeight() == that.getWeight();
     }
 
     /**
      * Returns the hashcode of the Bow.
      */
     public int hashCode() {
-        return Objects.hash(Bow.class, name, damage, weight);
+        return Objects.hash(Bow.class, getName(), getDamage(), getWeight());
     }
 
     /**
      * Returns the Bow and it´s data in a String format.
      */
+    @Override
     public String toString() {
         return "Bow{name='%s', damage=%d, weight=%d}"
-                .formatted(name, damage, weight);
+                .formatted(getName(), getDamage(), getWeight());
     }
+    // endregion    }
 }

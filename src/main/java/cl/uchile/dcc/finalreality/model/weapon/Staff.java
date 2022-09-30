@@ -9,21 +9,18 @@ package cl.uchile.dcc.finalreality.model.weapon;
  */
 
 import java.util.Objects;
+
 /**
  * A class that holds all the information of a Staff (weapon),
  * that can be equipped by a character.
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-
-public class Staff implements Weapons{
-    private final String name;
-    private final int damage;
-    private final int weight;
+public class Staff extends AbstractWeapon{
 
     /**
      * Creates a new Staff.
-     * This constructor is <b>public</b>, because it'll be used in testing and the programe.
+     * This constructor is <b>public</b>, because it'll be used in testing and in the program.
      *
      * @param name
      *     the weapon's name
@@ -34,33 +31,12 @@ public class Staff implements Weapons{
      *
      */
     public Staff(final String name, final int damage, final int weight) {
-        this.name = name;
-        this.damage = damage;
-        this.weight = weight;
+        super(name, damage, weight);
     }
-    /**
-     * Returns the name of the Staff.
-     */
-    public String getName() {
-        return name;
-    }
+    // region : UTILITY METHODS
 
     /**
-     * Returns the damage of the Staff.
-     */
-    public int getDamage() {
-        return damage;
-    }
-
-    /**
-     * Returns the weight of the Staff.
-     */
-    public int getWeight() {
-        return weight;
-    }
-
-    /**
-     * Returns a boolean that indicates if 2 Staff are equals
+     * Returns a boolean that indicates if 2 Staffs are equals
      *
      * @param obj
      *    the object that will be compared with "this"
@@ -70,29 +46,29 @@ public class Staff implements Weapons{
         if (this == obj) {
             return true;
         }
-        if (!(this.getClass() == obj.getClass())) {
+        if (!(obj instanceof final Staff that)) {
             return false;
         }
-        Staff other = (Staff) obj;
-        return hashCode() == other.hashCode()
-                && damage == other.getDamage()
-                && weight == other.getWeight()
-                && name.equals(other.getName());
+        return hashCode() == that.hashCode()
+                && getName().equals(that.getName())
+                && getDamage() == that.getDamage()
+                && getWeight() == that.getWeight();
     }
 
     /**
      * Returns the hashcode of the Staff.
      */
     public int hashCode() {
-
-        return Objects.hash(Staff.class, name, damage, weight);
+        return Objects.hash(Staff.class, getName(), getDamage(), getWeight());
     }
 
     /**
      * Returns the Staff and it´s data in a String format.
      */
+    @Override
     public String toString() {
         return "Staff{name='%s', damage=%d, weight=%d}"
-                .formatted(name, damage, weight);
+                .formatted(getName(), getDamage(), getWeight());
     }
+    // endregion
 }
