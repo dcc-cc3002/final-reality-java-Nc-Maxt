@@ -8,7 +8,7 @@ package cl.uchile.dcc.finalreality.model.character;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
 
 /**
  * This represents a character from the game.
