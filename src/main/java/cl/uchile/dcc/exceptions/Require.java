@@ -6,7 +6,7 @@
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-package cl.uchile.dcc.finalreality.model.weapon.exceptions;
+package cl.uchile.dcc.exceptions;
 
 /**
  * Class containing a series of methods to check if a condition is met.
