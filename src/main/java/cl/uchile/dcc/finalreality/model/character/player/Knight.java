@@ -8,7 +8,7 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -58,6 +58,7 @@ public class Knight extends AbstractPlayerCharacter {
     }
     return hashCode() == that.hashCode()
             && name.equals(that.name)
+            && getCurrentHp() == that.getCurrentHp()
             && maxHp == that.maxHp
             && defense == that.defense;
   }
@@ -67,7 +68,7 @@ public class Knight extends AbstractPlayerCharacter {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(Knight.class, name, maxHp, defense);
+    return Objects.hash(Knight.class, name, getCurrentHp(), maxHp, defense);
   }
 
   /**
@@ -75,6 +76,7 @@ public class Knight extends AbstractPlayerCharacter {
    */
   @Override
   public String toString() {
-    return "Knight{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
+    return "Knight{name='%s', currentHp=%d, maxHp=%d, defense=%d }"
+            .formatted(name, getCurrentHp(), maxHp, defense );
   }
 }
