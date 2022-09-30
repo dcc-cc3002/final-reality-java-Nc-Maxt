@@ -8,8 +8,8 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -38,6 +38,7 @@ public class BlackMage extends AbstractPlayerCharacter {
    *     the character's max mp
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
+   *
    */
   public BlackMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
@@ -95,10 +96,12 @@ public class BlackMage extends AbstractPlayerCharacter {
       return false;
     }
     return hashCode() == that.hashCode()
-        && name.equals(that.name)
-        && maxHp == that.maxHp
-        && defense == that.defense
-        && maxMp == that.maxMp;
+            && name.equals(that.name)
+            && getCurrentHp() == that.getCurrentHp()
+            && maxHp == that.maxHp
+            && defense == that.defense
+            && maxMp == that.maxMp
+            && currentMp == that.currentMp;
   }
 
   /**
@@ -106,7 +109,7 @@ public class BlackMage extends AbstractPlayerCharacter {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(BlackMage.class, name, maxHp, defense, maxMp);
+    return Objects.hash(BlackMage.class, name, getCurrentHp(), maxHp, defense, maxMp, currentMp);
   }
 
   /**
@@ -114,8 +117,8 @@ public class BlackMage extends AbstractPlayerCharacter {
    */
   @Override
   public String toString() {
-    return "BlackMage{currentMp=%d, currentHp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
-            .formatted(currentMp, getCurrentHp(), maxMp, maxHp, defense, name);
+    return "BlackMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
+            .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense );
   }
   // endregion
 }
