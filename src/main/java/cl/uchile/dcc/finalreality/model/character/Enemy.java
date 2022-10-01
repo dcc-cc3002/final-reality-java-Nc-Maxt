@@ -41,11 +41,16 @@ public class Enemy extends AbstractCharacter {
    *     the queue with the characters waiting for their turn
    */
   public Enemy(@NotNull final String name, final int weight, int maxHp, int defense,
-      @NotNull final BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
+      @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
+    int weightval = weight;
+    try {
     Require.statValueAtLeast(1, weight, "Weight");
-    this.weight = weight;
+    } catch (InvalidStatValueException inv) {
+      System.out.println("Weight can't be lower than 1, automatically setted to 3");
+      weightval = 3;
+    }
+    this.weight = weightval;
   }
 
   // region : ACCESSORS
