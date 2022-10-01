@@ -8,8 +8,6 @@
 
 package cl.uchile.dcc.finalreality.model.character.player;
 
-import cl.uchile.dcc.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -21,9 +19,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class WhiteMage extends AbstractPlayerCharacter {
-  private int currentMp;
-  private final int maxMp;
+public class WhiteMage extends AbstractMage {
 
   /**
    * Creates a new White Mage.
@@ -41,42 +37,9 @@ public class WhiteMage extends AbstractPlayerCharacter {
    *
    */
   public WhiteMage(final @NotNull String name, final int maxHp, final int defense,
-      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
-    super(name, maxHp, defense, turnsQueue);
-    this.maxMp = maxMp;
-    this.currentMp = maxMp;
+                   int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+    super(name, maxHp, defense, maxMp, turnsQueue);
   }
-
-  // region : ACCESSORS
-
-  /**
-   * Returns the max MP of the character.
-   */
-  public int getMaxMp() {
-    return maxMp;
-  }
-
-  /**
-   * Returns the current MP of the character.
-   */
-  public int getCurrentMp() {
-    return currentMp;
-  }
-
-  /**
-   * Sets the current MP of the character to {@code newMp}.
-   *
-   * <p>This method should be <b>private</b>, because it must be only used by methods in the class
-   * to change value of {@code MP} when casting a spell but for testing it will be public.</p>
-   */
-  public void setCurrentMp(final int newMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, newMp, "Current MP");
-    Require.statValueAtMost(maxMp, newMp, "Current MP");
-    this.currentMp = newMp;
-  }
-
-  // endregion
 
   // region : UTILITY METHODS
 
@@ -97,10 +60,8 @@ public class WhiteMage extends AbstractPlayerCharacter {
     return hashCode() == that.hashCode()
             && name.equals(that.name)
             && maxHp == that.maxHp
-            && getCurrentHp() == that.getCurrentHp()
             && defense == that.defense
-            && maxMp == that.maxMp
-            && currentMp == that.currentMp;
+            && maxMp == that.maxMp;
   }
 
   /**
@@ -108,10 +69,10 @@ public class WhiteMage extends AbstractPlayerCharacter {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(WhiteMage.class, name, maxHp, getCurrentHp(), defense, maxMp, currentMp);
+    return Objects.hash(WhiteMage.class, name, maxHp, defense, maxMp );
   }
   /**
-   * return a string with information about the White Mage.
+   * Returns the character class and it´s data in a String format.
    */
   @Override
   public String toString() {
