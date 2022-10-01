@@ -84,9 +84,7 @@ public abstract class AbstractCharacter implements GameCharacter {
     return maxHp;
   }
 
-  /**
-   * Returns the defense of the character.
-   */
+
   @Override
   public int getDefense() {
     return defense;
