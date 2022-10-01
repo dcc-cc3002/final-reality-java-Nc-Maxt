@@ -13,62 +13,66 @@ import java.util.Objects;
 /**
  * A class that holds all the information of a Staff (weapon),
  * that can be equipped by a character.
+ *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
+ *
  */
-public class Staff extends AbstractWeapon{
+public class Staff extends AbstractWeapon {
 
-    /**
-     * Creates a new Staff.
-     * This constructor is <b>public</b>, because it'll be used in testing and in the program.
-     *
-     * @param name
-     *     the weapon's name
-     * @param damage
-     *     the weapon's damage
-     * @param weight
-     *     the weapon's weight
-     *
-     */
-    public Staff(final String name, final int damage, final int weight) {
-        super(name, damage, weight);
-    }
-    // region : UTILITY METHODS
+  /**
+   * Creates a new Staff.
+   * This constructor is <b>public</b>, because it'll be used in testing and in the program.
+   *
+   * @param name
+   *     the weapon's name
+   * @param damage
+   *     the weapon's damage
+   * @param weight
+   *     the weapon's weight
+   *
+   */
+  public Staff(final String name, final int damage, final int weight) {
+    super(name, damage, weight);
+  }
 
-    /**
-     * Returns a boolean that indicates if 2 Staffs are equals
-     *
-     * @param obj
-     *    the object that will be compared with "this"
-     */
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof final Staff that)) {
-            return false;
-        }
-        return hashCode() == that.hashCode()
-                && getName().equals(that.getName())
-                && getDamage() == that.getDamage()
-                && getWeight() == that.getWeight();
-    }
+  // region : UTILITY METHODS
 
-    /**
-     * Returns the hashcode of the Staff.
-     */
-    public int hashCode() {
-        return Objects.hash(Staff.class, getName(), getDamage(), getWeight());
+  /**
+   * Returns a boolean that indicates if 2 Staffs are equals.
+   *
+   * @param obj
+   *     the object that will be compared with "this"
+   */
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj) {
+      return true;
     }
+    if (!(obj instanceof final Staff that)) {
+      return false;
+    }
+    return hashCode() == that.hashCode()
+            && getName().equals(that.getName())
+            && getDamage() == that.getDamage()
+            && getWeight() == that.getWeight();
+  }
 
-    /**
-     * Returns the Staff and it´s data in a String format.
-     */
-    @Override
-    public String toString() {
-        return "Staff{name='%s', damage=%d, weight=%d}"
-                .formatted(getName(), getDamage(), getWeight());
-    }
-    // endregion
+  /**
+   * Returns the hashcode of the Staff.
+   */
+  public int hashCode() {
+    return Objects.hash(Staff.class, getName(), getDamage(), getWeight());
+  }
+
+  /**
+   * Returns the Staff and it´s data in a String format.
+   */
+  @Override
+  public String toString() {
+    return "Staff{name='%s', damage=%d, weight=%d}"
+            .formatted(getName(), getDamage(), getWeight());
+  }
+
+  // endregion
 }

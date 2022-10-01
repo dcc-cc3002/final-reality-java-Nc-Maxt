@@ -11,11 +11,11 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
-import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -41,11 +41,11 @@ public class Enemy extends AbstractCharacter {
    *     the queue with the characters waiting for their turn
    */
   public Enemy(@NotNull final String name, final int weight, int maxHp, int defense,
-      @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
+               @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
     int weightval = weight;
     try {
-    Require.statValueAtLeast(1, weight, "Weight");
+      Require.statValueAtLeast(1, weight, "Weight");
     } catch (InvalidStatValueException inv) {
       System.out.println("Weight can't be lower than 1, automatically setted to 3");
       weightval = 3;
@@ -74,10 +74,10 @@ public class Enemy extends AbstractCharacter {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
     var enemy = (Enemy) this;
     scheduledExecutor.schedule(
-              /* command = */ this::addToQueue,
-              /* delay = */ enemy.getWeight() / 10,
-              /* unit = */ TimeUnit.SECONDS);
-    }
+      /* command = */ this::addToQueue,
+      /* delay = */ enemy.getWeight() / 10,
+      /* unit = */ TimeUnit.SECONDS);
+  }
 
   /**
    * Adds this character to the turns queue.
@@ -94,10 +94,10 @@ public class Enemy extends AbstractCharacter {
   }
 
   /**
-   * Returns a boolean that indicates if 2 Enemies are equals
+   * Returns a boolean that indicates if 2 Enemies are equals.
    *
    * @param obj
-   *    the object that will be compared with "this"
+   *     the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -108,12 +108,12 @@ public class Enemy extends AbstractCharacter {
       return false;
     }
     return hashCode() == enemy.hashCode()
-        && name.equals(enemy.name)
-        && getCurrentHp() == enemy.getCurrentHp()
-        && maxHp == enemy.maxHp
-        && defense == enemy.defense
-        && weight == enemy.weight;
+            && name.equals(enemy.name)
+            && maxHp == enemy.maxHp
+            && defense == enemy.defense
+            && weight == enemy.weight;
   }
+
   /**
    * Returns the Enemy hash.
    */
@@ -130,4 +130,6 @@ public class Enemy extends AbstractCharacter {
     return "Enemy{name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
             .formatted(name, getCurrentHp(), maxHp, defense, weight);
   }
+
+  // endregion
 }

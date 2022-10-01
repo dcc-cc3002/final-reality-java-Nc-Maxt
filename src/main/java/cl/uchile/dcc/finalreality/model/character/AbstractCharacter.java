@@ -46,13 +46,13 @@ public abstract class AbstractCharacter implements GameCharacter {
     int hpval = maxHp;
     int defval = defense;
     try {
-    Require.statValueAtLeast(1, maxHp, "Max HP");
+      Require.statValueAtLeast(1, maxHp, "Max HP");
     } catch (InvalidStatValueException inv) {
       System.out.println("Maximum Hp can't be lower or equal to 0, automatically setted to 1");
       hpval = 1;
     }
     try {
-    Require.statValueAtLeast(0, defense, "Defense");
+      Require.statValueAtLeast(0, defense, "Defense");
     } catch (InvalidStatValueException inv) {
       System.out.println("Defense can't be lower than 0, automatically setted to 0");
       defval = 0;
@@ -84,7 +84,9 @@ public abstract class AbstractCharacter implements GameCharacter {
     return maxHp;
   }
 
-
+  /**
+   * Returns the defense of the character.
+   */
   @Override
   public int getDefense() {
     return defense;
@@ -92,18 +94,20 @@ public abstract class AbstractCharacter implements GameCharacter {
 
 
   @Override
-  public void setCurrentHp(int hp){
+  public void setCurrentHp(int hp) {
     int value = hp;
     try {
       Require.statValueAtLeast(0, hp, "Current HP");
     } catch (InvalidStatValueException inv) {
-      System.out.println(this.getName()+" died");
-      value = 0; }
+      System.out.println(this.getName() + " died");
+      value = 0;
+    }
     try {
-    Require.statValueAtMost(maxHp, hp, "Current HP");
+      Require.statValueAtMost(maxHp, hp, "Current HP");
     } catch (InvalidStatValueException inv) {
-      System.out.println(this.getName()+" overhealed");
-      value = maxHp; }
+      System.out.println(this.getName() + " overhealed");
+      value = maxHp;
+    }
     currentHp = value;
   }
   // endregion

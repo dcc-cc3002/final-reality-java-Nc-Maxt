@@ -20,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
  * @author Matias Nunez
  */
 public class BlackMage extends AbstractMage {
-
   /**
    * Creates a new Black Mage.
    *
@@ -37,17 +36,17 @@ public class BlackMage extends AbstractMage {
    *
    */
   public BlackMage(final @NotNull String name, final int maxHp, final int defense,
-      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
-    super(name, maxHp, defense, maxMp ,turnsQueue);
+                   int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+    super(name, maxHp, defense, maxMp, turnsQueue);
   }
 
   // region : UTILITY METHODS
 
   /**
-   * Returns a boolean that indicates if 2 Black Mages are equals
+   * Returns a boolean that indicates if 2 Black Mages are equals.
    *
    * @param obj
-   *    the object that will be compared with "this"
+   *     the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -78,7 +77,8 @@ public class BlackMage extends AbstractMage {
   @Override
   public String toString() {
     return "BlackMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense );
+            .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
   }
+
   // endregion
 }

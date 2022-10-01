@@ -13,7 +13,6 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
-
 /**
  * A {@link PlayerCharacter} that can equip {@code Axe}s and {@code Bow}s.
  *
@@ -35,15 +34,17 @@ public class Engineer extends AbstractPlayerCharacter {
    *     the queue with the characters waiting for their turn
    */
   public Engineer(final @NotNull String name, final int maxHp, final int defense,
-      final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+                  final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
+
   // region : UTILITY METHODS
+
   /**
-   * Returns a boolean that indicates if 2 BlackMages are equals
+   * Returns a boolean that indicates if 2 BlackMages are equals.
    *
    * @param obj
-   *    the object that will be compared with "this"
+   *     the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -74,7 +75,8 @@ public class Engineer extends AbstractPlayerCharacter {
   @Override
   public String toString() {
     return "Engineer{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, defense );
+            .formatted(name, getCurrentHp(), maxHp, defense);
   }
+
   // endregion
 }

@@ -8,7 +8,6 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -37,17 +36,17 @@ public class Thief extends AbstractPlayerCharacter {
    *     the queue with the characters waiting for their turn
    */
   public Thief(final @NotNull String name, final int maxHp, final int defense,
-      final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+               final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
 
   // region : UTILITY METHODS
 
   /**
-   * Returns a boolean that indicates if 2 BlackMages are equals
+   * Returns a boolean that indicates if 2 BlackMages are equals.
    *
    * @param o
-   *    the object that will be compared with "this"
+   *     the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object o) {
@@ -63,6 +62,7 @@ public class Thief extends AbstractPlayerCharacter {
             && maxHp == that.maxHp
             && defense == that.defense;
   }
+
   /**
    * return the Thief's hash number.
    */
@@ -77,7 +77,8 @@ public class Thief extends AbstractPlayerCharacter {
   @Override
   public String toString() {
     return "Thief{name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, defense );
+            .formatted(name, getCurrentHp(), maxHp, defense);
   }
+
   // endregion
 }

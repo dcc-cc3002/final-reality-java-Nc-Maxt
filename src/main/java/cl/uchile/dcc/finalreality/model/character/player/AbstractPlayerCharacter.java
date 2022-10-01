@@ -14,8 +14,8 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -28,8 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public abstract class AbstractPlayerCharacter extends AbstractCharacter implements
-    PlayerCharacter {
+public abstract class AbstractPlayerCharacter extends AbstractCharacter implements PlayerCharacter {
   private ScheduledExecutorService scheduledExecutor;
   private Weapons equippedWeapon = null;
 
@@ -47,7 +46,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    *     the queue with the characters waiting for their turn
    */
   protected AbstractPlayerCharacter(@NotNull final String name, final int maxHp,
-      final int defense, @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
+         final int defense, @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
 
@@ -57,14 +56,13 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
    * seconds before adding the character to the queue.
    */
-
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
     var player = (PlayerCharacter) this;
     scheduledExecutor.schedule(
-              /* command = */ this::addToQueue,
-              /* delay = */ player.getEquippedWeapon().getWeight() / 10,
-              /* unit = */ TimeUnit.SECONDS);
+            /* command = */ this::addToQueue,
+            /* delay = */ player.getEquippedWeapon().getWeight() / 10,
+            /* unit = */ TimeUnit.SECONDS);
   }
 
   /**
@@ -86,10 +84,10 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     this.equippedWeapon = weapon;
   }
 
-
   @Override
   public Weapons getEquippedWeapon() {
     return equippedWeapon;
   }
+
   // endregion
 }

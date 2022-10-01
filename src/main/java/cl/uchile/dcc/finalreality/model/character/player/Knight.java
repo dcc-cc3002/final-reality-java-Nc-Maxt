@@ -35,17 +35,18 @@ public class Knight extends AbstractPlayerCharacter {
    *     the queue with the characters waiting for their turn
    */
   public Knight(@NotNull final String name, int maxHp, int defense,
-      @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
+                @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
 
+  // region : UTILITY METHODS
+
   /**
-   * Returns a boolean that indicates if 2 Knights are equals
+   * Returns a boolean that indicates if 2 Knights are equals.
    *
    * @param obj
-   *    the object that will be compared with "this"
+   *     the object that will be compared with "this"
    */
-
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {
@@ -62,19 +63,13 @@ public class Knight extends AbstractPlayerCharacter {
   }
 
   /**
-   * return the Black Mage's hash number.
-   */
-  @Override
-  public int hashCode() {
-    return Objects.hash(Knight.class, name, getCurrentHp(), maxHp, defense);
-  }
-
-  /**
    * Returns the character class and it´s data in a String format.
    */
   @Override
   public String toString() {
     return "Knight{name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, defense );
+            .formatted(name, getCurrentHp(), maxHp, defense);
   }
+
+  // endregion
 }
