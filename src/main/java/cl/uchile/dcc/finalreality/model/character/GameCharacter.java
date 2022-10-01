@@ -42,7 +42,7 @@ public interface GameCharacter {
   int getDefense();
 
   /**
-   * Sets this character's current HP to {@code newHp}.
+   * Sets this character's current HP to {@code valuehp}.
    */
   void setCurrentHp(int hp) throws InvalidStatValueException;
   // endregion
