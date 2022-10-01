@@ -47,8 +47,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    *     the queue with the characters waiting for their turn
    */
   protected AbstractPlayerCharacter(@NotNull final String name, final int maxHp,
-      final int defense, @NotNull final BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
+      final int defense, @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
 
@@ -82,22 +81,12 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     scheduledExecutor.shutdown();
   }
 
-  /**
-   * Equips a weapon to a character
-   * this method is <b>public</b>, beacuse it'll be used like a setter.
-   *
-   * @param weapon
-   *    the weapon that a character will use
-   */
   @Override
   public void equip(Weapons weapon) {
     this.equippedWeapon = weapon;
   }
 
-  /**
-   * Return the character's equipped weapon
-   * this method is <b>public</b>, beacuse it'll be used for testing.
-   */
+
   @Override
   public Weapons getEquippedWeapon() {
     return equippedWeapon;
