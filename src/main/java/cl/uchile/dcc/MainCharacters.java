@@ -2,12 +2,17 @@ package cl.uchile.dcc;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.player.*;
-import cl.uchile.dcc.finalreality.model.weapon.*;
 import cl.uchile.dcc.finalreality.model.character.*;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * Testing methods that only implies Characters
+ *
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
+ */
 public class MainCharacters {
     public static void main(String[] args) throws InvalidStatValueException {
         System.out.println("--- Character testing---");
@@ -39,11 +44,6 @@ public class MainCharacters {
         Thief Tf_1 = new Thief("Balze", 30, 15, queue1);
         Thief Tf_2 = new Thief("Balze", 30, 15, queue1);
         Thief Tf_4 = new Thief("Mathew", 60, 3, queue2);
-        /**try {
-         Thief Tf_1 = new Thief("Balze", 30, 15, queue1);
-         } catch (InvalidStatValueException inv){
-         System.out.println(badp1.getName()+" died");
-         }*/
         System.out.println();
 
         System.out.println("--- Black Mage ---");
@@ -60,12 +60,12 @@ public class MainCharacters {
 
         System.out.println("--- Equals ---");
         System.out.println("Is Enemy badp1 equal to Enemy badp2?"+badp1.equals(badp2));
-        System.out.println("Is simetric?"+badp2.equals(badp1));
+        System.out.println("Is Enemy badp2 equal to Enemy badp1?"+badp2.equals(badp1));
         System.out.println("Is Enemy badcroissant2_0 equal to Enemy badp2?"+badcroissant2_0.equals(badp2));
         System.out.println();
 
         System.out.println("Is Engineer Eng_1 equal to Engineer Eng_2?"+Egn_1.equals(Egn_2));
-        System.out.println("Is simetric?"+Egn_2.equals(Egn_1));
+        System.out.println("Is Engineer Eng_2 equal to Engineer Eng_1?"+Egn_2.equals(Egn_1));
         System.out.println("Is Engineer Eng_2 equal to Engineer Eng_3?"+Egn_2.equals(Egn_3));
         System.out.println();
 
@@ -107,13 +107,58 @@ public class MainCharacters {
         System.out.println("Is BlackMage Bm_3 equal to BlackMage Bm_3 ?"+Bm_3.equals(Bm_3));
         System.out.println();
 
+        System.out.println("--- Getters and toString ---");
+        System.out.print("Data of Enemy badp1 : "+badp1.getName()+", "+badp1.getCurrentHp()+", "+badp1.getMaxHp());
+        System.out.println(", "+badp1.getDefense()+", "+badp1.getWeight());
+        System.out.println(badp1);
+        System.out.println();
+        System.out.print("Data of Engineer Egn_3 : "+Egn_3.getName()+", "+Egn_3.getCurrentHp()+", "+Egn_3.getMaxHp());
+        System.out.println(", "+Egn_3.getDefense());
+        System.out.println(Egn_3);
+        System.out.println();
+        System.out.print("Data of Knight Kgt_2: "+Kgt_2.getName()+", "+Kgt_2.getCurrentHp()+", "+Kgt_2.getMaxHp());
+        System.out.println(", "+Kgt_2.getDefense());
+        System.out.println(Kgt_2);
+        System.out.println();
+        System.out.print("Data of Thief Tf_4: "+Tf_4.getName()+", "+Tf_4.getCurrentHp()+", "+Tf_4.getMaxHp());
+        System.out.println(", "+Tf_4.getDefense());
+        System.out.println(Tf_4);
+        System.out.println();
+        System.out.print("Data of BlackMage Bm_1: "+Bm_1.getName()+", "+Bm_1.getCurrentHp()+", "+Bm_1.getMaxHp());
+        System.out.println(", "+Bm_1.getCurrentMp()+", "+Bm_1.getMaxMp()+", "+Bm_1.getDefense());
+        System.out.println(Bm_1);
+        System.out.println();
+        System.out.print("Data of WhiteMage Wm_3: "+Wm_3.getName()+", "+Wm_3.getCurrentHp()+", "+Wm_3.getMaxHp());
+        System.out.println(", "+Wm_3.getCurrentMp()+", "+Wm_3.getMaxMp()+", "+Wm_3.getDefense());
+        System.out.println(Wm_3);
+        System.out.println();
 
-        try {
-            badp1.setCurrentHp(badp1.getCurrentHp()-51);
-        }
-        catch (InvalidStatValueException inv){
-            System.out.println(badp1.getName()+" died");
-            badp1.setCurrentHp(0);
-        }
+        System.out.println("--- Exceptions ---");
+        System.out.println("--- Exceptions in Constructors  ---");
+        WhiteMage Wm_test = new WhiteMage("Elias", -3, 64, 32 ,queue1);
+        BlackMage Bm_test = new BlackMage("Isaias", 64, -3, 32 ,queue1);
+        WhiteMage Wm_test2 = new WhiteMage("Lucy", 42, 0, -10 ,queue1);
+        BlackMage Bm_test2 = new BlackMage("Fer", 13, 13, 0 ,queue1);
+        Enemy Ey_test0 = new Enemy("nevets", -5, 32, 10, queue1);
+        System.out.println();
+
+        System.out.println("--- Setters and Exceptions in Hp ---");
+        System.out.println(badp1.getCurrentHp());
+        badp1.setCurrentHp(badp1.getCurrentHp()-51);
+        System.out.println(badp1.getCurrentHp());
+        badp1.setCurrentHp(badp1.getCurrentHp()+52);
+        System.out.println(badp1.getCurrentHp());
+        badp1.setCurrentHp(15);
+        System.out.println(badp1.getCurrentHp());
+        System.out.println();
+
+        System.out.println("--- Setters and Exceptions in Mp ---");
+        System.out.println(Wm_3.getCurrentMp());
+        Wm_3.setCurrentMp(Wm_3.getCurrentMp()-1000);
+        System.out.println(Wm_3.getCurrentMp());
+        Wm_3.setCurrentMp(Wm_3.getCurrentMp()+1);
+        System.out.println(Wm_3.getCurrentMp());
+        Wm_3.setCurrentMp(Wm_3.getCurrentMp()-250);
+        System.out.println(Wm_3.getCurrentMp());
     }
 }
