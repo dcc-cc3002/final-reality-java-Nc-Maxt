@@ -8,8 +8,6 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -21,9 +19,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class BlackMage extends AbstractPlayerCharacter {
-  private final int maxMp;
-  private int currentMp;
+public class BlackMage extends AbstractMage {
 
   /**
    * Creates a new Black Mage.
@@ -41,43 +37,9 @@ public class BlackMage extends AbstractPlayerCharacter {
    *
    */
   public BlackMage(final @NotNull String name, final int maxHp, final int defense,
-      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
-    super(name, maxHp, defense, turnsQueue);
-    Require.statValueAtLeast(0, maxMp, "Max MP");
-    this.maxMp = maxMp;
-    this.currentMp = maxMp;
+      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+    super(name, maxHp, defense, maxMp ,turnsQueue);
   }
-
-  // region : ACCESSORS
-
-  /**
-   * Returns the Black Mage's max MP.
-   */
-  public int getMaxMp() {
-    return maxMp;
-  }
-
-  /**
-   * Returns the Black Mage's current MP.
-   */
-  public int getCurrentMp() {
-    return currentMp;
-  }
-
-  /**
-   * Sets the Black Mage's current MP to {@code newMp}.
-   *
-   * <p>This method should be <b>private</b>, because it must be only used by methods in the class
-   * to change value of {@code MP} when casting a spell but for testing it will be public.</p>
-   */
-  public void setCurrentMp(final int newMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, newMp, "Current MP");
-    Require.statValueAtMost(maxMp, newMp, "Current MP");
-    this.currentMp = newMp;
-  }
-
-  // endregion
 
   // region : UTILITY METHODS
 
@@ -97,11 +59,9 @@ public class BlackMage extends AbstractPlayerCharacter {
     }
     return hashCode() == that.hashCode()
             && name.equals(that.name)
-            && getCurrentHp() == that.getCurrentHp()
             && maxHp == that.maxHp
             && defense == that.defense
-            && maxMp == that.maxMp
-            && currentMp == that.currentMp;
+            && maxMp == that.maxMp;
   }
 
   /**
