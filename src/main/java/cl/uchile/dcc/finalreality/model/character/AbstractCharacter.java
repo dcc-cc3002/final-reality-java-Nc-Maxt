@@ -24,6 +24,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   protected final String name;
   protected final int maxHp;
   private int currentHp;
+
   protected int defense;
   protected final BlockingQueue<GameCharacter> turnsQueue;
 
@@ -41,37 +42,43 @@ public abstract class AbstractCharacter implements GameCharacter {
    *     the queue with the characters waiting for their turn
    */
   protected AbstractCharacter(@NotNull String name, int maxHp, int defense,
-      @NotNull BlockingQueue<GameCharacter> turnsQueue) throws InvalidStatValueException {
+      @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+    int hpval = maxHp;
+    int defval = defense;
+    try {
     Require.statValueAtLeast(1, maxHp, "Max HP");
+    } catch (InvalidStatValueException inv) {
+      System.out.println("Maximum Hp can't be lower or equal to 0, automatically setted to 1");
+      hpval = 1;
+    }
+    try {
     Require.statValueAtLeast(0, defense, "Defense");
+    } catch (InvalidStatValueException inv) {
+      System.out.println("Defense can't be lower than 0, automatically setted to 0");
+      defval = 0;
+    }
     this.name = name;
-    this.maxHp = maxHp;
+    this.maxHp = hpval;
     this.currentHp = maxHp;
-    this.defense = defense;
+    this.defense = defval;
     this.turnsQueue = turnsQueue;
   }
 
   // region : ACCESSORS
 
-  /**
-   * Returns the name of the character.
-   */
+
   @Override
   public String getName() {
     return name;
   }
 
-  /**
-   * Returns the current Hp of the character.
-   */
+
   @Override
   public int getCurrentHp() {
     return currentHp;
   }
 
-  /**
-   * Returns the max Hp of the character.
-   */
+
   @Override
   public int getMaxHp() {
     return maxHp;
@@ -85,14 +92,21 @@ public abstract class AbstractCharacter implements GameCharacter {
     return defense;
   }
 
-  /**
-   * Set the current Hp of the character.
-   */
+
   @Override
-  public void setCurrentHp(int hp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, hp, "Current HP");
+  public void setCurrentHp(int hp){
+    int value = hp;
+    try {
+      Require.statValueAtLeast(0, hp, "Current HP");
+    } catch (InvalidStatValueException inv) {
+      System.out.println(this.getName()+" died");
+      value = 0; }
+    try {
     Require.statValueAtMost(maxHp, hp, "Current HP");
-    currentHp = hp;
+    } catch (InvalidStatValueException inv) {
+      System.out.println(this.getName()+" overhealed");
+      value = maxHp; }
+    currentHp = value;
   }
   // endregion
 }
