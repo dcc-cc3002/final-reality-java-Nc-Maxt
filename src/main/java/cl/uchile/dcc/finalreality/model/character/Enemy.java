@@ -122,6 +122,9 @@ public class Enemy extends AbstractCharacter {
     return Objects.hash(Enemy.class, name, weight, maxHp, getCurrentHp(), defense);
   }
 
+  /**
+   * Returns the character class and it´s data in a String format.
+   */
   @Override
   public String toString() {
     return "Enemy{name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
