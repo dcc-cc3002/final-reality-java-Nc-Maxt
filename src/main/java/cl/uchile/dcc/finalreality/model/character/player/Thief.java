@@ -37,8 +37,7 @@ public class Thief extends AbstractPlayerCharacter {
    *     the queue with the characters waiting for their turn
    */
   public Thief(final @NotNull String name, final int maxHp, final int defense,
-      final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
+      final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
 
@@ -71,8 +70,9 @@ public class Thief extends AbstractPlayerCharacter {
   public int hashCode() {
     return Objects.hash(Thief.class, name, getCurrentHp(), maxHp, defense);
   }
+
   /**
-   * return a string with information about the Thief.
+   * Returns the character class and it´s data in a String format.
    */
   @Override
   public String toString() {

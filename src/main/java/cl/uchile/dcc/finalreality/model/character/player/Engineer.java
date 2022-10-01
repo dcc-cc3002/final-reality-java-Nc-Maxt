@@ -8,7 +8,6 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -36,8 +35,7 @@ public class Engineer extends AbstractPlayerCharacter {
    *     the queue with the characters waiting for their turn
    */
   public Engineer(final @NotNull String name, final int maxHp, final int defense,
-      final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
+      final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
   // region : UTILITY METHODS
@@ -71,7 +69,7 @@ public class Engineer extends AbstractPlayerCharacter {
   }
 
   /**
-   * return a string with information about the Engineer.
+   * Returns the character class and it´s data in a String format.
    */
   @Override
   public String toString() {
