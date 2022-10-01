@@ -1,7 +1,12 @@
 package cl.uchile.dcc;
 
 import cl.uchile.dcc.finalreality.model.weapon.*;
-
+/**
+ * Testing methods that only implies Weapons
+ *
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
+ */
 public class MainWeapons {
     public static void main(String[] args) {
         System.out.println("--- Weapons testing---");
@@ -45,17 +50,17 @@ public class MainWeapons {
         System.out.println();
 
         System.out.println("Is Knife ak equal to Knife bk?"+ak.equals(bk));
-        System.out.println("Is simetric?"+bk.equals(ak));
+        System.out.println("Is Knife bk equal to Knife ak?"+bk.equals(ak));
         System.out.println("Is Knife bk equal to Knife ck?"+bk.equals(ck));
         System.out.println();
 
         System.out.println("Is Staff ast equal to Staff bst?"+ast.equals(bst));
-        System.out.println("Is simetric?"+bst.equals(ast));
+        System.out.println("Is Staff bst equal to Staff ast?"+bst.equals(ast));
         System.out.println("Is Staff bst equal to Staff cst?"+bst.equals(cst));
         System.out.println();
 
         System.out.println("Is Sword asw equal to Sword bsw?"+asw.equals(bsw));
-        System.out.println("Is simetric?"+bsw.equals(asw));
+        System.out.println("Is Sword bsw equal to Sword asw?"+bsw.equals(asw));
         System.out.println("Is Sword bst equal to Sword cst?"+bsw.equals(csw));
         System.out.println();
 
