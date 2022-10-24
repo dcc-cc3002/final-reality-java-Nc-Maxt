@@ -13,6 +13,7 @@ import cl.uchile.dcc.exceptions.Require;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
+
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
  *
