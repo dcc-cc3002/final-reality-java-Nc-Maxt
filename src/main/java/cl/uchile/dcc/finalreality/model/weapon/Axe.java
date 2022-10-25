@@ -70,7 +70,7 @@ public class Axe extends AbstractWeapon {
    */
   @Override
   public String toString() {
-    return "Sword{name='%s', damage=%d, weight=%d}"
+    return "Axe{name='%s', damage=%d, weight=%d}"
             .formatted(name, damage, weight);
   }
 
