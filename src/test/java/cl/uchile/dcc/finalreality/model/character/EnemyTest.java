@@ -25,6 +25,7 @@ class EnemyTest {
         this.enem3 = new Enemy("Steven", 80, 502, 2, queue1);
         this.enem4 = new Enemy("Stif", 40, 19, 40, queue1);
     }
+    @Disabled
     @Test
     void testgetWeight() {
         assertEquals(50, enem1.getWeight(), "The weight of enem1 should be 50");
@@ -63,9 +64,9 @@ class EnemyTest {
         int def = enem4.getDefense();
         int weight = enem4.getWeight();
         String enemstr = "Enemy{name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
-                .formatted(name, Hp, maxHp, def, weight);;
+                .formatted(name, Hp, maxHp, def, weight);
         assertEquals(enemstr,enem4.toString(), "toString get correct the data of the enemy?");
-        assertNotEquals(enem3.toString(), enem4.toString(), "Are equal the data string of 2 different intances?");
-        assertEquals(enem3.toString(), enem3.toString(), "Are equal the data string of 2 equal intances?");
+        assertNotEquals(enem3.toString(), enem4.toString(), "Is the data of 2 different intances equal?");
+        assertEquals(enem3.toString(), enem3.toString(), "Is the data of 2 equal intances equal?");
     }
 }
