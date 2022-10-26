@@ -125,7 +125,7 @@ public class MainCharacters {
     System.out.println("Is WhiteMage Wm_2 asw equal to WhiteMage Wm_2?" + Wm_2.equals(Wm_2));
     System.out.println("Is BlackMage Bm_3 equal to BlackMage Bm_3 ?" + Bm_3.equals(Bm_3));
     System.out.println();
-
+    /* Listo */
     System.out.println("--- Getters and toString ---");
     System.out.print("Data of Enemy badp1 : " + badp1.getName() + ", " + badp1.getCurrentHp() + ", " + badp1.getMaxHp());
     System.out.println(", " + badp1.getDefense() + ", " + badp1.getWeight());
