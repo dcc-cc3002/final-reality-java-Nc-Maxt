@@ -127,7 +127,7 @@ public class Enemy extends AbstractCharacter {
    */
   @Override
   public String toString() {
-    return "Enemy{name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
+    return "Enemy{ name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
             .formatted(name, getCurrentHp(), maxHp, defense, weight);
   }
 
