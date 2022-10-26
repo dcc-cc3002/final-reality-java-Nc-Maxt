@@ -61,6 +61,13 @@ public class Knight extends AbstractPlayerCharacter {
             && maxHp == that.maxHp
             && defense == that.defense;
   }
+  /**
+   * return the Engineer's hash number.
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(Knight.class, name, getCurrentHp(), maxHp, defense);
+  }
 
   /**
    * Returns the character class and it´s data in a String format.
