@@ -5,20 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AxeTest {
-    private Axe a1;
-    private Axe a2;
-    private Axe a3;
-    private Bow b0;
-    private Bow b1;
-    @BeforeEach
-    void setUp() {
-        this.a1 = new Axe("DemonKiller", 10, 5);
-        this.a2 = new Axe("DemonKiller", 10, 5);
-        this.a3 = new Axe("Copper Axe", 1, 3);
-        this.b0 = new Bow("Large Bow", 34, 15);
-        this.b1 = new Bow("Large Bow", 34, 15);
-    }
+public class AxeTest extends BowTest {
+    private Axe a1 = new Axe("DemonKiller", 10, 5);
+    private Axe a2 = new Axe("DemonKiller", 10, 5);
+    private Axe a3 = new Axe("Copper Axe", 1, 3);
+    private Bow b01 = new Bow("Large Bow", 34, 15);
+    private Bow b11 = new Bow("Large Bow", 34, 15);
 
     @Test
     void testEquals() {
@@ -26,8 +18,8 @@ class AxeTest {
         assertTrue(a2.equals(a1),"Equal should be symmetric");
         assertTrue(a3.equals(a3),"the same instances should be equal to itself" );
         assertFalse(a2.equals(a3),"Two different instances with different data shouldn´t be equals" );
-        assertFalse(a1.equals(b0), "Two different Objects should be different");
-        assertFalse(a1.equals(b1), "Two different Objects with same data should be different");
+        assertFalse(a1.equals(b01), "Two different Objects should be different");
+        assertFalse(a1.equals(b11), "Two different Objects with same data should be different");
     }
 
     @Test

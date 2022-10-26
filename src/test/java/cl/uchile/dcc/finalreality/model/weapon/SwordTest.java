@@ -8,21 +8,12 @@ import java.util.concurrent.BlockingQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SwordTest {
-    private Sword s1;
-    private Sword s2;
-    private Sword s3;
-    private Bow b0;
-    private Bow b1;
-
-    @BeforeEach
-    void setUp() {
-        this.s1 = new Sword("Greatsword", 34, 15);
-        this.s2 = new Sword("Longsword", 10, 5);
-        this.s3 = new Sword("Longsword", 10, 5);
-        this.b0 = new Bow("Large Bow", 34, 15);
-        this.b1 = new Bow("Longsword", 10, 5);
-    }
+public class SwordTest {
+    private Sword s1 = new Sword("Greatsword", 34, 15);
+    private Sword s2 = new Sword("Longsword", 10, 5);
+    private Sword s3 = new Sword("Longsword", 10, 5);
+    private Bow b01 = new Bow("Large Bow", 34, 15);
+    private Bow b11 = new Bow("Longsword", 10, 5);
 
     @Test
     void testEquals() {
@@ -30,8 +21,8 @@ class SwordTest {
         assertTrue(s2.equals(s3),"Equal should be symmetric");
         assertTrue(s1.equals(s1),"the same instances should be equal to itself" );
         assertFalse(s2.equals(s1),"Two different instances with different data shouldn´t be equals" );
-        assertFalse(s1.equals(b0), "Two different Objects should be different");
-        assertFalse(s1.equals(b1), "Two different Objects with same data should be different");
+        assertFalse(s1.equals(b01), "Two different Objects should be different");
+        assertFalse(s1.equals(b11), "Two different Objects with same data should be different");
     }
 
     @Test

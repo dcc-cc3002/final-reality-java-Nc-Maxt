@@ -5,29 +5,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class KnifeTest {
-    private Knife k1;
-    private Knife k2;
-    private Knife k3;
-    private Staff st0;
-    private Staff st1;
+public class KnifeTest extends StaffTest {
+    private Knife k1 = new Knife("DemonKiller", 10, 5);
+    private Knife k2 = new Knife("Moon Knife", 3, 6);
+    private Knife k3 = new Knife("Moon Knife", 3, 6);
+    private Staff st01 = new Staff("Demon invoquer", 3, 6);
+    private Staff st11 = new Staff("Moon Knife", 3, 6);
 
-    @BeforeEach
-    void setUp() {
-        this.k1 = new Knife("DemonKiller", 10, 5);
-        this.k2 = new Knife("Moon Knife", 3, 6);
-        this.k3 = new Knife("Moon Knife", 3, 6);
-        this.st0 = new Staff("Demon invoquer", 3, 6);
-        this.st1 = new Staff("Moon Knife", 3, 6);
-    }
     @Test
     void testEquals() {
         assertTrue(k3.equals(k2),"Two different instances with equal data should be equals");
         assertTrue(k2.equals(k3),"Equal should be symmetric");
         assertTrue(k1.equals(k1),"the same instances should be equal to itself" );
         assertFalse(k2.equals(k1),"Two different instances with different data shouldn´t be equals" );
-        assertFalse(k1.equals(st0), "Two different Objects should be different");
-        assertFalse(k1.equals(st1), "Two different Objects with same data should be different");
+        assertFalse(k1.equals(st01), "Two different Objects should be different");
+        assertFalse(k1.equals(st11), "Two different Objects with same data should be different");
     }
 
     @Test

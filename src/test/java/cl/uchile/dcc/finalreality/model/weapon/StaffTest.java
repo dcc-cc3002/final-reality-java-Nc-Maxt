@@ -5,22 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StaffTest {
-    private Staff st1;
-    private Staff st2;
-    private Staff st3;
-    private Sword s0;
-    private Sword s1;
-
-    @BeforeEach
-    void setUp() {
-        this.st1 = new Staff("Demon invoquer", 3, 6);
-        this.st2 = new Staff("Bonk", 1000, 2);
-        this.st3 = new Staff("Bonk", 1000, 2);
-        this.s0 = new Sword("Greatsword", 34, 15);
-        this.s1 = new Sword("Bonk", 1000, 2);
-
-    }
+public class StaffTest extends SwordTest {
+    private Staff st1 = new Staff("Demon invoquer", 3, 6);
+    private Staff st2 = new Staff("Bonk", 1000, 2);
+    private Staff st3 = new Staff("Bonk", 1000, 2);
+    private Sword s01 = new Sword("Greatsword", 34, 15);
+    private Sword s11 = new Sword("Bonk", 1000, 2);
 
     @Test
     void testEquals() {
@@ -28,8 +18,8 @@ public class StaffTest {
         assertTrue(st2.equals(st3),"Equal should be symmetric");
         assertTrue(st1.equals(st1),"the same instances should be equal to itself" );
         assertFalse(st2.equals(st1),"Two different instances with different data shouldn´t be equals" );
-        assertFalse(st1.equals(s0), "Two different Objects should be different");
-        assertFalse(st3.equals(s1), "Two different Objects with same data should be different");
+        assertFalse(st1.equals(s01), "Two different Objects should be different");
+        assertFalse(st3.equals(s11), "Two different Objects with same data should be different");
 
     }
 
