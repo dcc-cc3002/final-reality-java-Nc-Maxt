@@ -61,6 +61,7 @@ public class Knight extends AbstractPlayerCharacter {
             && maxHp == that.maxHp
             && defense == that.defense;
   }
+
   /**
    * return the Engineer's hash number.
    */
@@ -74,7 +75,7 @@ public class Knight extends AbstractPlayerCharacter {
    */
   @Override
   public String toString() {
-    return "Knight{name='%s', currentHp=%d, maxHp=%d, defense=%d }"
+    return "Knight{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
             .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
