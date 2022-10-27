@@ -12,14 +12,6 @@ class AbstractMageTest {
     }
 
     @Test
-    void getMaxMp() {
-    }
-
-    @Test
-    void getCurrentMp() {
-    }
-
-    @Test
     void setCurrentMp() {
     }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AbstractPlayerCharacterTest {
+class AbstractPlayerCharacterTest extends EngineerTest{
 
     @BeforeEach
     void setUp() {

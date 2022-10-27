@@ -12,22 +12,6 @@ class AbstractCharacterTest {
     }
 
     @Test
-    void getName() {
-    }
-
-    @Test
-    void getCurrentHp() {
-    }
-
-    @Test
-    void getMaxHp() {
-    }
-
-    @Test
-    void getDefense() {
-    }
-
-    @Test
     void setCurrentHp() {
     }
 }
