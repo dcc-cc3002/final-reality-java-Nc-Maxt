@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class KnifeTest extends StaffTest {
     private Knife k1 = new Knife("DemonKiller", 10, 5);
-    private Knife k2 = new Knife("Moon Knife", 3, 6);
+    protected Knife k2 = new Knife("Moon Knife", 3, 6);
     private Knife k3 = new Knife("Moon Knife", 3, 6);
     private Staff st01 = new Staff("Demon invoquer", 3, 6);
     private Staff st11 = new Staff("Moon Knife", 3, 6);

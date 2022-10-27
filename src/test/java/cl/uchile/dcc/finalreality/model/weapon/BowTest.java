@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BowTest extends KnifeTest {
     private Bow b1 = new Bow("Large Bow", 34, 15);
-    private Bow b2 = new Bow("Large Bow", 34, 15);
+    protected Bow b2 = new Bow("Large Bow", 34, 15);
     private Bow b3 = new Bow("Bone Bow", 22, 9);
     private Knife k01 = new Knife("DemonKiller", 10, 5);
     private Knife k11 = new Knife("Bone Bow", 22, 9);

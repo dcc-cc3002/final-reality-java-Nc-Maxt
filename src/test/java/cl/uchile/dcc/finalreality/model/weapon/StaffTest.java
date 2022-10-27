@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StaffTest extends SwordTest {
     private Staff st1 = new Staff("Demon invoquer", 3, 6);
     private Staff st2 = new Staff("Bonk", 1000, 2);
-    private Staff st3 = new Staff("Bonk", 1000, 2);
+    protected Staff st3 = new Staff("Bonk", 1000, 2);
     private Sword s01 = new Sword("Greatsword", 34, 15);
     private Sword s11 = new Sword("Bonk", 1000, 2);
 
