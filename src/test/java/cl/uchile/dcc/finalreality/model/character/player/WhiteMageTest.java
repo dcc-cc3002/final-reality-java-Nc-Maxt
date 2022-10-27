@@ -39,15 +39,7 @@ class WhiteMageTest extends BlackMageTest {
 
     @Test
     void testToString() {
-        String name = wm1.getName();
-        int Hp = wm1.getCurrentHp();
-        int maxHp = wm1.getMaxHp();
-        int def = wm1.getDefense();
-        int Mp = wm1.getCurrentMp();
-        int maxMp = wm1.getMaxMp();
-        String enemstr = "WhiteMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
-                .formatted(name, Hp, maxHp, Mp, maxMp, def);
-        assertEquals(enemstr, wm1.toString(), "toString get correct the data of the enemy?");
+        assertEquals(wm1.toString(), wm1.toString(), "toString get correct the data of the enemy?");
         assertNotEquals(wm3.toString(), wm1.toString(), "Is the data of 2 different intances equal?");
         assertEquals(wm2.toString(), wm1.toString(), "Is the data of 2 equal intances equal?");
     }

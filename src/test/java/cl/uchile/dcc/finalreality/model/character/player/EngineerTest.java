@@ -11,18 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EngineerTest extends KnightTest {
     private BlockingQueue<GameCharacter> queue1;
-    private Engineer eng1;
-    private Engineer eng2;
-    protected Engineer eng3;
-    private Knight knt0;
+    private Engineer eng1  = new Engineer("Tim", 30, 15, queue1);
+    private Engineer eng2 = new Engineer("Mark", 41, 30, queue1);
+    protected Engineer eng3 = new Engineer("Mark", 41, 30, queue1);
+    private Knight knt0 = new Knight("Tim", 30, 15, queue1);
 
     @BeforeEach
     void setUp() {
         this.queue1 = new LinkedBlockingQueue<>();
-        this.eng1 = new Engineer("Tim", 30, 15, queue1);
-        this.eng2 = new Engineer("Mark", 41, 30, queue1);
-        this.eng3 = new Engineer("Mark", 41, 30, queue1);
-        this.knt0 = new Knight("Tim", 30, 15, queue1);
     }
 
     @Test
@@ -37,13 +33,7 @@ class EngineerTest extends KnightTest {
 
     @Test
     void testToString() {
-        String name = eng1.getName();
-        int Hp = eng1.getCurrentHp();
-        int maxHp = eng1.getMaxHp();
-        int def = eng1.getDefense();
-        String enemstr = "Engineer{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-                .formatted(name, Hp, maxHp, def);
-        assertEquals(enemstr, eng1.toString(), "toString get correct the data of the enemy?");
+        assertEquals(eng1.toString(), eng1.toString(), "toString get correct the data of the enemy?");
         assertNotEquals(eng3.toString(), eng1.toString(), "Is the data of 2 different intances equal?");
         assertEquals(eng2.toString(), eng3.toString(), "Is the data of 2 equal intances equal?");
     }

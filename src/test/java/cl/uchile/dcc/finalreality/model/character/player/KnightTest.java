@@ -39,13 +39,7 @@ class KnightTest extends ThiefTest{
 
     @Test
     void testToString() {
-        String name = knt1.getName();
-        int Hp = knt1.getCurrentHp();
-        int maxHp = knt1.getMaxHp();
-        int def = knt1.getDefense();
-        String enemstr = "Knight{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-                .formatted(name, Hp, maxHp, def);
-        assertEquals(enemstr, knt1.toString(), "toString get correct the data of the enemy?");
+        assertEquals(knt1.toString(), knt1.toString(), "toString get correct the data of the enemy?");
         assertNotEquals(knt3.toString(), knt1.toString(), "Is the data of 2 different intances equal?");
         assertEquals(knt2.toString(), knt1.toString(), "Is the data of 2 equal intances equal?");
     }
