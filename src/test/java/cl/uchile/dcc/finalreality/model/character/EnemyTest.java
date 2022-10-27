@@ -1,11 +1,8 @@
 package cl.uchile.dcc.finalreality.model.character;
 
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.AxeTest;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.BlockingQueue;
@@ -25,12 +22,6 @@ public class EnemyTest extends AxeTest {
     @BeforeEach
     void setUp() {
         this.queue1 =  new LinkedBlockingQueue<>();
-        this.enem1 = new Enemy("Steven", 50, 32, 10, queue1);
-        this.enem2 = new Enemy("Steven", 50, 32, 10, queue1);
-        this.enem3 = new Enemy("Steven", 80, 502, 2, queue1);
-        this.enem4 = new Enemy("Stif", 40, 19, 40, queue1);
-        this.eng0 = new Engineer("Steven", 80, 502, queue1);
-
     }
 
     @Test
@@ -57,11 +48,12 @@ public class EnemyTest extends AxeTest {
         Enemy en1_test = new Enemy("Isaias", 64, -3, 32, queue1);
         assertNotEquals(-3, en1_test.getMaxHp(), "MaxHp shouldn´t be negative even if given a negative to the constructor");
         Enemy en2_test = new Enemy("Lucy", 42, 0, 10, queue1);
-        assertNotEquals(0, en2_test.getMaxHp(), "MaxHp Shouldn´t be 0 even if given a negative to the constructor");
+        assertNotEquals(0, en2_test.getMaxHp(), "MaxHp shouldn´t be 0 if it's a new character even if given 0 to the constructor");
         Enemy en3_test = new Enemy("Fer", 13, 13, -10, queue1);
         assertNotEquals(-10, en3_test.getDefense(), "Defense Shouldn´t be negative even if given a negative to the constructor");
 
     }
+
     @Test
     void testResolutionExceptioninHp() {
         enem4.setCurrentHp(-10);
