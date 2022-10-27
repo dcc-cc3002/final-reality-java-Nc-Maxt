@@ -39,18 +39,12 @@ class BlackMageTest extends EnemyTest {
         assertFalse(bmg3.equals(en0), "Two different Objects with same data should be different");
     }
 
+
     @Test
     void testToString() {
-        String name = bmg1.getName();
-        int Hp = bmg1.getCurrentHp();
-        int maxHp = bmg1.getMaxHp();
-        int def = bmg1.getDefense();
-        int Mp = bmg1.getCurrentMp();
-        int maxMp = bmg1.getMaxMp();
-        String enemstr = "BlackMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
-                .formatted(name, Hp, maxHp, Mp, maxMp, def);
-        assertEquals(enemstr,bmg1.toString(), "toString get correct the data of the enemy?");
-        assertNotEquals(bmg3.toString(), bmg1.toString(), "Is the data of 2 different intances equal?");
-        assertEquals(bmg2.toString(), bmg1.toString(), "Is the data of 2 equal intances equal?");
+        assertEquals(bmg1.toString(), bmg1.toString(), "the data of the same intances should be equal");
+        assertNotEquals(bmg3.toString(), bmg1.toString(), "different data in different intances shouldn´t be equal");
+        assertEquals(bmg2.toString(), bmg1.toString(), "same data in different intances (same Class) should be equal");
+        assertNotEquals(bmg3.toString(), en0.toString(), "same data in different intances (different Class) shouldn´t be equal");
     }
 }

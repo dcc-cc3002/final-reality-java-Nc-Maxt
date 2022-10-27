@@ -39,13 +39,7 @@ class ThiefTest extends WhiteMageTest {
 
     @Test
     void testToString() {
-        String name = t1.getName();
-        int Hp = t1.getCurrentHp();
-        int maxHp = t1.getMaxHp();
-        int def = t1.getDefense();
-        String enemstr = "Thief{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-                .formatted(name, Hp, maxHp, def);
-        assertEquals(enemstr, t1.toString(), "toString get correct the data of the enemy?");
+        assertEquals(t1.toString(), t1.toString(), "toString get correct the data of the enemy?");
         assertNotEquals(t3.toString(), t1.toString(), "Is the data of 2 different intances equal?");
         assertEquals(t2.toString(), t1.toString(), "Is the data of 2 equal intances equal?");
     }
