@@ -40,5 +40,7 @@ I didn't create an interface and an AbstractClass for the MagicWeapons (only Sta
 part of the requerimets yet, and since there's still no methods that requires that separation it only be usefull
 in this part.
 
-
+This part concludes with the erradication of WeaponTypes and Weapon Classes.
+When i ended this changes in the Weapon part, i started to read an analyze the Characters code and it´s
+implementations
 
