@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.AxeTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -31,14 +32,6 @@ public class EnemyTest extends AxeTest {
         this.eng0 = new Engineer("Steven", 80, 502, queue1);
 
     }
-    @Disabled
-    @Test
-    void testgetWeight() {
-        assertEquals(50, enem1.getWeight(), "The weight of enem1 should be 50");
-        assertNotEquals(enem3.getWeight(), enem2.getWeight(), "The weight of enem2 and enem3 should be different");
-        assertEquals(80, enem3.getWeight(), "The weight of enem3 should be 80");
-        assertEquals(40, enem4.getWeight(), "The weight of enem4 should be 40");
-    }
 
     @Test
     void testequals() {
@@ -49,32 +42,33 @@ public class EnemyTest extends AxeTest {
         assertFalse(enem2.equals(eng0), "Two different Objects should be different");
         assertFalse(enem3.equals(eng0), "Two different Objects with same data should be different");
     }
-    @Disabled
+
     @Test
-    void testGetters() {
-        assertEquals(enem1.getName(),enem1.getName(), "Are the names of the same instance equal?");
-        assertEquals(enem2.getCurrentHp(),enem2.getCurrentHp(), "Are the currentHp of the same instance equal?");
-        assertEquals(enem3.getMaxHp(),enem3.getMaxHp(), "Are the maxHp of the same instance equal?");
-        assertEquals(enem4.getDefense(), enem4.getDefense(), "Are the defense of the same instance equal?");
-        assertEquals(enem1.getWeight(),enem1.getWeight(), "Are the weight of the same instance equal?");
-        assertNotEquals(enem2.getName(),enem3.getName(), "Are the names of the same instance equal?");
-        assertNotEquals(enem3.getCurrentHp(), enem4.getCurrentHp(), "Are the currentHp of the same instance equal?");
-        assertNotEquals(enem4.getMaxHp(),enem1.getMaxHp(), "Are the maxHp of the same instance equal?");
-        assertNotEquals(enem1.getDefense(),enem2.getDefense(), "Are the defense of the same instance equal?");
-        assertNotEquals(enem2.getWeight(),enem3.getWeight(), "Are the weight of the same instance equal?");
+    void testToString() {
+        assertEquals(enem4.toString(), enem4.toString(), "toString get correct the data of the enemy?");
+        assertNotEquals(enem3.toString(), enem4.toString(), "Is the data of 2 different intances equal?");
+        assertEquals(enem3.toString(), enem3.toString(), "Is the data of 2 equal intances equal?");
+    }
+
+    @Test
+    void testResolutionExceptioninConstructors() {
+        Enemy en0_test = new Enemy("Elias", -3, 64, 32, queue1);
+        assertNotEquals(-3, en0_test.getWeight(), "Weight shouldn´t be negative even if given a negative to the constructor");
+        Enemy en1_test = new Enemy("Isaias", 64, -3, 32, queue1);
+        assertNotEquals(-3, en1_test.getMaxHp(), "MaxHp shouldn´t be negative even if given a negative to the constructor");
+        Enemy en2_test = new Enemy("Lucy", 42, 0, 10, queue1);
+        assertNotEquals(0, en2_test.getMaxHp(), "MaxHp Shouldn´t be 0 even if given a negative to the constructor");
+        Enemy en3_test = new Enemy("Fer", 13, 13, -10, queue1);
+        assertNotEquals(-10, en3_test.getDefense(), "Defense Shouldn´t be negative even if given a negative to the constructor");
 
     }
     @Test
-    void testToString() {
-        String name = enem4.getName();
-        int Hp = enem4.getCurrentHp();
-        int maxHp = enem4.getMaxHp();
-        int def = enem4.getDefense();
-        int weight = enem4.getWeight();
-        String enemstr = "Enemy{ name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
-                .formatted(name, Hp, maxHp, def, weight);
-        assertEquals(enemstr, enem4.toString(), "toString get correct the data of the enemy?");
-        assertNotEquals(enem3.toString(), enem4.toString(), "Is the data of 2 different intances equal?");
-        assertEquals(enem3.toString(), enem3.toString(), "Is the data of 2 equal intances equal?");
+    void testResolutionExceptioninHp() {
+        enem4.setCurrentHp(-10);
+        assertNotEquals(-10,enem4.getCurrentHp(), "The current Hp of a Character shoul't be negative");
+        enem4.setCurrentHp(enem4.getMaxHp()+10);
+        assertNotEquals(enem4.getMaxHp()+10,enem4.getCurrentHp(), "The current Hp of a Character shoul't be higher than it´s maxHp");
+        enem4.setCurrentHp(1);
+        assertEquals(1, enem4.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
     }
 }
