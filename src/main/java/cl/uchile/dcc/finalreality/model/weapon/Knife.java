@@ -8,6 +8,13 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByKnight;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByThief;
+
 import java.util.Objects;
 
 /**
@@ -18,7 +25,7 @@ import java.util.Objects;
  * @author Matias Nunez
  *
  */
-public class Knife extends AbstractWeapon {
+public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnight, UsedByThief {
   /**
    * Creates a new Knife.
    *
@@ -34,7 +41,12 @@ public class Knife extends AbstractWeapon {
     super(name, damage, weight);
   }
 
+
   // region : UTILITY METHODS
+  @Override
+  public void equippedByBlackMage(BlackMage blackmage) {
+    blackmage.equipKnife(this);
+  }
 
   /**
    * Returns a boolean that indicates if 2 Knifes are equals.
@@ -70,6 +82,16 @@ public class Knife extends AbstractWeapon {
   public String toString() {
     return "Knife{name='%s', damage=%d, weight=%d}"
             .formatted(getName(), getDamage(), getWeight());
+  }
+
+  @Override
+  public void equippedByKnight(Knight knight) {
+    knight.equipKnife(this);
+  }
+
+  @Override
+  public void equippedByThief(Thief thief) {
+    thief.equipKnife(this);
   }
 
   // endregion

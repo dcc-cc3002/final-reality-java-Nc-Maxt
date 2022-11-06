@@ -8,6 +8,11 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByKnight;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByThief;
+
 import java.util.Objects;
 
 /**
@@ -17,7 +22,7 @@ import java.util.Objects;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class Sword extends AbstractWeapon {
+public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
 
   /**
    * Creates a new Sword.
@@ -70,6 +75,16 @@ public class Sword extends AbstractWeapon {
   public String toString() {
     return "Sword{name='%s', damage=%d, weight=%d}"
             .formatted(getName(), getDamage(), getWeight());
+  }
+
+  @Override
+  public void equippedByKnight(Knight knight) {
+    knight.equipSword(this);
+  }
+
+  @Override
+  public void equippedByThief(Thief thief) {
+    thief.equipSword(this);
   }
 
   // endregion

@@ -8,6 +8,11 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByEngineer;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByThief;
+
 import java.util.Objects;
 
 /**
@@ -17,7 +22,7 @@ import java.util.Objects;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class Bow extends AbstractWeapon {
+public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
   /**
    * Creates a new Bow.
    * This constructor is <b>public</b>, because it'll be used in testing and the programe.
@@ -37,7 +42,7 @@ public class Bow extends AbstractWeapon {
   // region : UTILITY METHODS
 
   /**
-   * Returns a boolean that indicates if 2 Bows are equals.
+   * returns a boolean that indicates if 2 bows are equals.
    *
    * @param obj
    *     the object that will be compared with "this"
@@ -70,6 +75,16 @@ public class Bow extends AbstractWeapon {
   public String toString() {
     return "Bow{name='%s', damage=%d, weight=%d}"
             .formatted(getName(), getDamage(), getWeight());
+  }
+
+  @Override
+  public void equippedByEngineer(Engineer engineer) {
+    engineer.equipBow(this);
+  }
+
+  @Override
+  public void equippedByThief(Thief thief) {
+    thief.equipBow(this);
   }
 
   // endregion

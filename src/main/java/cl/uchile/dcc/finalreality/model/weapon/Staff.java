@@ -8,6 +8,11 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByWhiteMage;
+
 import java.util.Objects;
 
 /**
@@ -18,7 +23,7 @@ import java.util.Objects;
  * @author Matias Nunez
  *
  */
-public class Staff extends AbstractWeapon {
+public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhiteMage {
 
   /**
    * Creates a new Staff.
@@ -72,6 +77,17 @@ public class Staff extends AbstractWeapon {
   public String toString() {
     return "Staff{name='%s', damage=%d, weight=%d}"
             .formatted(getName(), getDamage(), getWeight());
+  }
+
+  @Override
+  public void equippedByBlackMage(BlackMage blackmage) {
+    blackmage.equipStaff(this);
+
+  }
+
+  @Override
+  public void equippedByWhiteMage(WhiteMage whitemage) {
+    whitemage.equipStaff(this);
   }
 
   // endregion
