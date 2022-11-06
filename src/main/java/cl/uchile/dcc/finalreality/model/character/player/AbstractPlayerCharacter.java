@@ -11,6 +11,8 @@ package cl.uchile.dcc.finalreality.model.character.player;
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -29,7 +31,6 @@ import org.jetbrains.annotations.NotNull;
  * @author Matias Nunez
  */
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements PlayerCharacter {
-  private ScheduledExecutorService scheduledExecutor;
   private Weapons equippedWeapon = null;
 
   /**
@@ -65,24 +66,11 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
             /* unit = */ TimeUnit.SECONDS);
   }
 
-  /**
-   * Adds this character to the turns queue.
-   * this method is <b>private</b>, beacuse it'll be used by
-   * other methods in the class.
-   */
-  private void addToQueue() {
-    try {
-      turnsQueue.put(this);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    scheduledExecutor.shutdown();
-  }
-
-  @Override
-  public void equip(Weapons weapon) {
+  protected void underequip(Weapons weapon) {
     this.equippedWeapon = weapon;
   }
+
+
 
   @Override
   public Weapons getEquippedWeapon() {

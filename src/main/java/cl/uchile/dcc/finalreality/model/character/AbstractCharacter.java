@@ -11,6 +11,8 @@ package cl.uchile.dcc.finalreality.model.character;
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+
 import org.jetbrains.annotations.NotNull;
 
 
@@ -28,6 +30,7 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   protected int defense;
   protected final BlockingQueue<GameCharacter> turnsQueue;
+  protected ScheduledExecutorService scheduledExecutor;
 
   /**
    * Creates a new character.
@@ -111,5 +114,20 @@ public abstract class AbstractCharacter implements GameCharacter {
     }
     currentHp = value;
   }
+
+  /**
+   * Adds this character to the turns queue.
+   * this method is <b>private</b>, beacuse it'll be used by
+   * the instance of the class.
+   */
+  protected void addToQueue() {
+    try {
+      turnsQueue.put(this);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    scheduledExecutor.shutdown();
+  }
+
   // endregion
 }

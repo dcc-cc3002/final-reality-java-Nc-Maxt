@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Matias Nunez
  */
 public class Enemy extends AbstractCharacter {
-  private ScheduledExecutorService scheduledExecutor;
+
   private final int weight;
 
   /**
@@ -77,20 +77,6 @@ public class Enemy extends AbstractCharacter {
       /* command = */ this::addToQueue,
       /* delay = */ enemy.getWeight() / 10,
       /* unit = */ TimeUnit.SECONDS);
-  }
-
-  /**
-   * Adds this character to the turns queue.
-   * this method is <b>private</b>, beacuse it'll be used by
-   * the instance of the class.
-   */
-  private void addToQueue() {
-    try {
-      turnsQueue.put(this);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    scheduledExecutor.shutdown();
   }
 
   /**
