@@ -12,6 +12,9 @@ import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -21,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class AbstractMage extends AbstractPlayerCharacter {
+public abstract class AbstractMage extends AbstractPlayerCharacter {
   protected int currentMp;
   protected final int maxMp;
 
@@ -93,6 +96,10 @@ public class AbstractMage extends AbstractPlayerCharacter {
       value = maxMp;
     }
     this.currentMp = value;
+  }
+
+  public void equipStaff(Staff staff) {
+    underequip(staff);
   }
 
   // endregion
