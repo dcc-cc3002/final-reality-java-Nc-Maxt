@@ -8,6 +8,11 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
+import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByEngineer;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByKnight;
+
 import java.util.Objects;
 
 /**
@@ -18,7 +23,7 @@ import java.util.Objects;
  * @author Matias Nunez
  *
  */
-public class Axe extends AbstractWeapon {
+public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer {
 
   /**
    * Creates a new Axe.
@@ -75,4 +80,29 @@ public class Axe extends AbstractWeapon {
   }
 
   // endregion
+
+  // region : Double Dispatch for equip
+
+  @Override
+  public void equippedByKnight(Knight knight) {
+    knight.equipAxe(this);
+  }
+
+  @Override
+  public void equippedByEngineer(Engineer engineer) {
+    engineer.equipAxe(this);
+  }
+
+  public void equippedByThief(Thief thief) throws InvalidWeaponEquipException {
+    throw new InvalidWeaponEquipException("Axes aren´t part of the equippable Weapons of a Thief");
+  }
+
+  public void equippedByBlackMage(BlackMage blackmage) throws InvalidWeaponEquipException {
+    throw new InvalidWeaponEquipException("Axes aren´t part of the equippable Weapons of a BlackMage");
+  }
+
+  public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
+    throw new InvalidWeaponEquipException("Axes aren´t part of the equippable Weapons of a WhiteMage");
+  }
+
 }
