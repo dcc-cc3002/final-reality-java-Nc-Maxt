@@ -11,6 +11,9 @@ package cl.uchile.dcc.finalreality.model.character.player;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -39,6 +42,18 @@ public class BlackMage extends AbstractMage {
                    int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, maxMp, turnsQueue);
   }
+
+  // region : Double Dispatch equip methods
+
+  public void equip(UsedByBlackMage ubb) {
+    ubb.equippedByBlackMage(this);
+  }
+
+  public void equipKnife(Knife knife) {
+    underequip(knife);
+  }
+
+  // end region
 
   // region : UTILITY METHODS
 

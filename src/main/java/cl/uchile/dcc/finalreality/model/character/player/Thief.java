@@ -11,6 +11,10 @@ package cl.uchile.dcc.finalreality.model.character.player;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.weapon.Bow;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -78,6 +82,18 @@ public class Thief extends AbstractPlayerCharacter {
   public String toString() {
     return "Thief{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
             .formatted(name, getCurrentHp(), maxHp, defense);
+  }
+
+    public void equipSword(Sword sword) {
+      this.underequip(sword);
+    }
+
+  public void equipKnife(Knife knife) {
+    this.underequip(knife);
+  }
+
+  public void equipBow(Bow bow) {
+    this.underequip(bow);
   }
 
   // endregion
