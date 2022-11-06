@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SwordTest {
     private Sword s1 = new Sword("Greatsword", 34, 15);
-    private Sword s2 = new Sword("Longsword", 10, 5);
+    protected Sword s2 = new Sword("Longsword", 10, 5);
     private Sword s3 = new Sword("Longsword", 10, 5);
     private Bow b01 = new Bow("Large Bow", 34, 15);
     private Bow b11 = new Bow("Longsword", 10, 5);

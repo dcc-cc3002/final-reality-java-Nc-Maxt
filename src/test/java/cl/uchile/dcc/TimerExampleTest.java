@@ -3,8 +3,9 @@ package cl.uchile.dcc;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.EngineerTest;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.weapon.*;
+import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,42 +18,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class TimerExampleTest extends EngineerTest {
 
     private BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-    private WhiteMage Wm_3 = new WhiteMage("Kvote", 435, 13, 130, queue);
+    private BlackMage Bm_3 = new BlackMage("Kvote", 435, 13, 130, queue);
     private Enemy badg = new Enemy("Stif", 40, 234, 20, queue);
-    private ArrayList<Weapons> Bag = new ArrayList<Weapons>();
 
     @BeforeEach
     void setUp() {
-        Bag.add(k2);
-        Bag.add(a2);
-        Bag.add(b2);
-        Bag.add(st3);
     }
 
     @Test
     void testsurrealFight() throws InterruptedException {
-        assertNull(Wm_3.getEquippedWeapon(), "After inilizialized the character must not have a Weapon");
-        Wm_3.equip(Bag.get(0));
-        assertEquals(Bag.get(0), Wm_3.getEquippedWeapon(), "After been equipped a weapon this should be the same");
-        System.out.println(Wm_3.getName() + " Attacks " + badg.getName());
-        badg.setCurrentHp(badg.getCurrentHp() - Wm_3.getEquippedWeapon().getDamage());
+        assertNull(Bm_3.getEquippedWeapon(), "After inilizialized the character must not have a Weapon");
+        Bm_3.equip(k2);
+        assertEquals(k2, Bm_3.getEquippedWeapon(), "After been equipped a weapon this should be the same");
+        System.out.println(Bm_3.getName() + " Attacks " + badg.getName());
+        badg.setCurrentHp(badg.getCurrentHp() - Bm_3.getEquippedWeapon().getDamage());
         assertNotEquals(badg.getMaxHp(), badg.getCurrentHp(), "After been hitted the currentHp and the MaxHp shouldn´t be the same");
-        Wm_3.equip(Bag.get(1));
-        assertEquals(Bag.get(1), Wm_3.getEquippedWeapon(), "After been equipped a weapon this should be the same");
-        System.out.println(Wm_3.getName() + " Attacks " + badg.getName());
-        badg.setCurrentHp(badg.getCurrentHp() - Wm_3.getEquippedWeapon().getDamage());
-        assertNotEquals(badg.getMaxHp(), badg.getCurrentHp(), "After been hitted the currentHp and the MaxHp shouldn´t be the same");
-        Wm_3.equip(Bag.get(2));
-        assertEquals(Bag.get(2), Wm_3.getEquippedWeapon(), "After been equipped a weapon this should be the same");
-        System.out.println(Wm_3.getName() + " Attacks " + badg.getName());
-        badg.setCurrentHp(badg.getCurrentHp() - Wm_3.getEquippedWeapon().getDamage());
-        assertNotEquals(badg.getMaxHp(), badg.getCurrentHp(), "After been hitted the currentHp and the MaxHp shouldn´t be the same");
-        Wm_3.equip(Bag.get(3));
-        assertEquals(Bag.get(3), Wm_3.getEquippedWeapon(), "After been equipped a weapon this should be the same");
-        System.out.println(Wm_3.getName() + " Attacks " + badg.getName());
-        badg.setCurrentHp(badg.getCurrentHp() - Wm_3.getEquippedWeapon().getDamage());
+        Bm_3.equip(st3);
+        assertEquals(st3, Bm_3.getEquippedWeapon(), "After been equipped a weapon this should be the same");
+        System.out.println(Bm_3.getName() + " Attacks " + badg.getName());
+        badg.setCurrentHp(badg.getCurrentHp() - Bm_3.getEquippedWeapon().getDamage());
         assertEquals(0, badg.getCurrentHp(), "After been hitted to death (Hp dropped to 0 or less) the currentHp shoul be 0");
-        Wm_3.waitTurn();
+        Bm_3.waitTurn();
         badg.waitTurn();
         // Waits for 6 seconds to ensure that all characters have finished waiting
         Thread.sleep(6000);
