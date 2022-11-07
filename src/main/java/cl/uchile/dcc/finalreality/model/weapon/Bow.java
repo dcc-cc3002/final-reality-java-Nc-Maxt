@@ -10,9 +10,8 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByEngineer;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByThief;
-
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
 import java.util.Objects;
 
 /**

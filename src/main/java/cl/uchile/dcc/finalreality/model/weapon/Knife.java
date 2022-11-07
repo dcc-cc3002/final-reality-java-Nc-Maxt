@@ -11,10 +11,9 @@ package cl.uchile.dcc.finalreality.model.weapon;
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByKnight;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByThief;
-
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByKnight;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
 import java.util.Objects;
 
 /**

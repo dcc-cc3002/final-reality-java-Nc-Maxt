@@ -10,9 +10,8 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByWhiteMage;
-
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
 import java.util.Objects;
 
 /**
