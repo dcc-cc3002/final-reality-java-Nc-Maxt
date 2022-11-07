@@ -8,15 +8,11 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
-import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
@@ -66,6 +62,26 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
             /* unit = */ TimeUnit.SECONDS);
   }
 
+  /**
+   * Equips a weapon to a character
+   * this method is <b>public</b>, beacuse it'll be used like a setter
+   * and will start the Double Dispatch.
+   *
+   * @param weapon
+   *    the weapon that a character will use
+   */
+  @Override
+  public abstract void equip(Weapons weapon);
+
+  /**
+   * This is the final step in Double Dispatch for equip
+   * (the method that equips the Weapon),
+   * this method is <b>protected</b>, beacuse it'll be used only by the Classes
+   * that extends from this one.
+   *
+   * @param weapon
+   *    the weapon that a character will use
+   */
   protected void underequip(Weapons weapon) {
     this.equippedWeapon = weapon;
   }

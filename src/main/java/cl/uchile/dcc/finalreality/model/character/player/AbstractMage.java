@@ -11,12 +11,9 @@ package cl.uchile.dcc.finalreality.model.character.player;
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.concurrent.BlockingQueue;
-
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
-
 
 /**
  * A {@link PlayerCharacter} that can cast magic.

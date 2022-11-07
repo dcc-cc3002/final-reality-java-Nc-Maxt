@@ -12,9 +12,7 @@ import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
-
 import org.jetbrains.annotations.NotNull;
-
 
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
