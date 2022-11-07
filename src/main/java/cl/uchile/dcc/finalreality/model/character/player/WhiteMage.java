@@ -11,6 +11,8 @@ package cl.uchile.dcc.finalreality.model.character.player;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -79,6 +81,11 @@ public class WhiteMage extends AbstractMage {
   public String toString() {
     return "WhiteMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
             .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
+  }
+
+  @Override
+  public void equip(Weapons weapon) {
+
   }
 
   // endregion

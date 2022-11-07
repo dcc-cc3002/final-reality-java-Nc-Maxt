@@ -14,6 +14,8 @@ import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -41,6 +43,11 @@ public class Thief extends AbstractPlayerCharacter {
   public Thief(final @NotNull String name, final int maxHp, final int defense,
                final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
+  }
+
+  @Override
+  public void equip(Weapons weapon) {
+
   }
 
   // region : UTILITY METHODS

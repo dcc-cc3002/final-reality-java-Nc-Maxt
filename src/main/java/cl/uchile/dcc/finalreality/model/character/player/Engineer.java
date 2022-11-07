@@ -13,6 +13,8 @@ import cl.uchile.dcc.finalreality.model.weapon.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -86,6 +88,11 @@ public class Engineer extends AbstractPlayerCharacter {
 
   public void equipBow(Bow bow) {
     this.underequip(bow);
+  }
+
+  @Override
+  public void equip(Weapons weapon) {
+
   }
 
   // endregion
