@@ -31,6 +31,10 @@ public class EquipTests extends EngineerTest{
         assertEquals(k2, bmg3.getEquippedWeapon(), "The weapond equipped should be a Knife called 'Moon Knife'");
         bmg3.equip(b2);
         assertEquals(k2, bmg3.getEquippedWeapon(), "The weapond equipped shouldn´t change if the weapon isn´t a Knife or Staff");
+        bmg3.equip(a2);
+        assertEquals(k2, bmg3.getEquippedWeapon(), "The weapond equipped shouldn´t change if the weapon isn´t a Knife or Staff");
+        bmg3.equip(s2);
+        assertEquals(k2, bmg3.getEquippedWeapon(), "The weapond equipped shouldn´t change if the weapon isn´t a Knife or Staff");
 
     }
 
