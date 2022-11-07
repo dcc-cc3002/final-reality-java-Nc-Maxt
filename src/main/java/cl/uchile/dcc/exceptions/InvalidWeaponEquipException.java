@@ -9,11 +9,11 @@ package cl.uchile.dcc.exceptions;
  */
 
 public class InvalidWeaponEquipException  extends Exception {
-    /**
-     * Creates a new {@code InvalidStatValueException} with a {@code description} of the
-     * error.
-     */
-    public InvalidWeaponEquipException(String description) {
-        super("The provided Weapon is not a valid Weapon for this Class. " + description);
-    }
+  /**
+   * Creates a new {@code InvalidStatValueException} with a {@code description} of the
+   * error.
+   */
+  public InvalidWeaponEquipException(String description) {
+    super("The provided Weapon is not a valid Weapon for this Class. " + description);
+  }
 }

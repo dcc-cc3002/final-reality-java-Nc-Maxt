@@ -1,12 +1,20 @@
-package cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces;
+package cl.uchile.dcc.finalreality.model.weapon.interfacedd;
 
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 
+/**
+ * An interface that set an obligatory for the Weapons used by White Mages.
+ *
+ * @author <a href="https://github.com/Nc-Maxt">NM</a>
+ * @author Matias Nunez
+ */
 public interface UsedByWhiteMage {
-    /**
-     * To use Double Dispatch in equip
-     * @param whitemage a WhiteMage
-     */
-    void equippedByWhiteMage(WhiteMage whitemage);
+  /**
+   * Define a methods to implement Double Dispatch for equip.
+   *
+   * @param whitemage
+   *     the White Mage who used equip
+   *
+   */
+  void equippedByWhiteMage(WhiteMage whitemage);
 }
