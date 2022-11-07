@@ -37,10 +37,25 @@ code replication (Those methods and data are general for every weapon). This way
 only have the methods: Constructor, Equals, Hashcode and ToString.
 
 I didn't create an interface and an AbstractClass for the MagicWeapons (only Staff for now), beacuse it's not 
-part of the requerimets yet, and since there's still no methods that requires that separation it only be usefull
+part of the requerimets yet, and since there's still no methods that requires that separation it only be unusefull
 in this part.
 
-This part concludes with the erradication of WeaponTypes and Weapon Classes.
-When i ended this changes in the Weapon part, i started to read an analyze the Characters code and it´s
-implementations
+**This part concludes with the erradication of WeaponTypes and Weapon Classes.**
+
+When i ended this changes in the Weapon part, i started to read and analyze the Characters code and it´s
+implementations.
+
+The first problem i detected was in AbstractCharacter, in this Class the method WaitTurn used instanceof
+to distinguish between Enemies, and PlayerCharacter. To resolve this i refactored this method and addToQeue with 
+the parameter ScheduleExcecutorService (this to avoid breaking something with the methods that i didn´t
+understand how worked, but in the end addToQeue and the parameter should have stayed without changes
+to avoid code duplication this error it´s fixed in the lastest update), to both Classes.
+
+After this i started to add documentation, and testing. With the Testing Classes, i started to implement exceptions
+and handling those in the constructors and setters when required.
+
+**End of Part 1**
+
+
+---
 
