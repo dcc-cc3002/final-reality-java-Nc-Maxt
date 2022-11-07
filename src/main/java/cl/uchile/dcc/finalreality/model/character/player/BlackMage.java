@@ -9,11 +9,11 @@ package cl.uchile.dcc.finalreality.model.character.player;
  */
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Weapons;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
-import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -45,8 +45,8 @@ public class BlackMage extends AbstractMage {
 
   // region : Double Dispatch equip methods
 
-  public void equip(UsedByBlackMage ubb) {
-    ubb.equippedByBlackMage(this);
+  public void equip(Weapons weapon) {
+    weapon.equippedByBlackMage(this);
   }
 
   public void equipKnife(Knife knife) {
