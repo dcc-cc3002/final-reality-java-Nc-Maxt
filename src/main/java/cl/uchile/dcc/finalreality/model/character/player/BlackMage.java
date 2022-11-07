@@ -8,8 +8,10 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import java.util.Objects;
@@ -46,11 +48,19 @@ public class BlackMage extends AbstractMage {
   // region : Double Dispatch equip methods
 
   public void equip(Weapons weapon) {
-    weapon.equippedByBlackMage(this);
+    try {
+      weapon.equippedByBlackMage(this);
+    } catch (InvalidWeaponEquipException iwep) {
+      System.out.println(iwep);
+    }
   }
 
   public void equipKnife(Knife knife) {
-    underequip(knife);
+    this.underequip(knife);
+  }
+
+  public void equipStaff(Staff staff) {
+    this.underequip(staff);
   }
 
   // end region
@@ -87,7 +97,7 @@ public class BlackMage extends AbstractMage {
   }
 
   /**
-   * Returns the character class and it´s data in a String format.
+   * Returns the character class and it's data in a String format.
    */
   @Override
   public String toString() {
