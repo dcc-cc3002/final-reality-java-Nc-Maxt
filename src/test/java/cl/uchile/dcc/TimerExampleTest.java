@@ -4,12 +4,9 @@ import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.EngineerTest;
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
-import cl.uchile.dcc.finalreality.model.weapon.*;
-import cl.uchile.dcc.finalreality.model.weapon.Equipinterfaces.UsedByBlackMage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
