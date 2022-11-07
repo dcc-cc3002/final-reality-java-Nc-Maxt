@@ -44,6 +44,8 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
     super(name, damage, weight);
   }
 
+
+
   // region : UTILITY METHODS
 
   /**
@@ -101,6 +103,7 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
     throw new InvalidWeaponEquipException(info);
   }
 
+  @Override
   public void equippedByBlackMage(BlackMage blackmage) throws InvalidWeaponEquipException {
     String info = "Axes aren´t part of the equippable Weapons of a BlackMage";
     throw new InvalidWeaponEquipException(info);
@@ -110,5 +113,5 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
     String info = "Axes aren´t part of the equippable Weapons of a WhiteMage";
     throw new InvalidWeaponEquipException(info);
   }
-
+  // endregion
 }

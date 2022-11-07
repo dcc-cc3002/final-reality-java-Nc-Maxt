@@ -8,8 +8,8 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.character.player.Knight;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
+import cl.uchile.dcc.finalreality.model.character.player.*;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByKnight;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
 import java.util.Objects;
@@ -75,6 +75,9 @@ public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
     return "Sword{name='%s', damage=%d, weight=%d}"
             .formatted(getName(), getDamage(), getWeight());
   }
+  // endregion
+
+  // region : Double Dispatch for equip
 
   @Override
   public void equippedByKnight(Knight knight) {
@@ -84,6 +87,24 @@ public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
   @Override
   public void equippedByThief(Thief thief) {
     thief.equipSword(this);
+  }
+
+  @Override
+  public void equippedByBlackMage(BlackMage blackMage) throws InvalidWeaponEquipException {
+    String info = "Swords aren´t part of the equippable Weapons of a BlackMage";
+    throw new InvalidWeaponEquipException(info);
+  }
+
+  @Override
+  public void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException {
+    String info = "Swords aren´t part of the equippable Weapons of a Engineer";
+    throw new InvalidWeaponEquipException(info);
+  }
+
+  @Override
+  public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
+    String info = "Swords aren´t part of the equippable Weapons of a WhiteMage";
+    throw new InvalidWeaponEquipException(info);
   }
 
   // endregion

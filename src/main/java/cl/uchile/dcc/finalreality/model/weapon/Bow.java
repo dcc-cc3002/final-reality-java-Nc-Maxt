@@ -8,8 +8,8 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.character.player.Engineer;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
+import cl.uchile.dcc.finalreality.model.character.player.*;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
 import java.util.Objects;
@@ -86,5 +86,21 @@ public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
     thief.equipBow(this);
   }
 
+  @Override
+  public void equippedByBlackMage(BlackMage blackmage) throws InvalidWeaponEquipException {
+    String info = "Bows aren't part of the equippable Weapons of a BlackMage";
+    throw new InvalidWeaponEquipException(info);
+  }
+
+  public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
+    String info = "Bows aren't part of the equippable Weapons of a WhiteMage";
+    throw new InvalidWeaponEquipException(info);
+  }
+
+  @Override
+  public void equippedByKnight(Knight knight) throws InvalidWeaponEquipException {
+    String info = "Bows aren't part of the equippable Weapons of a Knight";
+    throw new InvalidWeaponEquipException(info);
+  }
   // endregion
 }

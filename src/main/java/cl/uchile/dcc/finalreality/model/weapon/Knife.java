@@ -8,9 +8,8 @@ package cl.uchile.dcc.finalreality.model.weapon;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Knight;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
+import cl.uchile.dcc.finalreality.model.character.player.*;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByKnight;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
@@ -42,10 +41,6 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
 
 
   // region : UTILITY METHODS
-  @Override
-  public void equippedByBlackMage(BlackMage blackmage) {
-    blackmage.equipKnife(this);
-  }
 
   /**
    * Returns a boolean that indicates if 2 Knifes are equals.
@@ -93,5 +88,20 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
     thief.equipKnife(this);
   }
 
+  @Override
+  public void equippedByBlackMage(BlackMage blackmage) {
+    blackmage.equipKnife(this);
+  }
+
+  public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
+    String info = "Knifes aren´t part of the equippable Weapons of a WhiteMage";
+    throw new InvalidWeaponEquipException(info);
+  }
+
+  @Override
+  public void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException {
+    String info = "Knifes aren´t part of the equippable Weapons of a Engineer";
+    throw new InvalidWeaponEquipException(info);
+  }
   // endregion
 }
