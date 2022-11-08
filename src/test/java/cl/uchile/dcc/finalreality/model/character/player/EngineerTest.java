@@ -1,21 +1,20 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
-import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.AxeTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EngineerTest extends KnightTest {
+public class EngineerTest extends AxeTest {
     private BlockingQueue<GameCharacter> queue1 = new LinkedBlockingQueue<>();
     private Engineer eng1  = new Engineer("Tim", 30, 15, queue1);
     private Engineer eng2 = new Engineer("Mark", 41, 30, queue1);
-    protected Engineer eng3 = new Engineer("Mark", 41, 30, queue1);
+    private Engineer eng3 = new Engineer("Mark", 41, 30, queue1);
     private Knight knt0 = new Knight("Tim", 30, 15, queue1);
+    private Knight knt3 = new Knight("Simon", 90, 70, queue1);
 
     @BeforeEach
     void setUp() {

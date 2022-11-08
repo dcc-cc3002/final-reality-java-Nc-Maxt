@@ -1,11 +1,6 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
-import cl.uchile.dcc.finalreality.model.character.Enemy;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.BlockingQueue;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SwordTest {

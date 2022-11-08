@@ -4,12 +4,9 @@ import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.EngineerTest;
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TimerExampleTest extends EngineerTest {
@@ -17,10 +14,6 @@ class TimerExampleTest extends EngineerTest {
     private BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     private BlackMage Bm_3 = new BlackMage("Kvote", 435, 13, 130, queue);
     private Enemy badg = new Enemy("Stif", 40, 234, 20, queue);
-
-    @BeforeEach
-    void setUp() {
-    }
 
     @Test
     void testsurrealFight() throws InterruptedException {
