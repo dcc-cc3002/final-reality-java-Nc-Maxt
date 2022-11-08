@@ -83,6 +83,7 @@ public class Thief extends AbstractPlayerCharacter {
             .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
+  @Override
   public void equip(Weapons weapon) {
     try {
       weapon.equippedByThief(this);

@@ -68,7 +68,6 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   // region : ACCESSORS
 
-
   @Override
   public String getName() {
     return name;

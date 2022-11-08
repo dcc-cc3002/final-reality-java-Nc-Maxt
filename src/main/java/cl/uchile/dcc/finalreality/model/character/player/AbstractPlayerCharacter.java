@@ -62,14 +62,15 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
             /* unit = */ TimeUnit.SECONDS);
   }
 
-  /**
-   * Equips a weapon to a character
-   * this method is <b>public</b>, beacuse it'll be used like a setter
-   * and will start the Double Dispatch.
-   *
-   * @param weapon
-   *    the weapon that a character will use
-   */
+  @Override
+  public Weapons getEquippedWeapon() {
+    return equippedWeapon;
+  }
+
+  // endregion
+
+  // region : Double Dispatch for equip
+
   @Override
   public abstract void equip(Weapons weapon);
 
@@ -84,13 +85,6 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    */
   protected void underequip(Weapons weapon) {
     this.equippedWeapon = weapon;
-  }
-
-
-
-  @Override
-  public Weapons getEquippedWeapon() {
-    return equippedWeapon;
   }
 
   // endregion

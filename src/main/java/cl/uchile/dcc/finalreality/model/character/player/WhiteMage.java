@@ -51,7 +51,6 @@ public class WhiteMage extends AbstractMage {
    * @param obj
    *     the object that will be compared with "this"
    */
-
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {
@@ -84,6 +83,11 @@ public class WhiteMage extends AbstractMage {
             .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
   }
 
+  // endregion
+
+  // region : Double Dispatch for equip
+
+  @Override
   public void equip(Weapons weapon) {
     try {
       weapon.equippedByWhiteMage(this);
@@ -92,6 +96,12 @@ public class WhiteMage extends AbstractMage {
     }
   }
 
+  /**
+   * This method call's the one who will equip the weapon.
+   *
+   * @param ubw
+   *    the weapon that will be equipped.
+   */
   public void equipusedbywhitemage(UsedByWhiteMage ubw) {
     this.underequip(ubw);
   }

@@ -87,7 +87,11 @@ public class Knight extends AbstractPlayerCharacter {
             .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
+  // endregion
 
+  // region : Double Dispatch for equip
+
+  @Override
   public void equip(Weapons weapon) {
     try {
       weapon.equippedByKnight(this);

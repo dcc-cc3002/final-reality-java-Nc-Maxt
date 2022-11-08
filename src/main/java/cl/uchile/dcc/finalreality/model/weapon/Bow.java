@@ -106,5 +106,6 @@ public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
     String info = "Bows aren't part of the equippable Weapons of a Knight";
     throw new InvalidWeaponEquipException(info);
   }
+
   // endregion
 }

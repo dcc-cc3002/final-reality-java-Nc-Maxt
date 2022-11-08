@@ -45,6 +45,7 @@ public class BlackMage extends AbstractMage {
 
   // region : Double Dispatch equip methods
 
+  @Override
   public void equip(Weapons weapon) {
     try {
       weapon.equippedByBlackMage(this);

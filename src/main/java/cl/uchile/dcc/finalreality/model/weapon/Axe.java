@@ -113,5 +113,6 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
     String info = "Axes aren't part of the equippable Weapons of a WhiteMage";
     throw new InvalidWeaponEquipException(info);
   }
+
   // endregion
 }

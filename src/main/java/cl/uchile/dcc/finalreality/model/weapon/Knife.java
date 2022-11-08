@@ -107,5 +107,6 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
     String info = "Knifes aren't part of the equippable Weapons of a Engineer";
     throw new InvalidWeaponEquipException(info);
   }
+
   // endregion
 }

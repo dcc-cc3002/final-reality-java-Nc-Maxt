@@ -83,6 +83,7 @@ public class Engineer extends AbstractPlayerCharacter {
             .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
+  @Override
   public void equip(Weapons weapon) {
     try {
       weapon.equippedByEngineer(this);

@@ -106,5 +106,6 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
     String info = "Staffs aren't part of the equippable Weapons of a Thief";
     throw new InvalidWeaponEquipException(info);
   }
+
   // endregion
 }
