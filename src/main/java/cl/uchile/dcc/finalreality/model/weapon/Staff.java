@@ -24,7 +24,6 @@ import java.util.Objects;
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
- *
  */
 public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhiteMage {
 
@@ -32,13 +31,9 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
    * Creates a new Staff.
    * This constructor is <b>public</b>, because it'll be used in testing and in the program.
    *
-   * @param name
-   *     the weapon's name
-   * @param damage
-   *     the weapon's damage
-   * @param weight
-   *     the weapon's weight
-   *
+   * @param name   the weapon's name
+   * @param damage the weapon's damage
+   * @param weight the weapon's weight
    */
   public Staff(final String name, final int damage, final int weight) {
     super(name, damage, weight);
@@ -49,8 +44,7 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
   /**
    * Returns a boolean that indicates if 2 Staffs are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -61,9 +55,9 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
       return false;
     }
     return hashCode() == that.hashCode()
-            && getName().equals(that.getName())
-            && getDamage() == that.getDamage()
-            && getWeight() == that.getWeight();
+        && getName().equals(that.getName())
+        && getDamage() == that.getDamage()
+        && getWeight() == that.getWeight();
   }
 
   /**
@@ -79,7 +73,7 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
   @Override
   public String toString() {
     return "Staff{name='%s', damage=%d, weight=%d}"
-            .formatted(getName(), getDamage(), getWeight());
+        .formatted(getName(), getDamage(), getWeight());
   }
 
   // endregion

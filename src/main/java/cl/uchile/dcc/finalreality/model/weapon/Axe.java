@@ -24,7 +24,6 @@ import java.util.Objects;
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
- *
  */
 public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer {
 
@@ -32,18 +31,13 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
    * Creates a new Axe.
    * This constructor is <b>public</b>, because it'll be used in testing and the programe.
    *
-   * @param name
-   *     the weapon's name
-   * @param damage
-   *     the weapon's damage
-   * @param weight
-   *     the weapon's weight
-   *
+   * @param name   the weapon's name
+   * @param damage the weapon's damage
+   * @param weight the weapon's weight
    */
   public Axe(final String name, final int damage, final int weight) {
     super(name, damage, weight);
   }
-
 
 
   // region : UTILITY METHODS
@@ -51,8 +45,7 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
   /**
    * Returns a boolean that indicates if 2 Axes are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -63,9 +56,9 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
       return false;
     }
     return hashCode() == that.hashCode()
-            && name.equals(that.name)
-            && damage == that.damage
-            && weight == that.weight;
+        && name.equals(that.name)
+        && damage == that.damage
+        && weight == that.weight;
   }
 
   /**
@@ -81,7 +74,7 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
   @Override
   public String toString() {
     return "Axe{name='%s', damage=%d, weight=%d}"
-            .formatted(name, damage, weight);
+        .formatted(name, damage, weight);
   }
 
   // endregion

@@ -15,7 +15,7 @@ package cl.uchile.dcc.exceptions;
  * @author Matias Nunez
  */
 
-public class InvalidWeaponEquipException  extends Exception {
+public class InvalidWeaponEquipException extends Exception {
   /**
    * Creates a new {@code InvalidStatValueException} with a {@code description} of the
    * error.

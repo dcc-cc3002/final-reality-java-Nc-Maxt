@@ -34,17 +34,13 @@ public abstract class AbstractCharacter implements GameCharacter {
    * Creates a new character.
    * This constructor is <b>protected</b>, because it'll only be used by subclasses.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   protected AbstractCharacter(@NotNull String name, int maxHp, int defense,
-      @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+                              @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     int hpval = maxHp;
     int defval = defense;
     try {
@@ -73,12 +69,10 @@ public abstract class AbstractCharacter implements GameCharacter {
     return name;
   }
 
-
   @Override
   public int getCurrentHp() {
     return currentHp;
   }
-
 
   @Override
   public int getMaxHp() {

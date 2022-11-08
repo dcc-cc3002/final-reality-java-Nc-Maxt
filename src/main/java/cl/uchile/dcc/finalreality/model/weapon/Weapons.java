@@ -41,8 +41,7 @@ public interface Weapons {
    * This method resolve the action to do: if equip the weapon or throw an Exception.
    * it's part of the implementation of Double Dispatch for equip.
    *
-   * @param blackmage
-   *     the Black Mage who used equip
+   * @param blackmage the Black Mage who used equip
    */
   void equippedByBlackMage(BlackMage blackmage) throws InvalidWeaponEquipException;
 
@@ -50,8 +49,7 @@ public interface Weapons {
    * This method resolve the action to do: if equip the weapon or throw an Exception.
    * it's part of the implementation of Double Dispatch for equip.
    *
-   * @param whitemage
-   *     the White Mage who used equip
+   * @param whitemage the White Mage who used equip
    */
   void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException;
 
@@ -59,8 +57,7 @@ public interface Weapons {
    * This method resolve the action to do: if equip the weapon or throw an Exception.
    * it's part of the implementation of Double Dispatch for equip.
    *
-   * @param knight
-   *     the Knight who used equip
+   * @param knight the Knight who used equip
    */
   void equippedByKnight(Knight knight) throws InvalidWeaponEquipException;
 
@@ -68,8 +65,7 @@ public interface Weapons {
    * This method resolve the action to do: if equip the weapon or throw an Exception.
    * it's part of the implementation of Double Dispatch for equip.
    *
-   * @param engineer
-   *     the Engineer who used equip
+   * @param engineer the Engineer who used equip
    */
   void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException;
 
@@ -77,8 +73,7 @@ public interface Weapons {
    * This method resolve the action to do: if equip the weapon or throw an Exception.
    * it's part of the implementation of Double Dispatch for equip.
    *
-   * @param thief
-   *     the Thief who used equip
+   * @param thief the Thief who used equip
    */
   void equippedByThief(Thief thief) throws InvalidWeaponEquipException;
 

@@ -30,14 +30,10 @@ public final class Require {
   /**
    * Checks if a given <i>Stat</i> value is <b>at least</b> a given value.
    *
-   * @param least
-   *     The smallest value (inclusive) that the <i>Stat</i> can have.
-   * @param actualStat
-   *     The actual value of the <i>Stat</i>.
-   * @param statName
-   *     The name of the <i>Stat</i>.
-   * @throws InvalidStatValueException
-   *     If the {@code actualStat} is less than {@code least}.
+   * @param least      The smallest value (inclusive) that the <i>Stat</i> can have.
+   * @param actualStat The actual value of the <i>Stat</i>.
+   * @param statName   The name of the <i>Stat</i>.
+   * @throws InvalidStatValueException If the {@code actualStat} is less than {@code least}.
    */
   public static void statValueAtLeast(int least, int actualStat, String statName)
       throws InvalidStatValueException {
@@ -50,17 +46,13 @@ public final class Require {
   /**
    * Checks if a given <i>Stat</i> value is <b>at most</b> a given value.
    *
-   * @param most
-   *     The largest value (inclusive) that the <i>Stat</i> can have.
-   * @param actualStat
-   *     The actual value of the <i>Stat</i>.
-   * @param statName
-   *     The name of the <i>Stat</i>.
-   * @throws InvalidStatValueException
-   *     If the {@code actualStat} is greater than {@code most}.
+   * @param most       The largest value (inclusive) that the <i>Stat</i> can have.
+   * @param actualStat The actual value of the <i>Stat</i>.
+   * @param statName   The name of the <i>Stat</i>.
+   * @throws InvalidStatValueException If the {@code actualStat} is greater than {@code most}.
    */
   public static void statValueAtMost(final int most, final int actualStat,
-      final String statName) throws InvalidStatValueException {
+                                     final String statName) throws InvalidStatValueException {
     if (most < actualStat) {
       throw new InvalidStatValueException(
           "'%s'(%d) must be at most %d".formatted(statName, actualStat, most));

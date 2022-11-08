@@ -14,7 +14,6 @@ import cl.uchile.dcc.exceptions.Require;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,14 +30,10 @@ public class Enemy extends AbstractCharacter {
   /**
    * Creates a new Enemy.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   public Enemy(@NotNull final String name, final int weight, int maxHp, int defense,
                @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
@@ -74,16 +69,15 @@ public class Enemy extends AbstractCharacter {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
     var enemy = (Enemy) this;
     scheduledExecutor.schedule(
-      /* command = */ this::addToQueue,
-      /* delay = */ enemy.getWeight() / 10,
-      /* unit = */ TimeUnit.SECONDS);
+        /* command = */ this::addToQueue,
+        /* delay = */ enemy.getWeight() / 10,
+        /* unit = */ TimeUnit.SECONDS);
   }
 
   /**
    * Returns a boolean that indicates if 2 Enemies are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -94,10 +88,10 @@ public class Enemy extends AbstractCharacter {
       return false;
     }
     return hashCode() == enemy.hashCode()
-            && name.equals(enemy.name)
-            && maxHp == enemy.maxHp
-            && defense == enemy.defense
-            && weight == enemy.weight;
+        && name.equals(enemy.name)
+        && maxHp == enemy.maxHp
+        && defense == enemy.defense
+        && weight == enemy.weight;
   }
 
   /**
@@ -114,7 +108,7 @@ public class Enemy extends AbstractCharacter {
   @Override
   public String toString() {
     return "Enemy{ name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
-            .formatted(name, getCurrentHp(), maxHp, defense, weight);
+        .formatted(name, getCurrentHp(), maxHp, defense, weight);
   }
 
   // endregion

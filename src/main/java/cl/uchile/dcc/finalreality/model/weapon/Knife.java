@@ -25,19 +25,14 @@ import java.util.Objects;
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
- *
  */
 public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnight, UsedByThief {
   /**
    * Creates a new Knife.
    *
-   * @param name
-   *     the weapon's name
-   * @param damage
-   *     the weapon's damage
-   * @param weight
-   *     the weapon's weight
-   *
+   * @param name   the weapon's name
+   * @param damage the weapon's damage
+   * @param weight the weapon's weight
    */
   public Knife(final String name, final int damage, final int weight) {
     super(name, damage, weight);
@@ -49,8 +44,7 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
   /**
    * Returns a boolean that indicates if 2 Knifes are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -61,9 +55,9 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
       return false;
     }
     return hashCode() == that.hashCode()
-            && getName().equals(that.getName())
-            && getDamage() == that.getDamage()
-            && getWeight() == that.getWeight();
+        && getName().equals(that.getName())
+        && getDamage() == that.getDamage()
+        && getWeight() == that.getWeight();
   }
 
   /**
@@ -79,7 +73,7 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
   @Override
   public String toString() {
     return "Knife{name='%s', damage=%d, weight=%d}"
-            .formatted(getName(), getDamage(), getWeight());
+        .formatted(getName(), getDamage(), getWeight());
   }
 
   // endregion

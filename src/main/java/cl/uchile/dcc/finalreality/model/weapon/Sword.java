@@ -30,13 +30,9 @@ public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
   /**
    * Creates a new Sword.
    *
-   * @param name
-   *     the weapon's name
-   * @param damage
-   *     the weapon's damage
-   * @param weight
-   *     the weapon's weight
-   *
+   * @param name   the weapon's name
+   * @param damage the weapon's damage
+   * @param weight the weapon's weight
    */
   public Sword(final String name, final int damage, final int weight) {
     super(name, damage, weight);
@@ -47,8 +43,7 @@ public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
   /**
    * Returns a boolean that indicates if 2 Swords are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -59,9 +54,9 @@ public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
       return false;
     }
     return hashCode() == that.hashCode()
-            && getName().equals(that.getName())
-            && getDamage() == that.getDamage()
-            && getWeight() == that.getWeight();
+        && getName().equals(that.getName())
+        && getDamage() == that.getDamage()
+        && getWeight() == that.getWeight();
   }
 
   /**
@@ -77,7 +72,7 @@ public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
   @Override
   public String toString() {
     return "Sword{name='%s', damage=%d, weight=%d}"
-            .formatted(getName(), getDamage(), getWeight());
+        .formatted(getName(), getDamage(), getWeight());
   }
   // endregion
 

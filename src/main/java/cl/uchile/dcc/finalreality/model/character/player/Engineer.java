@@ -27,14 +27,10 @@ public class Engineer extends AbstractPlayerCharacter {
   /**
    * Creates a new engineer.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   public Engineer(final @NotNull String name, final int maxHp, final int defense,
                   final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
@@ -46,8 +42,7 @@ public class Engineer extends AbstractPlayerCharacter {
   /**
    * Returns a boolean that indicates if 2 BlackMages are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -58,10 +53,10 @@ public class Engineer extends AbstractPlayerCharacter {
       return false;
     }
     return hashCode() == that.hashCode()
-            && name.equals(that.name)
-            && getCurrentHp() == that.getCurrentHp()
-            && maxHp == that.maxHp
-            && defense == that.defense;
+        && name.equals(that.name)
+        && getCurrentHp() == that.getCurrentHp()
+        && maxHp == that.maxHp
+        && defense == that.defense;
   }
 
   /**
@@ -78,7 +73,7 @@ public class Engineer extends AbstractPlayerCharacter {
   @Override
   public String toString() {
     return "Engineer{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, defense);
+        .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
   @Override

@@ -29,14 +29,10 @@ public class Thief extends AbstractPlayerCharacter {
   /**
    * Creates a new Thief.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   public Thief(final @NotNull String name, final int maxHp, final int defense,
                final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
@@ -48,8 +44,7 @@ public class Thief extends AbstractPlayerCharacter {
   /**
    * Returns a boolean that indicates if 2 BlackMages are equals.
    *
-   * @param o
-   *     the object that will be compared with "this"
+   * @param o the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object o) {
@@ -60,10 +55,10 @@ public class Thief extends AbstractPlayerCharacter {
       return false;
     }
     return hashCode() == that.hashCode()
-            && name.equals(that.name)
-            && getCurrentHp() == that.getCurrentHp()
-            && maxHp == that.maxHp
-            && defense == that.defense;
+        && name.equals(that.name)
+        && getCurrentHp() == that.getCurrentHp()
+        && maxHp == that.maxHp
+        && defense == that.defense;
   }
 
   /**
@@ -80,7 +75,7 @@ public class Thief extends AbstractPlayerCharacter {
   @Override
   public String toString() {
     return "Thief{ name='%s', currentHp=%d, maxHp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, defense);
+        .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
   @Override

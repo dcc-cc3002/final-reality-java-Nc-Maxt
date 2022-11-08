@@ -27,17 +27,11 @@ public abstract class AbstractMage extends AbstractPlayerCharacter {
   /**
    * Creates a new Mage.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param maxMp
-   *     the character's max mp
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
-   *
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param maxMp      the character's max mp
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   public AbstractMage(final @NotNull String name, final int maxHp, final int defense,
                       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
@@ -75,7 +69,6 @@ public abstract class AbstractMage extends AbstractPlayerCharacter {
    * <p>This method should be <b>private</b>, because it must be only used
    * by methods in the class to change value of {@code MP}
    * when casting a spell but for testing it will be <b>public</b>.</p>
-   *
    */
   public void setCurrentMp(final int newMp) {
     int value = newMp;

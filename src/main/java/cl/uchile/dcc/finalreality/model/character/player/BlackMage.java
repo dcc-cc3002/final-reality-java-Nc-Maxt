@@ -26,17 +26,11 @@ public class BlackMage extends AbstractMage {
   /**
    * Creates a new Black Mage.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param maxMp
-   *     the character's max mp
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
-   *
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param maxMp      the character's max mp
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   public BlackMage(final @NotNull String name, final int maxHp, final int defense,
                    int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
@@ -64,8 +58,7 @@ public class BlackMage extends AbstractMage {
   /**
    * Returns a boolean that indicates if 2 Black Mages are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -76,10 +69,10 @@ public class BlackMage extends AbstractMage {
       return false;
     }
     return hashCode() == that.hashCode()
-            && name.equals(that.name)
-            && maxHp == that.maxHp
-            && defense == that.defense
-            && maxMp == that.maxMp;
+        && name.equals(that.name)
+        && maxHp == that.maxHp
+        && defense == that.defense
+        && maxMp == that.maxMp;
   }
 
   /**
@@ -96,7 +89,7 @@ public class BlackMage extends AbstractMage {
   @Override
   public String toString() {
     return "BlackMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
+        .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
   }
 
   // endregion
