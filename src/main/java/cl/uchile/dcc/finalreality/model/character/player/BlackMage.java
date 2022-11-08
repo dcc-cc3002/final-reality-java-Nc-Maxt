@@ -10,8 +10,6 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Knife;
-import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import java.util.Objects;
@@ -55,14 +53,9 @@ public class BlackMage extends AbstractMage {
     }
   }
 
-  public void equipKnife(Knife knife) {
-    this.underequip(knife);
+  public void equipusedbyblackmage(UsedByBlackMage ubb) {
+    this.underequip(ubb);
   }
-
-  public void equipStaff(Staff staff) {
-    this.underequip(staff);
-  }
-
   // end region
 
   // region : UTILITY METHODS

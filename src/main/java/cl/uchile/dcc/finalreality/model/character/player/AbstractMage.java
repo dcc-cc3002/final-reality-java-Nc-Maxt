@@ -95,9 +95,5 @@ public abstract class AbstractMage extends AbstractPlayerCharacter {
     this.currentMp = value;
   }
 
-  public void equipStaff(Staff staff) {
-    underequip(staff);
-  }
-
   // endregion
 }
