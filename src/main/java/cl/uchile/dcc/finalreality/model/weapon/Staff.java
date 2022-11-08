@@ -80,27 +80,27 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
 
   @Override
   public void equippedByBlackMage(BlackMage blackmage) {
-    blackmage.equipStaff(this);
+    blackmage.equipusedbyblackmage(this);
   }
 
   @Override
   public void equippedByWhiteMage(WhiteMage whitemage) {
-    whitemage.equipStaff(this);
+    whitemage.equipusedbywhitemage(this);
   }
 
   @Override
   public void equippedByKnight(Knight knight) throws InvalidWeaponEquipException {
-    String info = "Staffs aren´t part of the equippable Weapons of a Knight";
+    String info = "Staffs aren't part of the equippable Weapons of a Knight";
     throw new InvalidWeaponEquipException(info);
   }
   @Override
   public void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException {
-    String info = "Staffs aren´t part of the equippable Weapons of a Engineer";
+    String info = "Staffs aren't part of the equippable Weapons of a Engineer";
     throw new InvalidWeaponEquipException(info);
   }
 
   public void equippedByThief(Thief thief) throws InvalidWeaponEquipException {
-    String info = "Staffs aren´t part of the equippable Weapons of a Thief";
+    String info = "Staffs aren't part of the equippable Weapons of a Thief";
     throw new InvalidWeaponEquipException(info);
   }
   // endregion

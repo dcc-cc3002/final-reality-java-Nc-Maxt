@@ -80,27 +80,27 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
 
   @Override
   public void equippedByKnight(Knight knight) {
-    knight.equipKnife(this);
+    knight.equipusedbyknight(this);
   }
 
   @Override
   public void equippedByThief(Thief thief) {
-    thief.equipKnife(this);
+    thief.equipusedbythief(this);
   }
 
   @Override
   public void equippedByBlackMage(BlackMage blackmage) {
-    blackmage.equipKnife(this);
+    blackmage.equipusedbyblackmage(this);
   }
 
   public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
-    String info = "Knifes aren´t part of the equippable Weapons of a WhiteMage";
+    String info = "Knifes aren't part of the equippable Weapons of a WhiteMage";
     throw new InvalidWeaponEquipException(info);
   }
 
   @Override
   public void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException {
-    String info = "Knifes aren´t part of the equippable Weapons of a Engineer";
+    String info = "Knifes aren't part of the equippable Weapons of a Engineer";
     throw new InvalidWeaponEquipException(info);
   }
   // endregion

@@ -90,27 +90,27 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
 
   @Override
   public void equippedByKnight(Knight knight) {
-    knight.equipAxe(this);
+    knight.equipusedbyknight(this);
   }
 
   @Override
   public void equippedByEngineer(Engineer engineer) {
-    engineer.equipAxe(this);
+    engineer.equipusedbyengineer(this);
   }
 
   public void equippedByThief(Thief thief) throws InvalidWeaponEquipException {
-    String info = "Axes aren´t part of the equippable Weapons of a Thief";
+    String info = "Axes aren't part of the equippable Weapons of a Thief";
     throw new InvalidWeaponEquipException(info);
   }
 
   @Override
   public void equippedByBlackMage(BlackMage blackmage) throws InvalidWeaponEquipException {
-    String info = "Axes aren´t part of the equippable Weapons of a BlackMage";
+    String info = "Axes aren't part of the equippable Weapons of a BlackMage";
     throw new InvalidWeaponEquipException(info);
   }
 
   public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
-    String info = "Axes aren´t part of the equippable Weapons of a WhiteMage";
+    String info = "Axes aren't part of the equippable Weapons of a WhiteMage";
     throw new InvalidWeaponEquipException(info);
   }
   // endregion

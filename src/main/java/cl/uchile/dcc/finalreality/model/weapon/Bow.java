@@ -78,12 +78,12 @@ public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
 
   @Override
   public void equippedByEngineer(Engineer engineer) {
-    engineer.equipBow(this);
+    engineer.equipusedbyengineer(this);
   }
 
   @Override
   public void equippedByThief(Thief thief) {
-    thief.equipBow(this);
+    thief.equipusedbythief(this);
   }
 
   @Override
