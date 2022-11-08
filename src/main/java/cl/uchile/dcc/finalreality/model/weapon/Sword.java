@@ -78,7 +78,7 @@ public class Sword extends AbstractWeapon implements UsedByKnight, UsedByThief {
   // endregion
 
   // region : Double Dispatch for equip
-
+  
   @Override
   public void equippedByKnight(Knight knight) {
     knight.equipusedbyknight(this);

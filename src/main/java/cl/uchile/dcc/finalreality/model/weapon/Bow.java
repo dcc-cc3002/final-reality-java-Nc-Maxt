@@ -76,6 +76,10 @@ public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
             .formatted(getName(), getDamage(), getWeight());
   }
 
+  // endregion
+
+  // region : Double Dispatch for equip
+
   @Override
   public void equippedByEngineer(Engineer engineer) {
     engineer.equipusedbyengineer(this);

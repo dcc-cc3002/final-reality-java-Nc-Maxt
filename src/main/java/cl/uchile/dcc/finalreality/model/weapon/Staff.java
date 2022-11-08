@@ -78,11 +78,14 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
             .formatted(getName(), getDamage(), getWeight());
   }
 
+  // endregion
+
+  // region : Double Dispatch for equip
+
   @Override
   public void equippedByBlackMage(BlackMage blackmage) {
     blackmage.equipusedbyblackmage(this);
   }
-
   @Override
   public void equippedByWhiteMage(WhiteMage whitemage) {
     whitemage.equipusedbywhitemage(this);
