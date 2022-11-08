@@ -8,11 +8,12 @@
 
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -83,9 +84,16 @@ public class WhiteMage extends AbstractMage {
             .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
   }
 
-  @Override
   public void equip(Weapons weapon) {
+    try {
+      weapon.equippedByWhiteMage(this);
+    } catch (InvalidWeaponEquipException iwep) {
+      System.out.println(iwep);
+    }
+  }
 
+  public void equipusedbywhitemage(UsedByWhiteMage ubw) {
+    this.underequip(ubw);
   }
 
   // endregion

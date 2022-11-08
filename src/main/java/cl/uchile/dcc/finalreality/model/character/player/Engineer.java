@@ -8,13 +8,14 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -82,17 +83,16 @@ public class Engineer extends AbstractPlayerCharacter {
             .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
-  public void equipAxe(Axe axe) {
-    this.underequip(axe);
-  }
-
-  public void equipBow(Bow bow) {
-    this.underequip(bow);
-  }
-
-  @Override
   public void equip(Weapons weapon) {
+    try {
+      weapon.equippedByEngineer(this);
+    } catch (InvalidWeaponEquipException iwep) {
+      System.out.println(iwep);
+    }
+  }
 
+  public void equipusedbyengineer(UsedByEngineer ube) {
+    this.underequip(ube);
   }
 
   // endregion

@@ -8,6 +8,7 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
@@ -16,6 +17,8 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByKnight;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -42,11 +45,6 @@ public class Knight extends AbstractPlayerCharacter {
   public Knight(@NotNull final String name, int maxHp, int defense,
                 @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
-  }
-
-  @Override
-  public void equip(Weapons weapon) {
-
   }
 
   // region : UTILITY METHODS
@@ -89,16 +87,17 @@ public class Knight extends AbstractPlayerCharacter {
             .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
-  public void equipSword(Sword sword) {
-    this.underequip(sword);
+
+  public void equip(Weapons weapon) {
+    try {
+      weapon.equippedByKnight(this);
+    } catch (InvalidWeaponEquipException iwep) {
+      System.out.println(iwep);
+    }
   }
 
-  public void equipAxe(Axe axe) {
-    this.underequip(axe);
-  }
-
-  public void equipKnife(Knife knife) {
-    this.underequip(knife);
+  public void equipusedbyknight(UsedByKnight ubk) {
+    this.underequip(ubk);
   }
 
   // endregion
