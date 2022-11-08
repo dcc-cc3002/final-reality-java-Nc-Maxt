@@ -1,5 +1,8 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.Require;
+
 /**
  * An abstract class that holds the common behaviour of all the weapons in the game.
  *
@@ -16,9 +19,16 @@ public abstract class AbstractWeapon implements Weapons {
    * Creates an Axe with a name, a base damage, and it's type.
    */
   protected AbstractWeapon(final String name, final int damage, final int weight) {
+    int atk = damage;
+    try {
+      Require.statValueAtLeast(0, damage, "damage of the Weapon");
+    } catch (InvalidStatValueException inv) {
+      System.out.println("The damage of a Weapon can't be negative, automatically setted to 0");
+      atk = 0;
+    }
     this.name = name;
-    this.damage = damage;
     this.weight = weight;
+    this.damage = atk;
   }
 
   // region : ACCESSORS
