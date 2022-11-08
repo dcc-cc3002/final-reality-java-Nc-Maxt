@@ -38,5 +38,6 @@ public interface Weapons {
   void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException;
 
   void equippedByThief(Thief thief) throws InvalidWeaponEquipException;
+
   // endregion
 }
