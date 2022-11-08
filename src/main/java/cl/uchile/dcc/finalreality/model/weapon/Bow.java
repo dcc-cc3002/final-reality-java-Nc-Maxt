@@ -9,7 +9,11 @@ package cl.uchile.dcc.finalreality.model.weapon;
  */
 
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
-import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
 import java.util.Objects;

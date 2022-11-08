@@ -10,15 +10,10 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Axe;
-import cl.uchile.dcc.finalreality.model.weapon.Knife;
-import cl.uchile.dcc.finalreality.model.weapon.Sword;
+import cl.uchile.dcc.finalreality.model.weapon.Weapons;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByKnight;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
-import cl.uchile.dcc.finalreality.model.weapon.Weapons;
-import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
-import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByKnight;
 import org.jetbrains.annotations.NotNull;
 
 /**

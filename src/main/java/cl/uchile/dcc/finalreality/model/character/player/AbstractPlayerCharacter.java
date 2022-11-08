@@ -33,17 +33,13 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * Creates a new character.
    * This constructor is <b>protected</b>, because it'll only be used by subclasses.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   protected AbstractPlayerCharacter(@NotNull final String name, final int maxHp,
-         final int defense, @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
+                                    final int defense, @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
   }
 
@@ -57,9 +53,9 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
     var player = (PlayerCharacter) this;
     scheduledExecutor.schedule(
-            /* command = */ this::addToQueue,
-            /* delay = */ player.getEquippedWeapon().getWeight() / 10,
-            /* unit = */ TimeUnit.SECONDS);
+        /* command = */ this::addToQueue,
+        /* delay = */ player.getEquippedWeapon().getWeight() / 10,
+        /* unit = */ TimeUnit.SECONDS);
   }
 
   @Override
@@ -80,8 +76,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * this method is <b>protected</b>, beacuse it'll be used only by the Classes
    * that extends from this one.
    *
-   * @param weapon
-   *    the weapon that a character will use
+   * @param weapon the weapon that a character will use
    */
   protected void underequip(Weapons weapon) {
     this.equippedWeapon = weapon;

@@ -10,10 +10,10 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -9,7 +9,11 @@ package cl.uchile.dcc.finalreality.model.weapon;
  */
 
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
-import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
 import java.util.Objects;
@@ -86,6 +90,7 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
   public void equippedByBlackMage(BlackMage blackmage) {
     blackmage.equipusedbyblackmage(this);
   }
+
   @Override
   public void equippedByWhiteMage(WhiteMage whitemage) {
     whitemage.equipusedbywhitemage(this);
@@ -96,6 +101,7 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
     String info = "Staffs aren't part of the equippable Weapons of a Knight";
     throw new InvalidWeaponEquipException(info);
   }
+
   @Override
   public void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException {
     String info = "Staffs aren't part of the equippable Weapons of a Engineer";

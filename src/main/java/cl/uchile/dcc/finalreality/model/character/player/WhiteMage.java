@@ -10,10 +10,10 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -26,20 +26,14 @@ public class WhiteMage extends AbstractMage {
   /**
    * Creates a new White Mage.
    *
-   * @param name
-   *     the character's name
-   * @param maxHp
-   *     the character's max hp
-   * @param defense
-   *     the character's defense
-   * @param maxMp
-   *     the character's max mp
-   * @param turnsQueue
-   *     the queue with the characters waiting for their turn
-   *
+   * @param name       the character's name
+   * @param maxHp      the character's max hp
+   * @param defense    the character's defense
+   * @param maxMp      the character's max mp
+   * @param turnsQueue the queue with the characters waiting for their turn
    */
   public WhiteMage(final @NotNull String name, final int maxHp, final int defense,
-                     int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
+                   int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, maxMp, turnsQueue);
   }
 
@@ -48,8 +42,7 @@ public class WhiteMage extends AbstractMage {
   /**
    * Returns a boolean that indicates if 2 White Mages are equals.
    *
-   * @param obj
-   *     the object that will be compared with "this"
+   * @param obj the object that will be compared with "this"
    */
   @Override
   public boolean equals(final Object obj) {
@@ -60,10 +53,10 @@ public class WhiteMage extends AbstractMage {
       return false;
     }
     return hashCode() == that.hashCode()
-            && name.equals(that.name)
-            && maxHp == that.maxHp
-            && defense == that.defense
-            && maxMp == that.maxMp;
+        && name.equals(that.name)
+        && maxHp == that.maxHp
+        && defense == that.defense
+        && maxMp == that.maxMp;
   }
 
   /**
@@ -80,7 +73,7 @@ public class WhiteMage extends AbstractMage {
   @Override
   public String toString() {
     return "WhiteMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
-            .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
+        .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
   }
 
   // endregion
@@ -99,8 +92,7 @@ public class WhiteMage extends AbstractMage {
   /**
    * This method call's the one who will equip the weapon.
    *
-   * @param ubw
-   *    the weapon that will be equipped.
+   * @param ubw the weapon that will be equipped.
    */
   public void equipusedbywhitemage(UsedByWhiteMage ubw) {
     this.underequip(ubw);

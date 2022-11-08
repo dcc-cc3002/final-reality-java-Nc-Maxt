@@ -1,7 +1,11 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
-import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 
 /**
  * An interface that set obligatory getters and double dispatch methods for the weapons.
@@ -35,7 +39,6 @@ public interface Weapons {
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
-   *
    * it's part of the implementation of Double Dispatch for equip.
    *
    * @param blackmage
@@ -45,7 +48,6 @@ public interface Weapons {
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
-   *
    * it's part of the implementation of Double Dispatch for equip.
    *
    * @param whitemage
@@ -55,7 +57,6 @@ public interface Weapons {
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
-   *
    * it's part of the implementation of Double Dispatch for equip.
    *
    * @param knight
@@ -65,7 +66,6 @@ public interface Weapons {
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
-   *
    * it's part of the implementation of Double Dispatch for equip.
    *
    * @param engineer
@@ -75,7 +75,6 @@ public interface Weapons {
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
-   *
    * it's part of the implementation of Double Dispatch for equip.
    *
    * @param thief
