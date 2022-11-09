@@ -102,6 +102,7 @@ public class Staff extends AbstractWeapon implements UsedByBlackMage, UsedByWhit
     throw new InvalidWeaponEquipException(info);
   }
 
+  @Override
   public void equippedByThief(Thief thief) throws InvalidWeaponEquipException {
     String info = "Staffs aren't part of the equippable Weapons of a Thief";
     throw new InvalidWeaponEquipException(info);

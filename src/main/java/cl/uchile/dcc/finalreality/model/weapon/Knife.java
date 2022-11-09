@@ -95,6 +95,7 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
     blackmage.equipusedbyblackmage(this);
   }
 
+  @Override
   public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
     String info = "Knifes aren't part of the equippable Weapons of a WhiteMage";
     throw new InvalidWeaponEquipException(info);

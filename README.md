@@ -23,18 +23,17 @@ help improving the implementations and the code.
 
 I started looking and making changes in the package that contains the weapons:
 
-The first change was create new classes, one every weapon to eventually replace class WeaponType.
+The first change was create new classes, one for every weapon to eventually replace the WeaponType class.
 The reason behind this change it's that use an enum to separate the different types 
-of weapons, it's a bad implementation that can break the O in SOLID (Open to add, Close to changes) using the 
+of weapons, it's a bad implementation that can break the O in SOLID (Open to add, Close to changes), using the 
 Weapon class: 
-If one of the Weapons has a particularity, then you have to change methods to implement it without changing the others
-beacuse all of their methods are implemented in the Weapon class.
+If one of the Weapons has a particularity, then you have to change some methods to implement it.
 
-Following the creation of Classes for every single Weapon, i made an interface Weapons and
-an AbstractWeapon Class, the first one can be used when you declare a variable in a methods like equip.
+Following the creation of Classes for every single Weapon, i made an interface called "Weapons" and
+an AbstractWeapon Class. The first one can be used when you declare a variable in a methods like equip.
 And the Second one is to have the getters, setters and the data defined in the same place without 
 code replication (Those methods and data are general for every weapon). This way the weapon classes
-only have the methods: Constructor, Equals, Hashcode and ToString.
+enden having only Constructor, Equals, Hashcode and ToString methods.
 
 I didn't create an interface and an AbstractClass for the MagicWeapons (only Staff for now), beacuse it's not 
 part of the requerimets yet, and since there's still no methods that requires that separation it only be unusefull
@@ -51,11 +50,43 @@ the parameter ScheduleExcecutorService (this to avoid breaking something with th
 understand how worked, but in the end addToQeue and the parameter should have stayed without changes
 to avoid code duplication this error it´s fixed in the lastest update), to both Classes.
 
+Other thing that i added was a AbstractMage Class to refactor the common methods and behavior
+of Black and White Mage Classes (getters, setters and constructors).
+
 After this i started to add documentation, and testing. With the Testing Classes, i started to implement exceptions
 and handling those in the constructors and setters when required.
 
 **End of Part 1**
 
-
+Part 2: Testing and Weapon Restrictions
 ---
+The second part of this semestral Project was oriented to Testing and the implementation of the different
+restriccions that the Weapons had. 
+
+The first thing that i did in this part was change and refactor all the thest that were in main classes
+ to the TestClass that correspond depending on the class in wich the method was implemented or inherited.
+
+After most of the test were refactored and created, i implemented the restrictions using double dispatch:
+For this i create a interface for every set of weapons for the differents PlayerCharacter, this to be instanciated by 
+methods in ther contract, and a new exception class that's throwed when u try to equip a weapon that's not part of 
+the interface for a PlayerCharacter called "InvalidStatValueException".
+
+The implementation of Double Dispatch used a lot of new methods and it will be explained by how are called, using 
+by example the names of the BlackMage Class and it's methods (the implementation in the other Player Character classes
+are analogous):
+
+First equip was changed from directly equip the weapon to call a method in the Weapons called like 
+"equippedByBlackMage" (changing the last part depending on the PlayerCharacter Class), and handle an Excepction in case 
+some is thrown by the other method. The message to the method equippedByBlackMage desambiguates the weapon. This method
+throws an InvalidStatValueException or call a method in the BlackMage Class depending 
+if the Weapon it´s not part of the set of equippable Weapons for this class (that are grouped in the interface 
+"UsedByBlackMage"). If it is the method in the weapon message the method "equipusedbyblackmage" in BlackMage Class.
+And this one mesagge the method underequip that's in AbstractPlayerCharacter and aquip the Weapon.
+
+All the methods except for underequip are public, beacuse it will be called by other classes. The method underequip is
+protected, the reason is to "equipusedbyblackmage" (and it's analogous) recieve first the weapon and only accept like 
+parameter weapons that are part of the interface that corresponds. If it's not in this way, a user could 
+use directly underequip and end with a weapon that shouldn´t be equipped by certain character.
+
+**End of Part 2**
 

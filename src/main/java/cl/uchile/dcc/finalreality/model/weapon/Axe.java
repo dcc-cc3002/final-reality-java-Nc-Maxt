@@ -90,6 +90,7 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
     engineer.equipusedbyengineer(this);
   }
 
+  @Override
   public void equippedByThief(Thief thief) throws InvalidWeaponEquipException {
     String info = "Axes aren't part of the equippable Weapons of a Thief";
     throw new InvalidWeaponEquipException(info);
@@ -101,6 +102,7 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
     throw new InvalidWeaponEquipException(info);
   }
 
+  @Override
   public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
     String info = "Axes aren't part of the equippable Weapons of a WhiteMage";
     throw new InvalidWeaponEquipException(info);

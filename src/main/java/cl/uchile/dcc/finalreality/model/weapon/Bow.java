@@ -95,6 +95,7 @@ public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
     throw new InvalidWeaponEquipException(info);
   }
 
+  @Override
   public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
     String info = "Bows aren't part of the equippable Weapons of a WhiteMage";
     throw new InvalidWeaponEquipException(info);
