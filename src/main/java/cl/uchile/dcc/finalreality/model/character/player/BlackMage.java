@@ -37,22 +37,6 @@ public class BlackMage extends AbstractMage {
     super(name, maxHp, defense, maxMp, turnsQueue);
   }
 
-  // region : Double Dispatch equip methods
-
-  @Override
-  public void equip(Weapons weapon) {
-    try {
-      weapon.equippedByBlackMage(this);
-    } catch (InvalidWeaponEquipException iwep) {
-      System.out.println(iwep);
-    }
-  }
-
-  public void equipusedbyblackmage(UsedByBlackMage ubb) {
-    this.underequip(ubb);
-  }
-  // end region
-
   // region : UTILITY METHODS
 
   /**
@@ -93,4 +77,21 @@ public class BlackMage extends AbstractMage {
   }
 
   // endregion
+
+  // region : Double Dispatch equip methods
+
+  @Override
+  public void equip(Weapons weapon) {
+    try {
+      weapon.equippedByBlackMage(this);
+    } catch (InvalidWeaponEquipException iwep) {
+      System.out.println(iwep);
+    }
+  }
+
+  public void equipusedbyblackmage(UsedByBlackMage ubb) {
+    this.underequip(ubb);
+  }
+  // end region
+
 }

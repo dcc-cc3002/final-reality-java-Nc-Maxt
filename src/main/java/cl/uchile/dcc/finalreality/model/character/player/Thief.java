@@ -78,6 +78,10 @@ public class Thief extends AbstractPlayerCharacter {
         .formatted(name, getCurrentHp(), maxHp, defense);
   }
 
+  // endregion
+
+  // region : Double Dispatch equip methods
+
   @Override
   public void equip(Weapons weapon) {
     try {

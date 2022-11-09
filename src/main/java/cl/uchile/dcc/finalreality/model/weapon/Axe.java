@@ -39,7 +39,6 @@ public class Axe extends AbstractWeapon implements UsedByKnight, UsedByEngineer 
     super(name, damage, weight);
   }
 
-
   // region : UTILITY METHODS
 
   /**
