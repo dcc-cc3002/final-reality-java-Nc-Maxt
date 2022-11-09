@@ -90,6 +90,14 @@ public class Knight extends AbstractPlayerCharacter {
     }
   }
 
+  /**
+   * Call the method that sets the {@code equippedWeapon} of the character to {@code ubb}.
+   *
+   * <p> This method is <b>public</b>, beacuse it'll be used
+   * by the Weapon Classes.</p>
+   *
+   * @param ubk the weapon that will be equipped
+   */
   public void equipusedbyknight(UsedByKnight ubk) {
     this.underequip(ubk);
   }

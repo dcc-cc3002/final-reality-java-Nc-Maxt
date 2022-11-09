@@ -79,14 +79,10 @@ public abstract class AbstractCharacter implements GameCharacter {
     return maxHp;
   }
 
-  /**
-   * Returns the defense of the character.
-   */
   @Override
   public int getDefense() {
     return defense;
   }
-
 
   @Override
   public void setCurrentHp(int hp) {
@@ -108,8 +104,8 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   /**
    * Adds this character to the turns queue.
-   * this method is <b>private</b>, beacuse it'll be used by
-   * the instance of the class.
+   * this method is <b>protected</b>, beacuse it'll be used by
+   * the subclasses of the class.
    */
   protected void addToQueue() {
     try {

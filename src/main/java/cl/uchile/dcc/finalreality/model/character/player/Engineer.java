@@ -89,6 +89,14 @@ public class Engineer extends AbstractPlayerCharacter {
     }
   }
 
+  /**
+   * Call the method that sets the {@code equippedWeapon} of the character to {@code ubb}.
+   *
+   * <p> This method is <b>public</b>, beacuse it'll be used
+   * by the Weapon Classes.</p>
+   *
+   * @param ube the weapon that will be equipped
+   */
   public void equipusedbyengineer(UsedByEngineer ube) {
     this.underequip(ube);
   }

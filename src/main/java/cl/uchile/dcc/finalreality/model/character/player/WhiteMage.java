@@ -90,9 +90,12 @@ public class WhiteMage extends AbstractMage {
   }
 
   /**
-   * This method call's the one who will equip the weapon.
+   * Call the method that sets the {@code equippedWeapon} of the character to {@code ubb}.
    *
-   * @param ubw the weapon that will be equipped.
+   * <p> This method is <b>public</b>, beacuse it'll be used
+   * by the Weapon Classes.</p>
+   *
+   * @param ubw the weapon that will be equipped
    */
   public void equipusedbywhitemage(UsedByWhiteMage ubw) {
     this.underequip(ubw);

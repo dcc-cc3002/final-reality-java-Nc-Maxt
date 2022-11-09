@@ -71,10 +71,12 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   public abstract void equip(Weapons weapon);
 
   /**
-   * This is the final step in Double Dispatch for equip
+   * Sets the {@code equippedWeapon} of the character to {@code weapon}.
+   *
+   * <p>This is the final step in Double Dispatch for equip
    * (the method that equips the Weapon),
    * this method is <b>protected</b>, beacuse it'll be used only by the Classes
-   * that extends from this one.
+   * that extends from this one.</p>
    *
    * @param weapon the weapon that a character will use
    */
