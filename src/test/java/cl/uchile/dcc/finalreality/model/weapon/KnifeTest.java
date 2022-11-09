@@ -31,4 +31,24 @@ public class KnifeTest extends StaffTest {
         assertNotEquals(k1.toString(), k3.toString(), "The string data of Two different intances with different data should be diferent");
         assertEquals(k2.toString(), k3.toString(), "The string data of Two different intances with equal data should be equal");
     }
+
+  @Test
+  void equippedByKnight() {
+  }
+
+  @Test
+  void equippedByThief() {
+  }
+
+  @Test
+  void equippedByBlackMage() {
+  }
+
+  @Test
+  void equippedByWhiteMage() {
+  }
+
+  @Test
+  void equippedByEngineer() {
+  }
 }
