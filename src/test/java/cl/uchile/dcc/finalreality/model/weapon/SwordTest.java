@@ -31,4 +31,14 @@ public class SwordTest {
         assertNotEquals(s1.toString(), s3.toString(), "The string data of Two different intances with different data should be diferent");
         assertEquals(s2.toString(), s3.toString(), "The string data of Two different intances with equal data should be equal");
     }
+
+    @Test
+    void testResolutionExceptioninConstructorssword() {
+        Sword sw0_test = new Sword("Mcfly", -3, 64);
+        assertNotEquals(-3, sw0_test.getDamage(), "Damage shouldn´t be negative even if given a negative to the constructor");
+        Sword sw1_test = new Sword("Mccoffin", 0, 23);
+        assertEquals(0, sw1_test.getDamage(), "Damage should be 0 if given 0 to the constructor");
+        Sword sw2_test = new Sword("Lucy", 42, 32);
+        assertEquals(42, sw2_test.getDamage(), "Damage should be the same as the given to the constructor if it's possitive");
+    }
 }

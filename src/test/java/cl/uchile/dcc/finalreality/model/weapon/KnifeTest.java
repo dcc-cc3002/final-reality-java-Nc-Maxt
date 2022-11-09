@@ -31,4 +31,14 @@ public class KnifeTest extends StaffTest {
         assertNotEquals(k1.toString(), k3.toString(), "The string data of Two different intances with different data should be diferent");
         assertEquals(k2.toString(), k3.toString(), "The string data of Two different intances with equal data should be equal");
     }
+
+    @Test
+    void testResolutionExceptioninConstructorsknife() {
+        Knife k0_test = new Knife("Mcfly", -3, 64);
+        assertNotEquals(-3, k0_test.getDamage(), "Damage shouldn´t be negative even if given a negative to the constructor");
+        Knife k1_test = new Knife("Mccoffin", 0, 23);
+        assertEquals(0, k1_test.getDamage(), "Damage should be 0 if given 0 to the constructor");
+        Knife k2_test = new Knife("Lucy", 42, 32);
+        assertEquals(42, k2_test.getDamage(), "Damage should be the same as the given to the constructor if it's possitive");
+    }
 }

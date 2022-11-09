@@ -1,5 +1,6 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,5 +31,15 @@ public class AxeTest extends BowTest {
         assertEquals(axstr,a3.toString(), "toString get correct the data of the Axe?");
         assertNotEquals(a1.toString(), a3.toString(), "The string data of Two different intances with different data should be diferent");
         assertEquals(a2.toString(), a1.toString(), "The string data of Two different intances with equal data should be equal");
+    }
+
+    @Test
+    void testResolutionExceptioninConstructorsaxe() {
+        Axe a0_test = new Axe("Mcfly", -3, 64);
+        assertNotEquals(-3, a0_test.getDamage(), "Damage shouldn´t be negative even if given a negative to the constructor");
+        Axe a1_test = new Axe("Mccoffin", 0, 23);
+        assertEquals(0, a1_test.getDamage(), "Damage should be 0 if given 0 to the constructor");
+        Axe a2_test = new Axe("Lucy", 42, 32);
+        assertEquals(42, a2_test.getDamage(), "Damage should be the same as the given to the constructor if it's possitive");
     }
 }
