@@ -15,8 +15,14 @@ public abstract class AbstractWeapon implements Weapons {
   protected final int damage;
   protected final int weight;
 
+
   /**
-   * Creates an Axe with a name, a base damage, and it's type.
+   * Creates a new Weapon.
+   * This constructor is <b>protected</b>, because it'll only be used by subclasses.
+   *
+   * @param name        the weapon's name
+   * @param damage      the weapon's damage
+   * @param weight      the weapon's weight
    */
   protected AbstractWeapon(final String name, final int damage, final int weight) {
     int atk = damage;
