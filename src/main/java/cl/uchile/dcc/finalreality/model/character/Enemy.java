@@ -15,6 +15,8 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -26,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 public class Enemy extends AbstractCharacter {
 
   private final int weight;
+  private final int damage;
 
   /**
    * Creates a new Enemy.
@@ -35,9 +38,16 @@ public class Enemy extends AbstractCharacter {
    * @param defense    the character's defense
    * @param turnsQueue the queue with the characters waiting for their turn
    */
-  public Enemy(@NotNull final String name, final int weight, int maxHp, int defense,
+  public Enemy(@NotNull final String name, final int weight, int maxHp, int defense, int damage,
                @NotNull final BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, turnsQueue);
+    int damageval = damage;
+    try {
+      Require.statValueAtLeast(5, damage, "Attack");
+    } catch (InvalidStatValueException inv) {
+      System.out.println("Attack can't be lower than 5, automatically setted to 6");
+      damageval = 6;
+    }
     int weightval = weight;
     try {
       Require.statValueAtLeast(1, weight, "Weight");
@@ -45,6 +55,7 @@ public class Enemy extends AbstractCharacter {
       System.out.println("Weight can't be lower than 1, automatically setted to 3");
       weightval = 3;
     }
+    this.damage = damageval;
     this.weight = weightval;
   }
 
@@ -57,6 +68,13 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
+  /**
+   * Returns the attack of this enemy.
+   */
+  public int getDamage() {
+    return damage;
+  }
+
   // endregion
 
   // region : UTILITY METHODS
@@ -67,10 +85,9 @@ public class Enemy extends AbstractCharacter {
    */
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-    var enemy = (Enemy) this;
     scheduledExecutor.schedule(
         /* command = */ this::addToQueue,
-        /* delay = */ enemy.getWeight() / 10,
+        /* delay = */ this.getWeight() / 10,
         /* unit = */ TimeUnit.SECONDS);
   }
 
@@ -99,7 +116,7 @@ public class Enemy extends AbstractCharacter {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(Enemy.class, name, weight, maxHp, getCurrentHp(), defense);
+    return Objects.hash(Enemy.class, name, weight, maxHp, defense);
   }
 
   /**
@@ -112,4 +129,8 @@ public class Enemy extends AbstractCharacter {
   }
 
   // endregion
+
+  public void attack(PlayerCharacter PC) {
+    PC.getattack(damage);
+  }
 }

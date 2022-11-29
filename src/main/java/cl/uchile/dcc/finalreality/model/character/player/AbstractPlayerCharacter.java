@@ -9,6 +9,7 @@ package cl.uchile.dcc.finalreality.model.character.player;
  */
 
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import java.util.concurrent.BlockingQueue;
@@ -51,10 +52,9 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    */
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-    var player = (PlayerCharacter) this;
     scheduledExecutor.schedule(
         /* command = */ this::addToQueue,
-        /* delay = */ player.getEquippedWeapon().getWeight() / 10,
+        /* delay = */ this.getEquippedWeapon().getWeight() / 10,
         /* unit = */ TimeUnit.SECONDS);
   }
 
@@ -84,5 +84,13 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     this.equippedWeapon = weapon;
   }
 
+
+  // region : Utilities
+  public void attack(Enemy en) {
+    int dmg0 = equippedWeapon.getDamage();
+    en.getattack(dmg0);
+  }
+
+  // endregion
   // endregion
 }

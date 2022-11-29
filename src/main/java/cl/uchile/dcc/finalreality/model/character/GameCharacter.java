@@ -46,5 +46,7 @@ public interface GameCharacter {
    */
   void setCurrentHp(int hp) throws InvalidStatValueException;
 
+  void getattack(int damage);
+
   // endregion
 }
