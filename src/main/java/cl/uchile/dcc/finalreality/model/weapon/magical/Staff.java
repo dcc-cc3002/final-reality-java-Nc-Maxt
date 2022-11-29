@@ -14,7 +14,7 @@ import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
-import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
+import cl.uchile.dcc.finalreality.model.weapon.magical.AbstractMagicWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
 import java.util.Objects;

@@ -1,2 +1,4 @@
-package cl.uchile.dcc.finalreality.model.magic;public interface BlackMagic {
+package cl.uchile.dcc.finalreality.model.magic;
+
+public interface BlackMagic {
 }
