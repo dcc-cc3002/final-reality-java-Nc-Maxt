@@ -14,8 +14,8 @@ class BlackMageTest extends AxeTest {
     private BlackMage bmg1 = new BlackMage("Azrael", 20, 35, 40, queue1);
     private BlackMage bmg2 = new BlackMage("Azrael", 20, 35, 40, queue1);
     private BlackMage bmg3 = new BlackMage("Thomas", 45, 28, 50, queue1);
-    private Enemy en0 = new Enemy("Thomas", 45, 28, 50, queue1);
-    private Enemy en3 = new Enemy("Steven", 80, 502, 2, queue1);
+    private Enemy en0 = new Enemy("Thomas", 45, 45, 28, 15,queue1);
+    private Enemy en3 = new Enemy("Steven", 80, 502, 2, 13,queue1);
 
 
     @BeforeEach
@@ -30,7 +30,7 @@ class BlackMageTest extends AxeTest {
         assertTrue(bmg1.equals(bmg2),"Equal should be symmetric");
         assertFalse(bmg3.equals(bmg1),"Two different instances with different data shouldn´t be equals" );
         assertFalse(bmg2.equals(en3), "Two different Objects should be different");
-        assertFalse(bmg3.equals(en0), "Two different Objects with same data should be different");
+        assertFalse(bmg3.equals(en0), "Two different Objects with same data in some params should be different");
     }
 
 
@@ -39,7 +39,7 @@ class BlackMageTest extends AxeTest {
         assertEquals(bmg1.toString(), bmg1.toString(), "the data of the same intances should be equal");
         assertNotEquals(bmg3.toString(), bmg1.toString(), "different data in different intances shouldn´t be equal");
         assertEquals(bmg2.toString(), bmg1.toString(), "same data in different intances (same Class) should be equal");
-        assertNotEquals(bmg3.toString(), en0.toString(), "same data in different intances (different Class) shouldn´t be equal");
+        assertNotEquals(bmg3.toString(), en0.toString(), "same data in some params in different intances (different Class) shouldn´t be equal");
     }
 
     @Test

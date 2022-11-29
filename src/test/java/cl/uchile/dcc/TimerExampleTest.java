@@ -13,7 +13,7 @@ class TimerExampleTest extends EngineerTest {
 
     private BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     private BlackMage Bm_3 = new BlackMage("Kvote", 435, 13, 130, queue);
-    private Enemy badg = new Enemy("Stif", 40, 234, 20, queue);
+    private Enemy badg = new Enemy("Stif", 40, 234, 20, 26, queue);
 
     @Test
     void testsurrealFight() throws InterruptedException {
