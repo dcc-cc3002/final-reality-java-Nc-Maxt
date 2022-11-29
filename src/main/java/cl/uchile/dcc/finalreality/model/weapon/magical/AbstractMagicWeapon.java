@@ -34,4 +34,8 @@ public abstract class AbstractMagicWeapon extends AbstractWeapon {
     }
     this.magicdamage = matk;
   }
+
+  public int getMagicDamage() {
+    return magicdamage;
+  }
 }
