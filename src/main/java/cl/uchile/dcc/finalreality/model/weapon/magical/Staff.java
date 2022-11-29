@@ -58,14 +58,15 @@ public class Staff extends AbstractMagicWeapon implements UsedByBlackMage, UsedB
     return hashCode() == that.hashCode()
         && getName().equals(that.getName())
         && getDamage() == that.getDamage()
-        && getWeight() == that.getWeight();
+        && getWeight() == that.getWeight()
+        && getMagicDamage() == that.getMagicDamage();
   }
 
   /**
    * Returns the hashcode of the Staff.
    */
   public int hashCode() {
-    return Objects.hash(Staff.class, getName(), getDamage(), getWeight());
+    return Objects.hash(Staff.class, getName(), getDamage(), getMagicDamage() ,getWeight());
   }
 
   /**
