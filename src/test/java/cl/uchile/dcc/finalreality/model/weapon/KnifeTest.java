@@ -1,5 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.model.weapon.magical.Staff;
+import cl.uchile.dcc.finalreality.model.weapon.nomagical.Knife;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,8 +9,8 @@ public class KnifeTest extends StaffTest {
     private Knife k1 = new Knife("DemonKiller", 10, 5);
     protected Knife k2 = new Knife("Moon Knife", 3, 6);
     private Knife k3 = new Knife("Moon Knife", 3, 6);
-    private Staff st01 = new Staff("Demon invoquer", 3, 6);
-    private Staff st11 = new Staff("Moon Knife", 3, 6);
+    private Staff st01 = new Staff("Demon invoquer", 3, 4, 6);
+    private Staff st11 = new Staff("Moon Knife", 3, 4, 6);
 
     @Test
     void testEquals() {
