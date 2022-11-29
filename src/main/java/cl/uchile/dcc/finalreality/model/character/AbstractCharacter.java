@@ -116,5 +116,11 @@ public abstract class AbstractCharacter implements GameCharacter {
     scheduledExecutor.shutdown();
   }
 
+  public void getattack(int damage) {
+    double armorreduc = (100 * 1.0) / (100 + getDefense());
+    double actualHp = (getCurrentHp()-((damage*1.0)*armorreduc));
+    this.setCurrentHp((int) actualHp);
+  }
   // endregion
+
 }
