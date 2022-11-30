@@ -1,2 +1,4 @@
-package cl.uchile.dcc.finalreality.model.magic.BMgc;public class ThunderSpell {
+package cl.uchile.dcc.finalreality.model.magic.BMgc;
+
+public class ThunderSpell {
 }

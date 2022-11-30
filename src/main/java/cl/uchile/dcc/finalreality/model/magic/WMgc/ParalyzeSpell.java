@@ -1,2 +1,4 @@
-package cl.uchile.dcc.finalreality.model.magic.BMgc;public class ParalyzeSpell {
+package cl.uchile.dcc.finalreality.model.magic.WMgc;
+
+public class ParalyzeSpell {
 }
