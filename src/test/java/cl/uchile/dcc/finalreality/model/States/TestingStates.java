@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model;
+package cl.uchile.dcc.finalreality.model.States;
 
 import cl.uchile.dcc.finalreality.model.States.BurningState;
 import cl.uchile.dcc.finalreality.model.States.NormalState;
