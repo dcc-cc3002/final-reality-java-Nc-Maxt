@@ -15,6 +15,10 @@ class TimerExampleTest extends EngineerTest {
     private BlackMage Bm_3 = new BlackMage("Kvote", 435, 13, 130, queue);
     private Enemy badg = new Enemy("Stif", 40, 234, 20, 26, queue);
 
+    void setUp() {
+        Bm_3.setCurrentHp(Bm_3.getMaxHp());
+        badg.setCurrentHp(badg.getMaxHp());
+    }
     @Test
     void testsurrealFight() throws InterruptedException {
         assertNull(Bm_3.getEquippedWeapon(), "After inilizialized the character must not have a Weapon");
