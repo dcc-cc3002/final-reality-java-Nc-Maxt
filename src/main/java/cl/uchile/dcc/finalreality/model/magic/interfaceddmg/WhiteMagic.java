@@ -1,4 +1,6 @@
-package cl.uchile.dcc.finalreality.model.magic;
+package cl.uchile.dcc.finalreality.model.magic.interfaceddmg;
 
-public interface WhiteMagic {
+import cl.uchile.dcc.finalreality.model.magic.Spell;
+
+public interface WhiteMagic extends Spell {
 }
