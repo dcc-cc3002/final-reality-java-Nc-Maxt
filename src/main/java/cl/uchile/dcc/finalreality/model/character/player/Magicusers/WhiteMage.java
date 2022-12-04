@@ -6,11 +6,11 @@
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-package cl.uchile.dcc.finalreality.model.character.player;
+package cl.uchile.dcc.finalreality.model.character.player.Magicusers;
 
-import cl.uchile.dcc.exceptions.InvalidSpellsetException;
-import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.magic.Spell;
 import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.WhiteMagic;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
@@ -87,8 +87,8 @@ public class WhiteMage extends AbstractMage {
   public void equip(Weapons weapon) {
     try {
       weapon.equippedByWhiteMage(this);
-    } catch (InvalidWeaponEquipException iwep) {
-      System.out.println(iwep);
+    } catch (UnsupportedEquipmentException usep) {
+      System.out.println(usep);
     }
   }
 
@@ -107,7 +107,7 @@ public class WhiteMage extends AbstractMage {
   // endregion
 
   @Override
-  public void setSpell(Spell spl) throws InvalidSpellsetException {
+  public void setSpell(Spell spl) throws UnsupportedEquipmentException {
     spl.WM_trytosetSpll(this);
   }
 
