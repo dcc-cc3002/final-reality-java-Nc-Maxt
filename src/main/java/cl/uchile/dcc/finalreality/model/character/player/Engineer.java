@@ -8,7 +8,7 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
@@ -84,8 +84,8 @@ public class Engineer extends AbstractPlayerCharacter {
   public void equip(Weapons weapon) {
     try {
       weapon.equippedByEngineer(this);
-    } catch (InvalidWeaponEquipException iwep) {
-      System.out.println(iwep);
+    } catch (UnsupportedEquipmentException usep) {
+      System.out.println(usep);
     }
   }
 
