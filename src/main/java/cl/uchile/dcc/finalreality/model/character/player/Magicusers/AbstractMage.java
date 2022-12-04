@@ -8,10 +8,14 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.exceptions.InvalidSpellsetException;
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.magic.Spell;
+import cl.uchile.dcc.finalreality.model.weapon.magical.ChannelingMgWp;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -20,9 +24,10 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public abstract class AbstractMage extends AbstractPlayerCharacter {
+public abstract class AbstractMage extends AbstractPlayerCharacter implements Mages {
   protected int currentMp;
   protected final int maxMp;
+  protected Spell actualspell;
 
   /**
    * Creates a new Mage.
@@ -87,5 +92,20 @@ public abstract class AbstractMage extends AbstractPlayerCharacter {
     this.currentMp = value;
   }
 
+  abstract public void setSpell(Spell spl) throws InvalidSpellsetException;
+
+  public void useSpell(GameCharacter gmCha) throws InvalidStatValueException {
+
+
+  }
+
+  public void channelmana(ChannelingMgWp chmgwp) throws InvalidStatValueException {
+    if (!(currentMp - actualspell.getManacost()<0)) {
+      throw new InvalidStatValueException("The Character has no Mana for this Spell");
+    }
+    int actmana = this.getCurrentMp();
+    currentMp = actmana - actualspell.getManacost();
+    actualspell.useSpell(this, gmCha);
+  }
   // endregion
 }

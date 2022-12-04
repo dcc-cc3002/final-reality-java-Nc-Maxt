@@ -8,8 +8,11 @@
 
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.exceptions.InvalidSpellsetException;
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.magic.Spell;
+import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.WhiteMagic;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
 import java.util.Objects;
@@ -102,4 +105,15 @@ public class WhiteMage extends AbstractMage {
   }
 
   // endregion
+
+  @Override
+  public void setSpell(Spell spl) throws InvalidSpellsetException {
+    spl.WM_trytosetSpll(this);
+  }
+
+  public void equipwhitemagic(WhiteMagic wm) {
+    this.actualspell = wm;
+  }
+
+
 }

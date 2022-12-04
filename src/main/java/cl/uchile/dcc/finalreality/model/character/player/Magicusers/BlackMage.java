@@ -8,8 +8,12 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.exceptions.InvalidSpellsetException;
 import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.magic.Spell;
+import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.BlackMagic;
+import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.WhiteMagic;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import java.util.Objects;
@@ -101,5 +105,14 @@ public class BlackMage extends AbstractMage {
     this.underequip(ubb);
   }
   // end region
+
+  @Override
+  public void setSpell(Spell spl) throws InvalidSpellsetException {
+    spl.BM_trytosetSpll(this);
+  }
+
+  public void equipblackmagic(BlackMagic bm) {
+    this.actualspell = bm;
+  }
 
 }
