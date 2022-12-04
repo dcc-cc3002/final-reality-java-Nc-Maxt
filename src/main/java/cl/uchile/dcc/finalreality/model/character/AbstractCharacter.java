@@ -12,6 +12,8 @@ import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
+
+import cl.uchile.dcc.finalreality.model.States.State;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -27,6 +29,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   private int currentHp;
 
   protected int defense;
+  protected State state;
   protected final BlockingQueue<GameCharacter> turnsQueue;
   protected ScheduledExecutorService scheduledExecutor;
 
@@ -102,6 +105,11 @@ public abstract class AbstractCharacter implements GameCharacter {
     currentHp = value;
   }
 
+  @Override
+  public void reduceHp(int dmg) {
+    setCurrentHp(currentHp-dmg);
+  }
+
   /**
    * Adds this character to the turns queue.
    * this method is <b>protected</b>, beacuse it'll be used by
@@ -118,9 +126,59 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   public void getattack(int damage) {
     double armorreduc = (100 * 1.0) / (100 + getDefense());
-    double actualHp = (getCurrentHp()-((damage*1.0)*armorreduc));
-    this.setCurrentHp((int) actualHp);
+    this.reduceHp((int) ((damage*1.0)*armorreduc));
   }
   // endregion
+
+
+  public void Poison(int mgdmg) {
+    try{
+      state.topoison(mgdmg);
+    }catch (AssertionError As) {
+      System.out.println("The Enemy is already Poisoned");
+    }
+  }
+  public void Paralyze() {
+    try{
+      state.toparalyze();
+    }catch (AssertionError As) {
+      System.out.println("The Enemy is already Paralyzed");
+    }
+  }
+  public void Normal() {
+    try{
+      state.tonormal();
+    }catch (AssertionError As) {
+      System.out.println("The Enemy is already in a Normal State");
+    }
+  }
+
+  @Override
+  public void Thunder(int mgdmg) {
+    reduceHp(mgdmg);
+    Paralyze();
+  }
+
+  public void Burn(int mgdmg) {
+    reduceHp(mgdmg);
+    try{
+      state.toburn(mgdmg);
+    } catch (AssertionError As) {
+      System.out.println("The Enemy is already Burning");
+    }
+  }
+
+  public boolean isNormal() {
+    return state.isNormal();
+  }
+  public boolean isPoisoned() {
+    return state.isPoisoned();
+  }
+  public boolean isParalyzed() {
+    return state.isParalyzed();
+  }
+  public boolean isBurning() {
+    return state.isBurning();
+  }
 
 }
