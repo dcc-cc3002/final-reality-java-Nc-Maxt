@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.character.player;
+package cl.uchile.dcc.finalreality.model.character.player.Magicusers;
 
 /*
  * "Final Reality" (c) by R8V and MN
@@ -8,14 +8,15 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidSpellsetException;
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.concurrent.BlockingQueue;
 
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.magic.Spell;
-import cl.uchile.dcc.finalreality.model.weapon.magical.ChannelingMgWp;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -92,20 +93,23 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
     this.currentMp = value;
   }
 
-  abstract public void setSpell(Spell spl) throws InvalidSpellsetException;
-
-  public void useSpell(GameCharacter gmCha) throws InvalidStatValueException {
-
-
+  public void reduceMp(int value) {
+    setCurrentMp(getCurrentMp()-value);
   }
 
-  public void channelmana(ChannelingMgWp chmgwp) throws InvalidStatValueException {
-    if (!(currentMp - actualspell.getManacost()<0)) {
+  abstract public void setSpell(Spell spl) throws UnsupportedEquipmentException;
+
+  public void useSpell(GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException {
+    getEquippedWeapon().trytochannel(this, gmCha);
+  }
+
+  public void channelmana(GameCharacter gmCha, int mgdmg) throws InvalidStatValueException {
+    if (currentMp - actualspell.getManacost()<0) {
       throw new InvalidStatValueException("The Character has no Mana for this Spell");
     }
     int actmana = this.getCurrentMp();
     currentMp = actmana - actualspell.getManacost();
-    actualspell.useSpell(this, gmCha);
+    actualspell.useSpell(this, gmCha, mgdmg);
   }
   // endregion
 }
