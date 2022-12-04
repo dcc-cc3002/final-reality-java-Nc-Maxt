@@ -3,15 +3,14 @@ package cl.uchile.dcc.finalreality.model;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.AxeTest;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class Attackingeveryone extends AxeTest {
   private BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
