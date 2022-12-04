@@ -46,7 +46,17 @@ public interface GameCharacter {
    */
   void setCurrentHp(int hp) throws InvalidStatValueException;
 
+  void reduceHp(int mgdmg);
+
   void getattack(int damage);
+  
+  void Thunder(int mgdmg);
+
+  void Burn(int mgdmg);
+
+  void Paralyze();
+
+  void Poison(int mgdmg);
 
   // endregion
 }
