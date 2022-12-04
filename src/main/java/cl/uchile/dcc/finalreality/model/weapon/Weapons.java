@@ -1,11 +1,14 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
-import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
+import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
 
 /**
  * An interface that set obligatory getters and double dispatch methods for the weapons.
@@ -43,7 +46,7 @@ public interface Weapons {
    *
    * @param blackmage the Black Mage who used equip
    */
-  void equippedByBlackMage(BlackMage blackmage) throws InvalidWeaponEquipException;
+  void equippedByBlackMage(BlackMage blackmage) throws UnsupportedEquipmentException;
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
@@ -51,7 +54,7 @@ public interface Weapons {
    *
    * @param whitemage the White Mage who used equip
    */
-  void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException;
+  void equippedByWhiteMage(WhiteMage whitemage) throws UnsupportedEquipmentException;
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
@@ -59,7 +62,7 @@ public interface Weapons {
    *
    * @param knight the Knight who used equip
    */
-  void equippedByKnight(Knight knight) throws InvalidWeaponEquipException;
+  void equippedByKnight(Knight knight) throws UnsupportedEquipmentException;
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
@@ -67,7 +70,7 @@ public interface Weapons {
    *
    * @param engineer the Engineer who used equip
    */
-  void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException;
+  void equippedByEngineer(Engineer engineer) throws UnsupportedEquipmentException;
 
   /**
    * This method resolve the action to do: if equip the weapon or throw an Exception.
@@ -75,7 +78,9 @@ public interface Weapons {
    *
    * @param thief the Thief who used equip
    */
-  void equippedByThief(Thief thief) throws InvalidWeaponEquipException;
+  void equippedByThief(Thief thief) throws UnsupportedEquipmentException;
+
+  void trytochannel(Mages Mage, GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException;
 
   // endregion
 }
