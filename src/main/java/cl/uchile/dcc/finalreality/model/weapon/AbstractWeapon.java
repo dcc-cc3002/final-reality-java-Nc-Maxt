@@ -2,6 +2,9 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
+import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
 
 /**
  * An abstract class that holds the common behaviour of all the weapons in the game.
@@ -61,4 +64,10 @@ public abstract class AbstractWeapon implements Weapons {
   }
 
   // endregion
+
+  @Override
+  public void trytochannel(Mages Mage, GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException {
+    String info = "This Weapon cannot be used to cast Spells";
+    throw new UnsupportedEquipmentException("Weapon", "use Magic", info);
+  }
 }
