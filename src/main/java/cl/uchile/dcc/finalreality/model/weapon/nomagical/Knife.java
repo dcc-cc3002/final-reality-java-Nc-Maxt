@@ -8,12 +8,12 @@ package cl.uchile.dcc.finalreality.model.weapon.nomagical;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByKnight;
@@ -97,15 +97,15 @@ public class Knife extends AbstractWeapon implements UsedByBlackMage, UsedByKnig
   }
 
   @Override
-  public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
+  public void equippedByWhiteMage(WhiteMage whitemage) throws UnsupportedEquipmentException {
     String info = "Knifes aren't part of the equippable Weapons of a WhiteMage";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   @Override
-  public void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException {
+  public void equippedByEngineer(Engineer engineer) throws UnsupportedEquipmentException {
     String info = "Knifes aren't part of the equippable Weapons of a Engineer";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   // endregion

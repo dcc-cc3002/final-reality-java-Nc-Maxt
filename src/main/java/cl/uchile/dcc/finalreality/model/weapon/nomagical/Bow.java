@@ -8,12 +8,12 @@ package cl.uchile.dcc.finalreality.model.weapon.nomagical;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
@@ -91,21 +91,21 @@ public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
   }
 
   @Override
-  public void equippedByBlackMage(BlackMage blackmage) throws InvalidWeaponEquipException {
+  public void equippedByBlackMage(BlackMage blackmage) throws UnsupportedEquipmentException {
     String info = "Bows aren't part of the equippable Weapons of a BlackMage";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   @Override
-  public void equippedByWhiteMage(WhiteMage whitemage) throws InvalidWeaponEquipException {
+  public void equippedByWhiteMage(WhiteMage whitemage) throws UnsupportedEquipmentException {
     String info = "Bows aren't part of the equippable Weapons of a WhiteMage";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   @Override
-  public void equippedByKnight(Knight knight) throws InvalidWeaponEquipException {
+  public void equippedByKnight(Knight knight) throws UnsupportedEquipmentException {
     String info = "Bows aren't part of the equippable Weapons of a Knight";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   // endregion

@@ -8,13 +8,15 @@ package cl.uchile.dcc.finalreality.model.weapon.magical;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.exceptions.InvalidWeaponEquipException;
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
+import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
-import cl.uchile.dcc.finalreality.model.weapon.magical.AbstractMagicWeapon;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
 import java.util.Objects;
@@ -26,7 +28,7 @@ import java.util.Objects;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class Staff extends AbstractMagicWeapon implements UsedByBlackMage, UsedByWhiteMage {
+public class Staff extends AbstractMagicWeapon implements UsedByBlackMage, UsedByWhiteMage, ChannelingMgWp {
 
   /**
    * Creates a new Staff.
@@ -93,22 +95,27 @@ public class Staff extends AbstractMagicWeapon implements UsedByBlackMage, UsedB
   }
 
   @Override
-  public void equippedByKnight(Knight knight) throws InvalidWeaponEquipException {
+  public void equippedByKnight(Knight knight) throws UnsupportedEquipmentException {
     String info = "Staffs aren't part of the equippable Weapons of a Knight";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   @Override
-  public void equippedByEngineer(Engineer engineer) throws InvalidWeaponEquipException {
+  public void equippedByEngineer(Engineer engineer) throws UnsupportedEquipmentException {
     String info = "Staffs aren't part of the equippable Weapons of a Engineer";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   @Override
-  public void equippedByThief(Thief thief) throws InvalidWeaponEquipException {
+  public void equippedByThief(Thief thief) throws UnsupportedEquipmentException {
     String info = "Staffs aren't part of the equippable Weapons of a Thief";
-    throw new InvalidWeaponEquipException(info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
   }
 
   // endregion
+
+  @Override
+  public void trytochannel(Mages Mage, GameCharacter gmCha) throws InvalidStatValueException {
+    Mage.channelmana(gmCha, magicdamage);
+  }
 }
