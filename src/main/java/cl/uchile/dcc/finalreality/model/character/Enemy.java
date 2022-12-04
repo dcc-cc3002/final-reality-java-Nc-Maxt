@@ -27,7 +27,6 @@ import org.jetbrains.annotations.NotNull;
  * @author Matias Nunez
  */
 public class Enemy extends AbstractCharacter {
-  private State state;
   private final int weight;
   private final int damage;
 
@@ -140,48 +139,5 @@ public class Enemy extends AbstractCharacter {
   public void attack(PlayerCharacter PC) {
     state.stateattack(PC, damage);
   }
-
-  public void Poison(int dmg) {
-    try{
-      state.topoison(dmg);
-    }catch (AssertionError As) {
-      System.out.println("The Enemy is already Poisoned");
-    }
-  }
-  public void Paralyze() {
-    try{
-      state.toparalyze();
-    }catch (AssertionError As) {
-      System.out.println("The Enemy is already Paralyzed");
-    }
-  }
-  public void Normal() {
-    try{
-      state.tonormal();
-    }catch (AssertionError As) {
-      System.out.println("The Enemy is already in a Normal State");
-    }
-  }
-  public void Burn(int dmg) {
-    try{
-      state.toburn(dmg);
-    } catch (AssertionError As) {
-    System.out.println("The Enemy is already Poisoned");
-    }
-  }
-
-  public boolean isNormal() {
-    return state.isNormal();
-  }
-  public boolean isPoisoned() {
-    return state.isPoisoned();
-  }
-  public boolean isParalyzed() {
-    return state.isParalyzed();
-  }
-  public boolean isBurning() {
-    return state.isBurning();
-  }
-
 
 }
