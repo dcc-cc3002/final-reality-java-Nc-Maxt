@@ -80,16 +80,17 @@ public class MagicTests extends AxeTest {
     assertTrue(badg.isNormal());
     thspll.castspell(badg, 18, 71);
     assertTrue(badg.isParalyzed());
-    frspll.castspell(badg,18,80);
-    assertTrue(badg.isNormal());
-    frspll.castspell(badg, 18, 90);
-    assertTrue(badg.isBurning());
+    frspll.castspell(enem3,18,80);
+    assertTrue(enem3.isNormal());
+    frspll.castspell(enem3, 18, 90);
+    assertTrue(enem3.isBurning());
   }
 
 
-  @Disabled
+  @Test
   void borderHealTest() throws UnsupportedEquipmentException, InvalidStatValueException {
     eng0.setCurrentHp(-13);
+    wm2.setSpell(new CureWounds());
     wm2.useSpell(eng0);
     assertEquals(wm2.getMaxMp(),wm2.getCurrentMp(), "When a spell can't be cast the Mp shouln't change ");
     assertEquals(0, eng0.getCurrentHp(), "After dead a character shouldn't be healed by HealingSpell");
