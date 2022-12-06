@@ -5,7 +5,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 
 public class FireSpell extends AbstractBMSpell{
   public FireSpell() {
-    super(81);
+    super(80);
   }
 
   @Override

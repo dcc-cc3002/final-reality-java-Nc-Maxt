@@ -4,7 +4,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 
 public class ThunderSpell extends AbstractBMSpell{
   public ThunderSpell() {
-    super(71);
+    super(70);
   }
 
   @Override
