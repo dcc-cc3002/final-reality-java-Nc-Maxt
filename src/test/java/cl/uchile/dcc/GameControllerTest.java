@@ -17,9 +17,9 @@ class GameControllerTest {
   void createGmContrl() {
     GameController ads = new GameController();
     System.out.println(ads.getseed());
-    System.out.println(ads.getseed().nextInt());
-    Random das = (Random) ads.getseed();
-    System.out.println(das.nextInt());
+    System.out.println(ads.getseed());
+    int das = (int) ads.getseed();
+    System.out.println(das);
     assertEquals(das, ads.getseed());
 
   }
