@@ -86,7 +86,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
 
 
   // region : Utilities
-  public void attack(Enemy en) {
+  public void attack(GameCharacter en) {
     int dmg0 = equippedWeapon.getDamage();
     en.getattack(dmg0);
   }

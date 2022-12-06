@@ -93,10 +93,20 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
     this.currentMp = value;
   }
 
+  /**
+   * Reduce the {@code currentMp} of the character the amount given in {@code value}.
+   *
+   * <p>This method is <b>public</b>, because it will be called
+   * by methods in the Spell classes to change value of {@code MP}
+   * when casting a spell.</p>
+   */
   public void reduceMp(int value) {
     setCurrentMp(getCurrentMp()-value);
   }
 
+  /**
+   * Set the {@code spl} spell in {@code actualspell}.
+   */
   abstract public void setSpell(Spell spl) throws UnsupportedEquipmentException;
 
   public void useSpell(GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException {
@@ -108,8 +118,12 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
       throw new InvalidStatValueException("The Character has no Mana for this Spell");
     }
     int actmana = this.getCurrentMp();
-    currentMp = actmana - actualspell.getManacost();
-    actualspell.useSpell(this, gmCha, mgdmg);
+    try {
+      actualspell.useSpell(this, gmCha, mgdmg);
+      currentMp = actmana - actualspell.getManacost();
+    } catch (InvalidStatValueException invs) {
+      System.out.println(invs);
+    }
   }
   // endregion
 }
