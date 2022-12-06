@@ -9,6 +9,7 @@ package cl.uchile.dcc.finalreality.model.character;
  */
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 
 /**
  * This represents a character from the game.
@@ -57,6 +58,12 @@ public interface GameCharacter {
   void Paralyze();
 
   void Poison(int mgdmg);
+
+  void attack(GameCharacter gmch);
+
+  void useSpell(GameCharacter target) throws UnsupportedEquipmentException, InvalidStatValueException;
+
+  void waitTurn();
 
   // endregion
 }

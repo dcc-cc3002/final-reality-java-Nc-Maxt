@@ -13,6 +13,7 @@ import cl.uchile.dcc.exceptions.Require;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.States.State;
 import org.jetbrains.annotations.NotNull;
 
@@ -130,6 +131,12 @@ public abstract class AbstractCharacter implements GameCharacter {
   }
   // endregion
 
+  abstract public void attack(GameCharacter PC);
+
+  public void useSpell(GameCharacter target) throws UnsupportedEquipmentException, InvalidStatValueException {
+    throw new UnsupportedEquipmentException("CharacterClass"," Magic use", "This class cannot use Magic"+this.toString() );
+  }
+
 
   public void Poison(int mgdmg) {
     try{
@@ -156,7 +163,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   @Override
   public void Thunder(int mgdmg) {
     reduceHp(mgdmg);
-    Paralyze();
+    this.Paralyze();
   }
 
   public void Burn(int mgdmg) {

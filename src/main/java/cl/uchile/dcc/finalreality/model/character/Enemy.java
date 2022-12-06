@@ -136,7 +136,7 @@ public class Enemy extends AbstractCharacter {
 
   // endregion
 
-  public void attack(PlayerCharacter PC) {
+  public void attack(GameCharacter PC) {
     state.stateattack(PC, damage);
   }
 
