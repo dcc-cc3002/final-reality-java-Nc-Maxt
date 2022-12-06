@@ -1,5 +1,4 @@
 package cl.uchile.dcc;
-package cl.uchile.dcc.finalreality
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
