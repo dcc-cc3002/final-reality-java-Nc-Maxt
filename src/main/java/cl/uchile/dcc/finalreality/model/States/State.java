@@ -1,13 +1,14 @@
 package cl.uchile.dcc.finalreality.model.States;
 
 import cl.uchile.dcc.finalreality.model.character.Enemy;
+import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 
 public interface State {
 
   void setChar(Enemy enem);
 
-  void stateattack(PlayerCharacter Pc, int damage);
+  void stateattack(GameCharacter Pc, int damage);
 
   void topoison(int dmg);
 

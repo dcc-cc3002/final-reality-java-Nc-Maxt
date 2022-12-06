@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.model.States;
 
 import cl.uchile.dcc.finalreality.model.character.Enemy;
+import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 
 public abstract class AbstractState implements State {
@@ -16,7 +17,7 @@ public abstract class AbstractState implements State {
   }
 
   @Override
-  public void stateattack(PlayerCharacter Pc, int damage) {
+  public void stateattack(GameCharacter Pc, int damage) {
     Pc.getattack(damage);
   }
 
