@@ -17,7 +17,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import cl.uchile.dcc.finalreality.model.States.*;
-import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -36,6 +35,7 @@ public class Enemy extends AbstractCharacter {
    * @param name       the character's name
    * @param maxHp      the character's max hp
    * @param defense    the character's defense
+   * @param damage     the character's damage
    * @param turnsQueue the queue with the characters waiting for their turn
    */
   public Enemy(@NotNull final String name, final int weight, int maxHp, int defense, int damage,
@@ -57,7 +57,6 @@ public class Enemy extends AbstractCharacter {
     }
     this.damage = damageval;
     this.weight = weightval;
-    this.setState(new NormalState());
   }
 
   // region : ACCESSORS
@@ -76,25 +75,23 @@ public class Enemy extends AbstractCharacter {
     return damage;
   }
 
-  public void setState(State sta) {
-    state = sta;
-    state.setChar(this);
-  }
-
   // endregion
 
   // region : UTILITY METHODS
 
-  /**
-   * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
-   * seconds before adding the character to the queue.
-   */
+  @Override
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
     scheduledExecutor.schedule(
         /* command = */ this::addToQueue,
         /* delay = */ this.getWeight() / 10,
         /* unit = */ TimeUnit.SECONDS);
+  }
+
+  @Override
+  public void attack(GameCharacter gmch) {
+    int dmg0 = damage;
+    gmch.getattack(dmg0);
   }
 
   /**
@@ -136,8 +133,6 @@ public class Enemy extends AbstractCharacter {
 
   // endregion
 
-  public void attack(GameCharacter PC) {
-    state.stateattack(PC, damage);
-  }
+
 
 }
