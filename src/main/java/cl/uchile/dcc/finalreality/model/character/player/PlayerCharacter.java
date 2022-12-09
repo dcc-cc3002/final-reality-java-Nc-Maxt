@@ -20,7 +20,7 @@ public interface PlayerCharacter extends GameCharacter {
    * Start the implementation of double dispatch disambiguating the type,
    * calling a method implemented into the weapon class.
    *
-   * @param weapon the weapon that it's trying to equip to the White Mage
+   * @param weapon the weapon that it's trying to equip to the Character.
    */
   void equip(Weapons weapon);
 
