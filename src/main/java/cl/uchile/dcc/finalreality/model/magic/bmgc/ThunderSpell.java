@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.magic.BMgc;
+package cl.uchile.dcc.finalreality.model.magic.bmgc;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -18,7 +18,7 @@ import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.BlackMagic;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class ThunderSpell extends AbstractBMSpell{
+public class ThunderSpell extends AbstractBMSpell {
   /**
    * Creates a new ThunderSpell.
    *
@@ -29,7 +29,7 @@ public class ThunderSpell extends AbstractBMSpell{
 
   @Override
   public void castspell(GameCharacter gmcha, int mgdmg, int numalea) {
-    if (numalea>getProbrequired()) {
+    if (numalea > getProbrequired()) {
       gmcha.Thunder(mgdmg);
     }
     gmcha.reduceHp(mgdmg);

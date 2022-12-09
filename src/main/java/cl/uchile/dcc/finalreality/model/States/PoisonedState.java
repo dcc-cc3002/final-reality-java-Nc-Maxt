@@ -26,8 +26,13 @@ public class PoisonedState extends AbstractDmgState {
   }
 
   @Override
-  public void topoison(int dmg) {error();}
+  public void topoison(int dmg) {
+    error();
+  }
 
   @Override
-  public boolean isPoisoned() {return true;}
+  public boolean isPoisoned() {
+    return true;
+  }
+
 }

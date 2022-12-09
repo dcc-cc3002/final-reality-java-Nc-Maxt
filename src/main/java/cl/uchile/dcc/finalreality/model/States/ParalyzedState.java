@@ -14,12 +14,16 @@ package cl.uchile.dcc.finalreality.model.States;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class ParalyzedState extends AbstractState{
+public class ParalyzedState extends AbstractState {
 
   @Override
-  public void toparalyze() {error();}
+  public void toparalyze() {
+    error();
+  }
 
   @Override
-  public boolean isParalyzed() {return true;}
+  public boolean isParalyzed() {
+    return true;
+  }
 
 }

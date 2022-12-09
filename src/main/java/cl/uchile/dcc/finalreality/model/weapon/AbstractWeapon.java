@@ -72,12 +72,15 @@ public abstract class AbstractWeapon implements Weapons {
   }
 
   @Override
-  public int getMagicDamage() throws UnsupportedEquipmentException {throw new UnsupportedEquipmentException("Weapon","Magic Damage", "This Weapon isn't magical");}
+  public int getMagicDamage() throws UnsupportedEquipmentException {
+    throw new UnsupportedEquipmentException("Weapon", "Magic Damage", "This Weapon isn't magical");
+  }
 
   // endregion
 
   @Override
-  public void trytochannel(Mages Mage, GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException {
+  public void trytochannel(Mages mage, GameCharacter gmCha)
+      throws UnsupportedEquipmentException, InvalidStatValueException {
     String info = "This Weapon cannot be used to cast Spells";
     throw new UnsupportedEquipmentException("Weapon", "use Magic", info);
   }

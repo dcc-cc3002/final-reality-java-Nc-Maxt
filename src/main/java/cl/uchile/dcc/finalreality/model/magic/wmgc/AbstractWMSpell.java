@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.magic.WMgc;
+package cl.uchile.dcc.finalreality.model.magic.wmgc;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -32,12 +32,13 @@ public abstract class AbstractWMSpell extends AbstractSpell implements WhiteMagi
   }
 
   @Override
-  public void BM_trytosetSpll(BlackMage BMmg) throws UnsupportedEquipmentException {
-    throw new UnsupportedEquipmentException("Spell", "this Class", "Tried to equip a Black Mage Spell");
+  public void BM_trytosetSpll(BlackMage bmmg) throws UnsupportedEquipmentException {
+    String ds = "Tried to equip a Black Mage Spell";
+    throw new UnsupportedEquipmentException("Spell", "this Class", ds);
   }
 
   @Override
-  public void WM_trytosetSpll(WhiteMage WMmg) {
-    WMmg.equipwhitemagic(this);
+  public void WM_trytosetSpll(WhiteMage wmmg) {
+    wmmg.equipwhitemagic(this);
   }
 }

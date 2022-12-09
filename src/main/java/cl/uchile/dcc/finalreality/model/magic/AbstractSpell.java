@@ -15,15 +15,15 @@ package cl.uchile.dcc.finalreality.model.magic;
  * @author Matias Nunez
  */
 public abstract class AbstractSpell implements Spell {
-  private int Manacost;
+  private int manacost;
 
   /**
    * Creates a new Spell.
    *
    * @param cost  The Mp needed to use the Spell.
    */
-  protected AbstractSpell (int cost) {
-    this.Manacost = cost;
+  protected AbstractSpell(int cost) {
+    this.manacost = cost;
   }
 
   /**
@@ -31,7 +31,7 @@ public abstract class AbstractSpell implements Spell {
    *
    */
   public int getManacost() {
-    return Manacost;
+    return manacost;
   }
 
 

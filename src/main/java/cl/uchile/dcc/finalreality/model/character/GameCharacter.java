@@ -9,9 +9,7 @@ package cl.uchile.dcc.finalreality.model.character;
  */
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.States.State;
-
 import java.beans.PropertyChangeListener;
 
 /**

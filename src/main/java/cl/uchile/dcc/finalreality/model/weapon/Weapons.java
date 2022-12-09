@@ -3,12 +3,12 @@ package cl.uchile.dcc.finalreality.model.weapon;
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
 
 /**
  * An interface that set obligatory getters and double dispatch methods for the weapons.
@@ -87,7 +87,8 @@ public interface Weapons {
    * @param Mage the Mage who is trying to channel their magic through the Weapon
    * @param gmCha the Gamecharacter that could recieve the Spell
    */
-  void trytochannel(Mages Mage, GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException;
+  void trytochannel(Mages mage, GameCharacter gmCha)
+      throws UnsupportedEquipmentException, InvalidStatValueException;
 
   /**
    * Returns this weapons's MagicDamage.

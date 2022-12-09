@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.model.magic.interfaceddmg;
 
 import cl.uchile.dcc.finalreality.model.magic.Spell;
+
 /**
  * An interface that bring together the Spells that can be used by White Mages.
  *
@@ -8,4 +9,5 @@ import cl.uchile.dcc.finalreality.model.magic.Spell;
  * @author Matias Nunez
  */
 public interface WhiteMagic extends Spell {
+
 }

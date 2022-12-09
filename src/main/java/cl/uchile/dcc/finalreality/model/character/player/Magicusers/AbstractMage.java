@@ -12,10 +12,10 @@ import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.concurrent.BlockingQueue;
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.magic.Spell;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -94,20 +94,22 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
 
   @Override
   public void reduceMp(int value) {
-    setCurrentMp(getCurrentMp()-value);
+    setCurrentMp(getCurrentMp() - value);
   }
 
   // endregion
 
   // region : Magic Double Dispatch
   @Override
-  public void useSpell(GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException {
+  public void useSpell(GameCharacter gmCha)
+      throws UnsupportedEquipmentException, InvalidStatValueException {
     getEquippedWeapon().trytochannel(this, gmCha);
   }
 
-
-  public void channelmana(GameCharacter gmCha) throws InvalidStatValueException, UnsupportedEquipmentException {
-    if (currentMp - actualspell.getManacost()<0) {
+  @Override
+  public void channelmana(GameCharacter gmCha)
+      throws InvalidStatValueException, UnsupportedEquipmentException {
+    if (currentMp - actualspell.getManacost() < 0) {
       throw new InvalidStatValueException("The Character has no Mana for this Spell");
     }
     try {

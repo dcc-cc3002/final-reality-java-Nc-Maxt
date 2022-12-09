@@ -23,13 +23,15 @@ public abstract class AbstractMagicWeapon extends AbstractWeapon {
    * @param magicdamage the weapon's magic damage
    * @param weight      the weapon's weight
    */
-  protected AbstractMagicWeapon(final String name, final int damage, final int magicdamage,final int weight) {
+  protected AbstractMagicWeapon(final String name, final int damage,
+                                final int magicdamage, final int weight) {
     super(name, damage, weight);
     int matk = magicdamage;
     try {
       Require.statValueAtLeast(1, magicdamage, "Magic Damage of the Weapon");
     } catch (InvalidStatValueException inv) {
-      System.out.println("The Magic damage of a MagicWeapon can't be lower than 1, automatically setted to 1");
+      String ds = "The Magic damage of a MagicWeapon can't be lower than 1, setted to 1";
+      System.out.println(ds);
       matk = 1;
     }
     this.magicdamage = matk;

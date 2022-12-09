@@ -35,23 +35,24 @@ public interface Spell {
    * @param mgs The Mage that cast the Spell.
    * @param gma The GameCharacter that will be affected by the Spell.
    */
-  void useSpell(Mages mgs, GameCharacter gma) throws InvalidStatValueException, UnsupportedEquipmentException;
+  void useSpell(Mages mgs, GameCharacter gma)
+      throws InvalidStatValueException, UnsupportedEquipmentException;
 
   /**
    * This method resolve the action to do: if set the spell or throw an Exception.
    * it's part of the implementation of Double Dispatch for Magic.
    *
-   * @param BMmg the BlackMage who used setSpell.
+   * @param bmmg the BlackMage who used setSpell.
    */
-  void BM_trytosetSpll(BlackMage BMmg) throws UnsupportedEquipmentException;
+  void BM_trytosetSpll(BlackMage bmmg) throws UnsupportedEquipmentException;
 
   /**
    * This method resolve the action to do: if set the spell or throw an Exception.
    * it's part of the implementation of Double Dispatch for Magic.
    *
-   * @param WMmg the BlackMage who used setSpell.
+   * @param wmmg the BlackMage who used setSpell.
    */
-  void WM_trytosetSpll(WhiteMage WMmg) throws UnsupportedEquipmentException;
+  void WM_trytosetSpll(WhiteMage wmmg) throws UnsupportedEquipmentException;
 
 
 }

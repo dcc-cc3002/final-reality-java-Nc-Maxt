@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.magic.WMgc;
+package cl.uchile.dcc.finalreality.model.magic.wmgc;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,28 +8,29 @@ package cl.uchile.dcc.finalreality.model.magic.WMgc;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
 import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.WhiteMagic;
 
 /**
- * A {@link WhiteMagic} Spell used to cause {@code ParalyzedState}.
+ * A {@link WhiteMagic} Spell used to cause {@code PoisonState}.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class ParalyzeSpell extends AbstractWMSpell implements WhiteMagic {
-
+public class PoisonSpell extends AbstractWMSpell implements WhiteMagic {
   /**
-   * Creates a new ParalyzeSpell.
+   * Creates a new PoisonSpell.
    *
    */
-  public ParalyzeSpell() {
-    super(25);
+  public PoisonSpell() {
+    super(40);
   }
 
   @Override
-  public void useSpell(Mages mgs, GameCharacter gma) {
-    gma.Paralyze();
+  public void useSpell(Mages mgs, GameCharacter gma) throws UnsupportedEquipmentException {
+    int mgdmg = (int) mgs.getEquippedWeapon().getMagicDamage();
+    gma.Poison(mgdmg);
   }
 }

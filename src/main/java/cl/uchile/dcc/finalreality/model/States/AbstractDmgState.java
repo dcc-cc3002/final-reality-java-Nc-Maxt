@@ -16,7 +16,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public abstract class AbstractDmgState extends AbstractState{
+public abstract class AbstractDmgState extends AbstractState {
   private int magicdmg;
 
   /**
@@ -25,13 +25,13 @@ public abstract class AbstractDmgState extends AbstractState{
    * @param dmg  The magicDamage deal by the Spell saved in the State.
    */
   protected AbstractDmgState(int dmg) {
-    double dmgxturn = (dmg/3);
+    double dmgxturn = (dmg / 3);
     this.magicdmg = (int) dmgxturn;
   }
 
 
-  public void stateattack(GameCharacter Pc, int damage) {
-    Pc.getattack(damage);
+  public void stateattack(GameCharacter pc, int damage) {
+    pc.getattack(damage);
   }
 
 

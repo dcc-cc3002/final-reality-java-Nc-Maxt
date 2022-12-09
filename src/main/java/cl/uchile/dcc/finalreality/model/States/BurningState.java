@@ -26,8 +26,13 @@ public class BurningState extends AbstractDmgState {
   }
 
   @Override
-  public void toburn(int dmg) {error();}
+  public void toburn(int dmg) {
+    error();
+  }
 
   @Override
-  public boolean isBurning() {return true;}
+  public boolean isBurning() {
+    return true;
+  }
+
 }

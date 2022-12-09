@@ -10,18 +10,14 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
-
-import java.beans.PropertyChangeListener;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-
-import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.States.NormalState;
 import cl.uchile.dcc.finalreality.model.States.State;
-import org.jetbrains.annotations.NotNull;
-
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
@@ -104,7 +100,7 @@ public abstract class AbstractCharacter implements GameCharacter {
     } catch (InvalidStatValueException inv) {
       System.out.println(this.getName() + " died");
       value = 0;
-      changes.firePropertyChange(new PropertyChangeEvent(this,"dead", null, null ));
+      changes.firePropertyChange(new PropertyChangeEvent(this, "dead", null, null));
     }
     try {
       Require.statValueAtMost(maxHp, hp, "Current HP");
@@ -117,13 +113,14 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   @Override
   public void reduceHp(int dmg) {
-    setCurrentHp(currentHp-dmg);
+    setCurrentHp(currentHp - dmg);
   }
 
   public void setState(State sta) {
     state = sta;
     state.setChar(this);
   }
+
   @Override
   public void addlistener(PropertyChangeListener resp) {
     changes.addPropertyChangeListener(resp);
@@ -151,7 +148,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   @Override
   public void getattack(int damage) {
     double armorreduc = (100 * 1.0) / (100 + getDefense());
-    this.reduceHp((int) ((damage*1.0)*armorreduc));
+    this.reduceHp((int) ((damage * 1.0) * armorreduc));
   }
 
   // endregion
@@ -160,25 +157,27 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   @Override
   public void Poison(int mgdmg) {
-    try{
+    try {
       state.topoison(mgdmg);
-    }catch (AssertionError As) {
+    } catch (AssertionError as) {
       System.out.println("The Enemy is already Poisoned");
     }
   }
+
   @Override
   public void Paralyze() {
-    try{
+    try {
       state.toparalyze();
-    }catch (AssertionError As) {
+    } catch (AssertionError as) {
       System.out.println("The Enemy is already Paralyzed");
     }
   }
+
   @Override
   public void Normal() {
-    try{
+    try {
       state.tonormal();
-    }catch (AssertionError As) {
+    } catch (AssertionError as) {
       System.out.println("The Enemy is already in a Normal State");
     }
   }
@@ -192,9 +191,9 @@ public abstract class AbstractCharacter implements GameCharacter {
   @Override
   public void Burn(int mgdmg) {
     reduceHp(mgdmg);
-    try{
+    try {
       state.toburn(mgdmg);
-    } catch (AssertionError As) {
+    } catch (AssertionError as) {
       System.out.println("The Enemy is already Burning");
     }
   }
@@ -203,14 +202,17 @@ public abstract class AbstractCharacter implements GameCharacter {
   public boolean isNormal() {
     return state.isNormal();
   }
+
   @Override
   public boolean isPoisoned() {
     return state.isPoisoned();
   }
+
   @Override
   public boolean isParalyzed() {
     return state.isParalyzed();
   }
+
   @Override
   public boolean isBurning() {
     return state.isBurning();

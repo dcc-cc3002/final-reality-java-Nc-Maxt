@@ -9,11 +9,11 @@ package cl.uchile.dcc.finalreality.model.weapon.nomagical;
  */
 
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByEngineer;
 import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByThief;
@@ -93,19 +93,19 @@ public class Bow extends AbstractWeapon implements UsedByEngineer, UsedByThief {
   @Override
   public void equippedByBlackMage(BlackMage blackmage) throws UnsupportedEquipmentException {
     String info = "Bows aren't part of the equippable Weapons of a BlackMage";
-    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class", info);
   }
 
   @Override
   public void equippedByWhiteMage(WhiteMage whitemage) throws UnsupportedEquipmentException {
     String info = "Bows aren't part of the equippable Weapons of a WhiteMage";
-    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class", info);
   }
 
   @Override
   public void equippedByKnight(Knight knight) throws UnsupportedEquipmentException {
     String info = "Bows aren't part of the equippable Weapons of a Knight";
-    throw new UnsupportedEquipmentException("Weapon", "this Class",info);
+    throw new UnsupportedEquipmentException("Weapon", "this Class", info);
   }
 
   // endregion

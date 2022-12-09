@@ -13,7 +13,8 @@ public interface Mages extends PlayerCharacter {
    * <p>This method is <b>public</b>, because it will be called
    * by methods in the {@code ChannelingMgWp} classes.</p>
    */
-  void channelmana(GameCharacter gmCha) throws InvalidStatValueException, UnsupportedEquipmentException;
+  void channelmana(GameCharacter gmCha)
+      throws InvalidStatValueException, UnsupportedEquipmentException;
 
   /**
    * Start the implementation of double dispatch disambiguating the type
@@ -37,6 +38,7 @@ public interface Mages extends PlayerCharacter {
    *
    * @param target the {@code GameCharacter} that will recieve the Spell.
    */
-  void useSpell(GameCharacter target) throws UnsupportedEquipmentException, InvalidStatValueException;
+  void useSpell(GameCharacter target)
+      throws UnsupportedEquipmentException, InvalidStatValueException;
 
 }

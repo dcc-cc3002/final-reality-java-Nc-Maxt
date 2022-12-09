@@ -14,12 +14,16 @@ package cl.uchile.dcc.finalreality.model.States;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class NormalState extends AbstractState{
+public class NormalState extends AbstractState {
 
   @Override
-  public void tonormal() {error();}
+  public void tonormal() {
+    error();
+  }
 
   @Override
-  public boolean isNormal() {return true;}
+  public boolean isNormal() {
+    return true;
+  }
 
 }

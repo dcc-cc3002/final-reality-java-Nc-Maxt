@@ -18,11 +18,11 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
  */
 public abstract class AbstractState implements State {
 
-  protected GameCharacter Pj;
+  protected GameCharacter pj;
 
   @Override
-  public void setChar(GameCharacter Gc) {
-    this.Pj = Gc;
+  public void setChar(GameCharacter gc) {
+    this.pj = gc;
   }
 
   /**
@@ -31,30 +31,55 @@ public abstract class AbstractState implements State {
    * @param state the new State of the Pj.
    */
   protected void changeState(State state) {
-    Pj.setState(state);
+    pj.setState(state);
   }
 
   /**
    * Throws a new error associated with the State pattern.
    *
    */
-  protected void error() { throw new AssertionError("Wrong State");}
+  protected void error() {
+    throw new AssertionError("Wrong State");
+  }
 
   @Override
-  public void topoison(int dmg) {this.changeState(new PoisonedState(dmg));}
+  public void topoison(int dmg) {
+    this.changeState(new PoisonedState(dmg));
+  }
+
   @Override
-  public void toparalyze() {this.changeState(new ParalyzedState());}
+  public void toparalyze() {
+    this.changeState(new ParalyzedState());
+  }
+
   @Override
-  public void tonormal() {this.changeState(new NormalState());}
+  public void tonormal() {
+    this.changeState(new NormalState());
+  }
+
   @Override
-  public void toburn(int dmg) {this.changeState(new BurningState(dmg));}
+  public void toburn(int dmg) {
+    this.changeState(new BurningState(dmg));
+  }
+
   @Override
-  public boolean isNormal() {return false;}
+  public boolean isNormal() {
+    return false;
+  }
+
   @Override
-  public boolean isPoisoned() {return false;}
+  public boolean isPoisoned() {
+    return false;
+  }
+
   @Override
-  public boolean isParalyzed() {return false;}
+  public boolean isParalyzed() {
+    return false;
+  }
+
   @Override
-  public boolean isBurning() {return false;}
+  public boolean isBurning() {
+    return false;
+  }
 
 }

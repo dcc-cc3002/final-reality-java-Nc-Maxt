@@ -15,7 +15,7 @@ package cl.uchile.dcc.exceptions;
  * @author Matias Nunez
  */
 
-public class UnsupportedEquipmentException extends Exception{
+public class UnsupportedEquipmentException extends Exception {
   /**
    * Creates a new {@code UnsupportedEquipmentException} with a {@code description} of the
    * error.
@@ -26,8 +26,8 @@ public class UnsupportedEquipmentException extends Exception{
    */
 
   public UnsupportedEquipmentException(String tip, String reason, String description) {
-      super(("The provided '%s' is not a valid '%s' for '%s'. "
-          .formatted(tip, tip, reason)) + description);
+    super(("The provided '%s' is not a valid '%s' for '%s'. "
+        .formatted(tip, tip, reason)) + description);
   }
 
 }
