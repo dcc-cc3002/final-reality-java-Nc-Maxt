@@ -1,2 +1,4 @@
-package cl.uchile.dcc.finalreality.Controller.MainStates;public class Active {
+package cl.uchile.dcc.finalreality.Controller.MainStates;
+
+public class Active {
 }

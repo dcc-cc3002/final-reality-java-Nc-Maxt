@@ -1,2 +1,4 @@
-package cl.uchile.dcc.finalreality.Controller.MainStates;public class AbstractMainState {
+package cl.uchile.dcc.finalreality.Controller.MainStates;
+
+public abstract class AbstractMainState {
 }
