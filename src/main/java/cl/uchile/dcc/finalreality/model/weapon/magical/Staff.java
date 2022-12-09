@@ -115,7 +115,7 @@ public class Staff extends AbstractMagicWeapon implements UsedByBlackMage, UsedB
   // endregion
 
   @Override
-  public void trytochannel(Mages Mage, GameCharacter gmCha) throws InvalidStatValueException {
-    Mage.channelmana(gmCha, magicdamage);
+  public void trytochannel(Mages Mage, GameCharacter gmCha) throws InvalidStatValueException, UnsupportedEquipmentException {
+    Mage.channelmana(gmCha);
   }
 }

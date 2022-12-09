@@ -80,7 +80,19 @@ public interface Weapons {
    */
   void equippedByThief(Thief thief) throws UnsupportedEquipmentException;
 
+  /**
+   * This method resolve the action to do: if equip the weapon or throw an Exception.
+   * it's part of the implementation of Double Dispatch for equip.
+   *
+   * @param Mage the Mage who is trying to channel their magic through the Weapon
+   * @param gmCha the Gamecharacter that could recieve the Spell
+   */
   void trytochannel(Mages Mage, GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException;
+
+  /**
+   * Returns this weapons's MagicDamage.
+   */
+  int getMagicDamage() throws UnsupportedEquipmentException;
 
   // endregion
 }

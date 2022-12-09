@@ -1,5 +1,13 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+/*
+ * "Final Reality" (c) by R8V and NM
+ * "Final Reality" is licensed under a
+ * Creative Commons Attribution 4.0 International License.
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
+ */
+
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
@@ -62,6 +70,9 @@ public abstract class AbstractWeapon implements Weapons {
   public int getWeight() {
     return weight;
   }
+
+  @Override
+  public int getMagicDamage() throws UnsupportedEquipmentException {throw new UnsupportedEquipmentException("Weapon","Magic Damage", "This Weapon isn't magical");}
 
   // endregion
 
