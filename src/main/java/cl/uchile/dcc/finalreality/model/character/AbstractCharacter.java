@@ -10,12 +10,18 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
+
+import java.beans.PropertyChangeListener;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
+import cl.uchile.dcc.finalreality.model.States.NormalState;
 import cl.uchile.dcc.finalreality.model.States.State;
 import org.jetbrains.annotations.NotNull;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeSupport;
 
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
@@ -30,9 +36,11 @@ public abstract class AbstractCharacter implements GameCharacter {
   private int currentHp;
 
   protected int defense;
-  protected State state;
+  protected State state = new NormalState();
   protected final BlockingQueue<GameCharacter> turnsQueue;
   protected ScheduledExecutorService scheduledExecutor;
+  private PropertyChangeSupport changes;
+
 
   /**
    * Creates a new character.
@@ -64,10 +72,10 @@ public abstract class AbstractCharacter implements GameCharacter {
     this.currentHp = maxHp;
     this.defense = defval;
     this.turnsQueue = turnsQueue;
+    this.changes = new PropertyChangeSupport(this);
   }
 
   // region : ACCESSORS
-
   @Override
   public String getName() {
     return name;
@@ -96,6 +104,7 @@ public abstract class AbstractCharacter implements GameCharacter {
     } catch (InvalidStatValueException inv) {
       System.out.println(this.getName() + " died");
       value = 0;
+      changes.firePropertyChange(new PropertyChangeEvent(this,"dead", null, null ));
     }
     try {
       Require.statValueAtMost(maxHp, hp, "Current HP");
@@ -111,6 +120,19 @@ public abstract class AbstractCharacter implements GameCharacter {
     setCurrentHp(currentHp-dmg);
   }
 
+  public void setState(State sta) {
+    state = sta;
+    state.setChar(this);
+  }
+  @Override
+  public void addlistener(PropertyChangeListener resp) {
+    changes.addPropertyChangeListener(resp);
+  }
+
+  // endregion
+
+  // region : Utilities
+
   /**
    * Adds this character to the turns queue.
    * this method is <b>protected</b>, beacuse it'll be used by
@@ -125,19 +147,18 @@ public abstract class AbstractCharacter implements GameCharacter {
     scheduledExecutor.shutdown();
   }
 
+
+  @Override
   public void getattack(int damage) {
     double armorreduc = (100 * 1.0) / (100 + getDefense());
     this.reduceHp((int) ((damage*1.0)*armorreduc));
   }
+
   // endregion
 
-  abstract public void attack(GameCharacter PC);
+  // region : State Pattern for Altered States
 
-  public void useSpell(GameCharacter target) throws UnsupportedEquipmentException, InvalidStatValueException {
-    throw new UnsupportedEquipmentException("CharacterClass"," Magic use", "This class cannot use Magic"+this.toString() );
-  }
-
-
+  @Override
   public void Poison(int mgdmg) {
     try{
       state.topoison(mgdmg);
@@ -145,6 +166,7 @@ public abstract class AbstractCharacter implements GameCharacter {
       System.out.println("The Enemy is already Poisoned");
     }
   }
+  @Override
   public void Paralyze() {
     try{
       state.toparalyze();
@@ -152,6 +174,7 @@ public abstract class AbstractCharacter implements GameCharacter {
       System.out.println("The Enemy is already Paralyzed");
     }
   }
+  @Override
   public void Normal() {
     try{
       state.tonormal();
@@ -166,6 +189,7 @@ public abstract class AbstractCharacter implements GameCharacter {
     this.Paralyze();
   }
 
+  @Override
   public void Burn(int mgdmg) {
     reduceHp(mgdmg);
     try{
@@ -175,17 +199,22 @@ public abstract class AbstractCharacter implements GameCharacter {
     }
   }
 
+  @Override
   public boolean isNormal() {
     return state.isNormal();
   }
+  @Override
   public boolean isPoisoned() {
     return state.isPoisoned();
   }
+  @Override
   public boolean isParalyzed() {
     return state.isParalyzed();
   }
+  @Override
   public boolean isBurning() {
     return state.isBurning();
   }
+  // endregion
 
 }
