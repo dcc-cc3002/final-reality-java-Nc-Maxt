@@ -12,18 +12,22 @@ import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class GameController {
+public class GameController implements PropertyChangeListener {
 
-  private final BlockingQueue<GameCharacter> queue1 = new LinkedBlockingQueue<>();
-  private final ArrayList<PlayerCharacter> listapc = new ArrayList<>() ;
-  private final ArrayList<Enemy> listaen = new ArrayList<>() ;
+  private BlockingQueue<GameCharacter> queue1 = new LinkedBlockingQueue<>();
+  private ArrayList<PlayerCharacter> listapc = new ArrayList<>() ;
+  private ArrayList<Enemy> listaen = new ArrayList<>() ;
   private final int seed;
   private Random generator;
+
+
 
   public GameController() {
     this(new Random().nextInt());
@@ -34,23 +38,17 @@ public class GameController {
     this.generator = new Random(kernel);
     for(int i = 1; i <= (generator.nextInt(2)+5); i = i + 1) {
       Enemy en = createEnemy("Enemy"+Integer.toString(i));
+      en.addlistener(this);
       listaen.add(en);
       en.waitTurn();
     }
-    for (int i = 1; i <= 5; i = i+1) {
-      int clss = generator.nextInt(5)+1;
-      PlayerCharacter Pc = createPC(clss);
-      listapc.add(Pc);
-      Pc.waitTurn();
-    }
   }
 
-  private PlayerCharacter createPC(int clss) {
-    if (clss==1) {return createEngineer(Integer.toString(clss)); }
-    if (clss==2) {return createKnight(Integer.toString(clss)); }
-    if (clss==3) {return createThief(Integer.toString(clss)); }
-    if (clss==4) {return createWhiteMage(Integer.toString(clss)); }
-    return createBlackMage(Integer.toString(clss));
+  @Override
+  public void propertyChange(PropertyChangeEvent evt) {
+    if (evt.getPropertyName()=="dead") {
+      queue1.remove(evt.getSource());
+    }
   }
 
   public int getseed() {
@@ -115,6 +113,10 @@ public class GameController {
     attacker.useSpell(target);
   }
 
+  public void equip(GameCharacter GmChar, Weapons wp) throws UnsupportedEquipmentException {
+    GmChar.equip(wp);
+  }
+
   public void waitTurn(GameCharacter character) {
     character.waitTurn();
   }
@@ -140,5 +142,6 @@ public class GameController {
     return Ewin;
     // TODO: Handle the enemy winning the game
   }
+
 
 }
