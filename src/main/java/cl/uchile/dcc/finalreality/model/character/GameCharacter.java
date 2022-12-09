@@ -10,6 +10,9 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
+import cl.uchile.dcc.finalreality.model.States.State;
+
+import java.beans.PropertyChangeListener;
 
 /**
  * This represents a character from the game.
@@ -43,27 +46,106 @@ public interface GameCharacter {
   int getDefense();
 
   /**
-   * Sets this character's current HP to {@code valuehp}.
+   * Sets this character's {@code CurrentHp} to {@code hp}.
    */
   void setCurrentHp(int hp) throws InvalidStatValueException;
 
-  void reduceHp(int mgdmg);
+  /**
+   * Changes the {@code CurrentHp} substracting {@code dmg} to it.
+   */
+  void reduceHp(int dmg);
 
-  void getattack(int damage);
-  
-  void Thunder(int mgdmg);
+  /**
+   * Add a Suscriptor.
+   */
+  void addlistener(PropertyChangeListener resp);
 
-  void Burn(int mgdmg);
+  // endregion
 
-  void Paralyze();
+  // region : Utilities
 
-  void Poison(int mgdmg);
+  /**
+   * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
+   * seconds before adding the character to the queue.
+   */
+  void waitTurn();
 
+  /**
+   * Method that is used by this character to attack another.
+   *
+   * @param gmch the {@code GameCharacter} that will recieve the attack.
+   */
   void attack(GameCharacter gmch);
 
-  void useSpell(GameCharacter target) throws UnsupportedEquipmentException, InvalidStatValueException;
 
-  void waitTurn();
+  /**
+   * Method that is used by this character to recieve an attack from another.
+   *
+   * @param damage the damage.
+   */
+  void getattack(int damage);
+
+  // endregion
+
+  // region : State Pattern for Altered States
+
+  /**
+   * Change the State of the Character to {@code NormalState}.
+   *
+   */
+  void Normal();
+
+  /**
+   * Change the State of the Character to {@code ParalyzedState}.
+   *
+   * @param mgdmg the damage that {@code GameCharacter} will recieve from the Spell.
+   */
+  void Thunder(int mgdmg);
+
+  /**
+   * Change the State of the Character to {@code BurningState}.
+   *
+   * @param mgdmg the damage that {@code GameCharacter} will recieve from the Spell.
+   */
+  void Burn(int mgdmg);
+  /**
+   * Change the State of the Character to {@code ParalyzedState}.
+   *
+   */
+  void Paralyze();
+
+  /**
+   * Change the State of the Character to {@code PoisonedState}.
+   *
+   * @param mgdmg the damage that {@code GameCharacter} will recieve from the Spell.
+   */
+  void Poison(int mgdmg);
+
+  /**
+   * Return a Boolean depending on the {@code state} of the Character.
+   *
+   */
+  boolean isNormal();
+
+  /**
+   * Return a Boolean depending on the {@code state} of the Character.
+   *
+   */
+  boolean isPoisoned();
+
+  /**
+   * Return a Boolean depending on the {@code state} of the Character.
+   *
+   */
+  boolean isParalyzed();
+
+  /**
+   * Return a Boolean depending on the {@code state} of the Character.
+   *
+   */
+  boolean isBurning();
+
+  void setState(State state);
 
   // endregion
 }
