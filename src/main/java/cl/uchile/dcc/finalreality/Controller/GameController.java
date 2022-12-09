@@ -1,4 +1,4 @@
-package cl.uchile.dcc;
+package cl.uchile.dcc.finalreality.Controller;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
@@ -7,6 +7,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
 import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
@@ -109,12 +110,12 @@ public class GameController implements PropertyChangeListener {
     attacker.attack(target);
   }
 
-  public void useMagic(GameCharacter attacker, GameCharacter target) throws UnsupportedEquipmentException, InvalidStatValueException {
+  public void useMagic(Mages attacker, GameCharacter target) throws UnsupportedEquipmentException, InvalidStatValueException {
     attacker.useSpell(target);
   }
 
-  public void equip(GameCharacter GmChar, Weapons wp) throws UnsupportedEquipmentException {
-    GmChar.equip(wp);
+  public void equip(PlayerCharacter Pc, Weapons wp) throws UnsupportedEquipmentException {
+    Pc.equip(wp);
   }
 
   public void waitTurn(GameCharacter character) {
