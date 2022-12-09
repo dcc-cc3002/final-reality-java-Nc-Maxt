@@ -103,15 +103,27 @@ public class BlackMage extends AbstractMage {
   public void equipusedbyblackmage(UsedByBlackMage ubb) {
     this.underequip(ubb);
   }
-  // end region
 
+  // endregion
+
+  // region : Double Dispatch Magic methods
   @Override
   public void setSpell(Spell spl) throws UnsupportedEquipmentException {
     spl.BM_trytosetSpll(this);
   }
 
+  /**
+   * Sets the {@code actualspell} of the BlackMage to {@code bm}.
+   *
+   * <p> This method is <b>public</b>, beacuse it'll be used
+   * by the Spell Classes.</p>
+   *
+   * @param bm the spell that will be setted.
+   */
   public void equipblackmagic(BlackMagic bm) {
     this.actualspell = bm;
   }
+
+  // endregion
 
 }

@@ -106,14 +106,24 @@ public class WhiteMage extends AbstractMage {
 
   // endregion
 
+  // region : Double Dispatch for Magic
+
   @Override
   public void setSpell(Spell spl) throws UnsupportedEquipmentException {
     spl.WM_trytosetSpll(this);
   }
 
+  /**
+   * Sets the {@code actualspell} of the WhiteMage to {@code wm}.
+   *
+   * <p> This method is <b>public</b>, beacuse it'll be used
+   * by the Spell Classes.</p>
+   *
+   * @param wm the spell that will be setted.
+   */
   public void equipwhitemagic(WhiteMagic wm) {
     this.actualspell = wm;
   }
 
-
+  // endregion
 }
