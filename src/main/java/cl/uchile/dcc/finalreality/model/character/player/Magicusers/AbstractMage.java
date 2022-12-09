@@ -13,7 +13,6 @@ import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.magic.Spell;
@@ -72,9 +71,9 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
   /**
    * Sets the {@code currentMp} of the character to {@code value}.
    *
-   * <p>This method should be <b>private</b>, because it must be only used
+   * <p>This method is <b>private</b>, because it must be only used
    * by methods in the class to change value of {@code MP}
-   * when casting a spell but for testing it will be <b>public</b>.</p>
+   * when casting a spell.</p>
    */
   public void setCurrentMp(final int newMp) {
     int value = newMp;
@@ -93,37 +92,31 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
     this.currentMp = value;
   }
 
-  /**
-   * Reduce the {@code currentMp} of the character the amount given in {@code value}.
-   *
-   * <p>This method is <b>public</b>, because it will be called
-   * by methods in the Spell classes to change value of {@code MP}
-   * when casting a spell.</p>
-   */
+  @Override
   public void reduceMp(int value) {
     setCurrentMp(getCurrentMp()-value);
   }
 
-  /**
-   * Set the {@code spl} spell in {@code actualspell}.
-   */
-  abstract public void setSpell(Spell spl) throws UnsupportedEquipmentException;
+  // endregion
 
+  // region : Magic Double Dispatch
+  @Override
   public void useSpell(GameCharacter gmCha) throws UnsupportedEquipmentException, InvalidStatValueException {
     getEquippedWeapon().trytochannel(this, gmCha);
   }
 
-  public void channelmana(GameCharacter gmCha, int mgdmg) throws InvalidStatValueException {
+
+  public void channelmana(GameCharacter gmCha) throws InvalidStatValueException, UnsupportedEquipmentException {
     if (currentMp - actualspell.getManacost()<0) {
       throw new InvalidStatValueException("The Character has no Mana for this Spell");
     }
-    int actmana = this.getCurrentMp();
     try {
-      actualspell.useSpell(this, gmCha, mgdmg);
-      currentMp = actmana - actualspell.getManacost();
+      actualspell.useSpell(this, gmCha);
+      reduceMp(actualspell.getManacost());
     } catch (InvalidStatValueException invs) {
       System.out.println(invs);
     }
   }
+
   // endregion
 }

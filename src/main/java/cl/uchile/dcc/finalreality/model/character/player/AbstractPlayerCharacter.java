@@ -9,7 +9,6 @@ package cl.uchile.dcc.finalreality.model.character.player;
  */
 
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
-import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
 import java.util.concurrent.BlockingQueue;
@@ -84,13 +83,14 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     this.equippedWeapon = weapon;
   }
 
+  // endregion
 
   // region : Utilities
+
   public void attack(GameCharacter en) {
     int dmg0 = equippedWeapon.getDamage();
     en.getattack(dmg0);
   }
 
-  // endregion
   // endregion
 }
