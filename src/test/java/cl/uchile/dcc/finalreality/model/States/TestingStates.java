@@ -1,6 +1,5 @@
 package cl.uchile.dcc.finalreality.model.States;
 
-import cl.uchile.dcc.finalreality.model.States.alteredState.NormalState;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,8 +19,8 @@ public class TestingStates {
 
   @BeforeEach
   void setUp() {
-    badg.setAlteredState(new NormalState());
-    enem3.setAlteredState(new NormalState());
+    badg.toNormal();
+    enem3.toNormal();
   }
 
   @Test
@@ -30,17 +29,17 @@ public class TestingStates {
     assertFalse(enem3.isParalyzed(), "When created an Enemy shouldn't be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When created an Enemy shouldn't be in a Burn State");
     assertFalse(enem3.isPoisoned(), "When created an Enemy shouldn't be in a Poisoned State");
-    enem3.Burn(10);
+    enem3.toBurn(10);
     assertFalse(enem3.isNormal(), "When an Enemy changed to Burn State shouldn't be in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an Enemy changed to Burn State shouldn't be in a Paralyzed State");
     assertTrue(enem3.isBurning(), "When an Enemy changed to Burn State should be in a Burn State");
     assertFalse(enem3.isPoisoned(), "When an Enemy changed to Burn State shouldn't be in a Poisoned State");
-    enem3.Poison(10);
+    enem3.toPoison(10);
     assertFalse(enem3.isNormal(), "When an Enemy changed to Posioned State shouldn't be in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an Enemy changed to Posioned State shouldn't be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When an Enemy changed to Posioned State shouldn't be in a Burn State");
     assertTrue(enem3.isPoisoned(), "When an Enemy changed to Posioned State should be in a Poisoned State");
-    enem3.Paralyze();
+    enem3.toParalyze();
     assertFalse(enem3.isNormal(), "When an Enemy changed to Paralyzed State shouldn't be in a Normal State");
     assertTrue(enem3.isParalyzed(), "When an Enemy changed to Paralyzed State should be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When an Enemy changed to Paralyzed State shouldn't be in a Burn State");
@@ -49,25 +48,25 @@ public class TestingStates {
 
   @Test
   void setStateError() {
-    badg.Normal();
+    badg.toNormal();
     assertTrue(enem3.isNormal(), "When an Enemy try to change from Normal to Normal should end in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an Enemy try to change from Normal to Normal shouldn't be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When an Enemy try to change from Normal to Normal shouldn't be in a Burn State");
     assertFalse(enem3.isPoisoned(), "When an Enemy try to change from Normal to Normal shouldn't be in a Poisoned State");
-    enem3.Burn(10);
-    enem3.Burn(10);
+    enem3.toBurn(10);
+    enem3.toBurn(10);
     assertFalse(enem3.isNormal(), "When an try to change from Burn to Burn State shouldn't be in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an try to change from Burn to Burn State shouldn't be in a Paralyzed State");
     assertTrue(enem3.isBurning(), "When an try to change from Burn to Burn State should be in a Burn State");
     assertFalse(enem3.isPoisoned(), "When an try to change from Burn to Burn State shouldn't be in a Poisoned State");
-    enem3.Poison(10);
-    enem3.Poison(10);
+    enem3.toPoison(10);
+    enem3.toPoison(10);
     assertFalse(enem3.isNormal(), "When an try to change from Poisoned to Poisoned State shouldn't be in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an try to change from Poisoned to Poisoned State shouldn't be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When an try to change from Poisoned to Poisoned State shouldn't be in a Burn State");
     assertTrue(enem3.isPoisoned(), "When an try to change from Poisoned to Poisoned State should be in a Poisoned State");
-    enem3.Paralyze();
-    enem3.Paralyze();
+    enem3.toParalyze();
+    enem3.toParalyze();
     assertFalse(enem3.isNormal(), "When an try to change from Paralyzed to Paralyzed State shouldn't be in a Normal State");
     assertTrue(enem3.isParalyzed(), "When an try to change from Paralyzed to Paralyzed State should be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When an try to change from Paralyzed to Paralyzed State shouldn't be in a Burn State");
@@ -77,36 +76,36 @@ public class TestingStates {
   @Test
   void testchangestates() {
     assertTrue(badg.isNormal(), "When created a Enemy should be in a Normal State");
-    badg.Paralyze();
+    badg.toParalyze();
     assertTrue(badg.isParalyzed(), "from Normal to Paralyzed State should change");
-    badg.Normal();
+    badg.toNormal();
     assertTrue(badg.isNormal(), "from Paralyzed to Normal State should change");
-    badg.Burn(20);
+    badg.toBurn(20);
     assertTrue(badg.isBurning(), "from Normal to Burn State should change");
-    badg.Normal();
+    badg.toNormal();
     assertTrue(badg.isNormal(), "from Burn to Normal State should change");
-    badg.Poison(15);
+    badg.toPoison(15);
     assertTrue(badg.isPoisoned(), "from Normal to Poisoned State should change");
-    badg.Normal();
+    badg.toNormal();
     assertTrue(badg.isNormal(), "from Poisoned to Normal State should change");
   }
 
   @Test
   void testchangestates2() {
     assertTrue(enem3.isNormal(), "When created a Enemy should be in a Normal State");
-    enem3.Paralyze();
-    enem3.Burn(20);
+    enem3.toParalyze();
+    enem3.toBurn(20);
     assertTrue(enem3.isBurning(), "from Paralyzed to Burn State should change");
-    enem3.Paralyze();
+    enem3.toParalyze();
     assertTrue(enem3.isParalyzed(), "from Burn to Paralyze State should change");
-    enem3.Poison(15);
+    enem3.toPoison(15);
     assertTrue(enem3.isPoisoned(), "from Paralyzed to Poisoned State should change");
-    enem3.Paralyze();
+    enem3.toParalyze();
     assertTrue(enem3.isParalyzed(), "from Poisoned to Paralyzed State should change");
-    enem3.Burn(50);
-    enem3.Poison(30);
+    enem3.toBurn(50);
+    enem3.toPoison(30);
     assertTrue(enem3.isPoisoned(), "from Burn to Poisoned State should change");
-    enem3.Burn(10);
+    enem3.toBurn(10);
     assertTrue(enem3.isBurning(), "from Poisoned to Burn State should change");
   }
 

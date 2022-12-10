@@ -21,11 +21,6 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
  */
 public abstract class AbstractAlteredState extends AbstractState implements AlteredStates {
 
-  @Override
-  public State characterstate(GameCharacter pj) {
-    return pj.getAlteredState();
-  }
-
   /**
    * Change the State of the Character to {@code state}.
    *

@@ -26,6 +26,4 @@ public interface State {
 
   void setChar(GameCharacter Gc);
 
-  State characterstate(GameCharacter pj);
-
 }

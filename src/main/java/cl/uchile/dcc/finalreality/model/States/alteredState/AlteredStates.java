@@ -9,8 +9,6 @@ package cl.uchile.dcc.finalreality.model.States.alteredState;
  */
 
 import cl.uchile.dcc.finalreality.model.States.State;
-import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-
 /**
  * An interface represent a State in the game.
  *
@@ -23,8 +21,6 @@ public interface AlteredStates extends State {
    * Applies the effect of the State.
    */
   void applyState();
-
-  void setChar(GameCharacter Gc);
 
   /**
    * Change the State of the Character to {@code PoisonedState}.

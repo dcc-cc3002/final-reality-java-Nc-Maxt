@@ -29,9 +29,9 @@ public class FireSpell extends AbstractBMSpell {
 
   @Override
   public void castspell(GameCharacter gmcha, int mgdmg, int numalea) {
-    if (numalea > getProbrequired()) {
-      gmcha.Burn(mgdmg);
-    }
     gmcha.reduceHp(mgdmg);
+    if (numalea > getProbrequired()) {
+      gmcha.toBurn(mgdmg);
+    }
   }
 }

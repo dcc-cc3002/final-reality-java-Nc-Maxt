@@ -31,6 +31,6 @@ public class PoisonSpell extends AbstractWMSpell implements WhiteMagic {
   @Override
   public void useSpell(Mages mgs, GameCharacter gma) throws UnsupportedEquipmentException {
     int mgdmg = (int) mgs.getEquippedWeapon().getMagicDamage();
-    gma.Poison(mgdmg);
+    gma.toPoison(mgdmg);
   }
 }

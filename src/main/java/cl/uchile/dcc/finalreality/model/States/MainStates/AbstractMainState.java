@@ -38,12 +38,6 @@ public abstract class AbstractMainState extends AbstractState implements MainSta
   public void setAlteredState(AlteredStates alteredstate, GameCharacter pj) {
     error();
   }
-
-  @Override
-  public State characterstate(GameCharacter pj) {
-    return pj.getMainState();
-  }
-
   public void toinactive() {
     error();
   }

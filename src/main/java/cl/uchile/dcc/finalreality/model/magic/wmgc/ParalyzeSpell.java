@@ -30,6 +30,6 @@ public class ParalyzeSpell extends AbstractWMSpell implements WhiteMagic {
 
   @Override
   public void useSpell(Mages mgs, GameCharacter gma) {
-    gma.Paralyze();
+    gma.toParalyze();
   }
 }

@@ -30,7 +30,7 @@ public class ThunderSpell extends AbstractBMSpell {
   @Override
   public void castspell(GameCharacter gmcha, int mgdmg, int numalea) {
     if (numalea > getProbrequired()) {
-      gmcha.Thunder(mgdmg);
+      gmcha.toThunder(mgdmg);
     }
     gmcha.reduceHp(mgdmg);
   }
