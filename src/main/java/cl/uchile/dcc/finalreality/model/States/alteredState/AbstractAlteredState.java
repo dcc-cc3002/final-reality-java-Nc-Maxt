@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.States.alteredState;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,9 +8,7 @@ package cl.uchile.dcc.finalreality.model.States;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.States.alteredState.BurningState;
-import cl.uchile.dcc.finalreality.model.States.alteredState.ParalyzedState;
-import cl.uchile.dcc.finalreality.model.States.alteredState.PoisonedState;
+import cl.uchile.dcc.finalreality.model.States.State;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 
 /**
@@ -19,7 +17,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public abstract class AbstractState implements State {
+public abstract class AbstractAlteredState implements State {
 
   protected GameCharacter pj;
 
