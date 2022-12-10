@@ -1,13 +1,11 @@
 package cl.uchile.dcc.finalreality.model.States.alteredState;
 
-import cl.uchile.dcc.finalreality.model.States.AbstractState;
-
-public abstract class AbstractAlteredState extends AbstractState {
+public abstract class AbstractApplicableState extends AbstractAlteredState {
   protected final int maxtimeeffect;
   protected int actualtime;
 
 
-  protected AbstractAlteredState(int count) {
+  protected AbstractApplicableState(int count) {
     maxtimeeffect = count;
     actualtime = count;
   }
@@ -15,9 +13,8 @@ public abstract class AbstractAlteredState extends AbstractState {
   protected void timereduce() {
     if (actualtime == 0) {
       tonormal();
-    }
-    else {
-    actualtime -= 1;
+    } else {
+      actualtime -= 1;
     }
   }
 
