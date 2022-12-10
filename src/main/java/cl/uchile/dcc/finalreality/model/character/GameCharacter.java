@@ -9,7 +9,11 @@ package cl.uchile.dcc.finalreality.model.character;
  */
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.States.MainStates.AbstractMainState;
+import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
 import cl.uchile.dcc.finalreality.model.States.State;
+import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
+
 import java.beans.PropertyChangeListener;
 
 /**
@@ -106,6 +110,7 @@ public interface GameCharacter {
    * @param mgdmg the damage that {@code GameCharacter} will recieve from the Spell.
    */
   void Burn(int mgdmg);
+
   /**
    * Change the State of the Character to {@code ParalyzedState}.
    *
@@ -143,7 +148,13 @@ public interface GameCharacter {
    */
   boolean isBurning();
 
-  void setState(State state);
+  void setAlteredState(AlteredStates state);
+
+  void setMainState(MainStates mainstate);
+
+  State getMainState();
+
+  State getAlteredState();
 
   // endregion
 }
