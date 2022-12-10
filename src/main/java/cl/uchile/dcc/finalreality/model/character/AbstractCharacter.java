@@ -35,11 +35,11 @@ public abstract class AbstractCharacter implements GameCharacter {
   private int currentHp;
 
   protected int defense;
-  protected AlteredStates altstate = new NormalState();
+  protected AlteredStates altstate;
   protected final BlockingQueue<GameCharacter> turnsQueue;
   protected ScheduledExecutorService scheduledExecutor;
   private PropertyChangeSupport changes;
-  protected MainStates mainstate = new InactiveState();
+  protected MainStates mainstate;
 
   /**
    * Creates a new character.
@@ -72,6 +72,9 @@ public abstract class AbstractCharacter implements GameCharacter {
     this.defense = defval;
     this.turnsQueue = turnsQueue;
     this.changes = new PropertyChangeSupport(this);
+    setAlteredState(new NormalState());
+    setMainState(new InactiveState());
+
   }
 
   // region : ACCESSORS
@@ -94,6 +97,17 @@ public abstract class AbstractCharacter implements GameCharacter {
   public int getDefense() {
     return defense;
   }
+
+  @Override
+  public State getMainState() {
+    return mainstate;
+  }
+
+  @Override
+  public State getAlteredState() {
+    return altstate;
+  }
+
 
   @Override
   public void setCurrentHp(int hp) {
@@ -119,32 +133,24 @@ public abstract class AbstractCharacter implements GameCharacter {
     setCurrentHp(currentHp - dmg);
   }
 
-  @Override
-  public void setAlteredState(AlteredStates sta) {
-    altstate = sta;
-    altstate.setChar(this);
-  }
-
-  @Override
-  public void setMainState(MainStates msta) {
-    mainstate = msta;
-    mainstate.setChar(this);
-  }
-
-  @Override
-  public State getMainState() {
-    return mainstate;
-  }
-
-  @Override
-  public State getAlteredState() {
-    return altstate;
-  }
 
   @Override
   public void addlistener(PropertyChangeListener resp) {
     changes.addPropertyChangeListener(resp);
   }
+
+  @Override
+  public void setAlteredState(AlteredStates als) {
+    altstate = als;
+    altstate.setChar(this);
+  }
+
+  @Override
+  public void setMainState(MainStates mais) {
+    mainstate = mais;
+    mainstate.setChar(this);
+  }
+
 
   // endregion
 
@@ -176,7 +182,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   // region : State Pattern for Altered States
 
   @Override
-  public void Poison(int mgdmg) {
+  public void toPoison(int mgdmg) {
     try {
       altstate.topoison(mgdmg);
     } catch (AssertionError as) {
@@ -185,7 +191,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   }
 
   @Override
-  public void Paralyze() {
+  public void toParalyze() {
     try {
       altstate.toparalyze();
     } catch (AssertionError as) {
@@ -194,7 +200,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   }
 
   @Override
-  public void Normal() {
+  public void toNormal() {
     try {
       altstate.tonormal();
     } catch (AssertionError as) {
@@ -203,19 +209,14 @@ public abstract class AbstractCharacter implements GameCharacter {
   }
 
   @Override
-  public void Thunder(int mgdmg) {
+  public void toThunder(int mgdmg) {
     reduceHp(mgdmg);
-    this.Paralyze();
+    this.toParalyze();
   }
 
   @Override
-  public void Burn(int mgdmg) {
-    reduceHp(mgdmg);
-    try {
-      altstate.toburn(mgdmg);
-    } catch (AssertionError as) {
-      System.out.println("The Enemy is already Burning");
-    }
+  public void toBurn(int mgdmg) {
+    altstate.toburn(mgdmg);
   }
 
   @Override
@@ -237,6 +238,52 @@ public abstract class AbstractCharacter implements GameCharacter {
   public boolean isBurning() {
     return altstate.isBurning();
   }
+  // endregion
+
+  // region : State Pattern for MainStates
+
+  @Override
+  public void toActive() {
+    try {
+      mainstate.toactive();
+    } catch (AssertionError as) {
+      System.out.println("The Enemy is already Poisoned");
+    }
+  }
+
+  @Override
+  public void toInactive() {
+    try {
+      mainstate.toinactive();
+    } catch (AssertionError as) {
+      System.out.println("The Enemy is already Paralyzed");
+    }
+  }
+
+  @Override
+  public void toDead() {
+    try {
+      mainstate.todead();
+    } catch (AssertionError as) {
+      System.out.println("The Character is already Dead");
+    }
+  }
+
+  @Override
+  public boolean isActive() {
+    return mainstate.isActive();
+  }
+
+  @Override
+  public boolean isInactive() {
+    return mainstate.isInactive();
+  }
+
+  @Override
+  public boolean isDead() {
+    return mainstate.isDead();
+  }
+
   // endregion
 
 }

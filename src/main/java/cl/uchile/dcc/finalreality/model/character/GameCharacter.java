@@ -12,6 +12,7 @@ import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.States.MainStates.AbstractMainState;
 import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
 import cl.uchile.dcc.finalreality.model.States.State;
+import cl.uchile.dcc.finalreality.model.States.alteredState.AbstractAlteredState;
 import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
 
 import java.beans.PropertyChangeListener;
@@ -62,6 +63,11 @@ public interface GameCharacter {
    */
   void addlistener(PropertyChangeListener resp);
 
+
+  State getMainState();
+
+  State getAlteredState();
+
   // endregion
 
   // region : Utilities
@@ -79,7 +85,6 @@ public interface GameCharacter {
    */
   void attack(GameCharacter gmch);
 
-
   /**
    * Method that is used by this character to recieve an attack from another.
    *
@@ -95,66 +100,103 @@ public interface GameCharacter {
    * Change the State of the Character to {@code NormalState}.
    *
    */
-  void Normal();
+  void toNormal();
 
   /**
-   * Change the State of the Character to {@code ParalyzedState}.
+   * Recieve.
    *
    * @param mgdmg the damage that {@code GameCharacter} will recieve from the Spell.
    */
-  void Thunder(int mgdmg);
+  void toThunder(int mgdmg);
 
   /**
    * Change the State of the Character to {@code BurningState}.
    *
    * @param mgdmg the damage that {@code GameCharacter} will recieve from the Spell.
    */
-  void Burn(int mgdmg);
+  void toBurn(int mgdmg);
 
   /**
    * Change the State of the Character to {@code ParalyzedState}.
    *
    */
-  void Paralyze();
+  void toParalyze();
 
   /**
    * Change the State of the Character to {@code PoisonedState}.
    *
    * @param mgdmg the damage that {@code GameCharacter} will recieve from the Spell.
    */
-  void Poison(int mgdmg);
+  void toPoison(int mgdmg);
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    *
    */
   boolean isNormal();
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    *
    */
   boolean isPoisoned();
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    *
    */
   boolean isParalyzed();
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    *
    */
   boolean isBurning();
 
-  void setAlteredState(AlteredStates state);
+  // endregion
 
-  void setMainState(MainStates mainstate);
+  // region : State Pattern for Altered States
 
-  State getMainState();
+  /**
+   * Change the State of the Character to {@code ActiveState}.
+   *
+   */
+  void toActive();
 
-  State getAlteredState();
+  /**
+   * Change the State of the Character to {@code InactiveState}.
+   *
+   */
+  void toInactive();
+
+  /**
+   * Change the State of the Character to {@code DeadState}.
+   *
+   */
+  void toDead();
+
+
+  /**
+   * Return a Boolean depending on the {@code mainstate} of the Character.
+   *
+   */
+  boolean isActive();
+
+  /**
+   * Return a Boolean depending on the {@code mainstate} of the Character.
+   *
+   */
+  boolean isInactive();
+
+  /**
+   * Return a Boolean depending on the {@code mainstate} of the Character.
+   *
+   */
+  boolean isDead();
+
+  void setAlteredState(AlteredStates alstate);
+
+  void setMainState(MainStates mais);
 
   // endregion
 }
