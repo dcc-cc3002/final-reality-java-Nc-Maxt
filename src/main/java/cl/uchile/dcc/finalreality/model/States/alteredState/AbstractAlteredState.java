@@ -8,6 +8,8 @@ package cl.uchile.dcc.finalreality.model.States.alteredState;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.finalreality.model.States.AbstractState;
+import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
 import cl.uchile.dcc.finalreality.model.States.State;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 
@@ -17,13 +19,11 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public abstract class AbstractAlteredState implements State {
-
-  protected GameCharacter pj;
+public abstract class AbstractAlteredState extends AbstractState implements AlteredStates {
 
   @Override
-  public void setChar(GameCharacter gc) {
-    this.pj = gc;
+  public State characterstate(GameCharacter pj) {
+    return pj.getAlteredState();
   }
 
   /**
@@ -32,15 +32,15 @@ public abstract class AbstractAlteredState implements State {
    * @param state the new State of the Pj.
    */
   protected void changeState(State state) {
-    pj.setState(state);
+    state.setAlteredState(this, pj);
   }
 
-  /**
-   * Throws a new error associated with the State pattern.
-   *
-   */
-  protected void error() {
-    throw new AssertionError("Wrong State");
+  public void setMainState(MainStates mainstate, GameCharacter gm) {
+    error();
+  }
+
+  public void setAlteredState(AlteredStates alteredstate, GameCharacter pj) {
+    pj.setAlteredState(this);
   }
 
   @Override
