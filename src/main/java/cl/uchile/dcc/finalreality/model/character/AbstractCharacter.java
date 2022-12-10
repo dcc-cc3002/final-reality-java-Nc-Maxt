@@ -10,8 +10,11 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
-import cl.uchile.dcc.finalreality.model.States.NormalState;
+import cl.uchile.dcc.finalreality.model.States.MainStates.InactiveState;
+import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
 import cl.uchile.dcc.finalreality.model.States.State;
+import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
+import cl.uchile.dcc.finalreality.model.States.alteredState.NormalState;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -32,11 +35,11 @@ public abstract class AbstractCharacter implements GameCharacter {
   private int currentHp;
 
   protected int defense;
-  protected State state = new NormalState();
+  protected AlteredStates altstate = new NormalState();
   protected final BlockingQueue<GameCharacter> turnsQueue;
   protected ScheduledExecutorService scheduledExecutor;
   private PropertyChangeSupport changes;
-
+  protected MainStates mainstate = new InactiveState();
 
   /**
    * Creates a new character.
@@ -116,9 +119,26 @@ public abstract class AbstractCharacter implements GameCharacter {
     setCurrentHp(currentHp - dmg);
   }
 
-  public void setState(State sta) {
-    state = sta;
-    state.setChar(this);
+  @Override
+  public void setAlteredState(AlteredStates sta) {
+    altstate = sta;
+    altstate.setChar(this);
+  }
+
+  @Override
+  public void setMainState(MainStates msta) {
+    mainstate = msta;
+    mainstate.setChar(this);
+  }
+
+  @Override
+  public State getMainState() {
+    return mainstate;
+  }
+
+  @Override
+  public State getAlteredState() {
+    return altstate;
   }
 
   @Override
@@ -158,7 +178,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   @Override
   public void Poison(int mgdmg) {
     try {
-      state.topoison(mgdmg);
+      altstate.topoison(mgdmg);
     } catch (AssertionError as) {
       System.out.println("The Enemy is already Poisoned");
     }
@@ -167,7 +187,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   @Override
   public void Paralyze() {
     try {
-      state.toparalyze();
+      altstate.toparalyze();
     } catch (AssertionError as) {
       System.out.println("The Enemy is already Paralyzed");
     }
@@ -176,7 +196,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   @Override
   public void Normal() {
     try {
-      state.tonormal();
+      altstate.tonormal();
     } catch (AssertionError as) {
       System.out.println("The Enemy is already in a Normal State");
     }
@@ -192,7 +212,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   public void Burn(int mgdmg) {
     reduceHp(mgdmg);
     try {
-      state.toburn(mgdmg);
+      altstate.toburn(mgdmg);
     } catch (AssertionError as) {
       System.out.println("The Enemy is already Burning");
     }
@@ -200,22 +220,22 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   @Override
   public boolean isNormal() {
-    return state.isNormal();
+    return altstate.isNormal();
   }
 
   @Override
   public boolean isPoisoned() {
-    return state.isPoisoned();
+    return altstate.isPoisoned();
   }
 
   @Override
   public boolean isParalyzed() {
-    return state.isParalyzed();
+    return altstate.isParalyzed();
   }
 
   @Override
   public boolean isBurning() {
-    return state.isBurning();
+    return altstate.isBurning();
   }
   // endregion
 
