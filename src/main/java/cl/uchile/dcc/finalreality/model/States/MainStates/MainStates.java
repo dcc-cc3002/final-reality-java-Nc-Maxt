@@ -1,2 +1,6 @@
-package cl.uchile.dcc.finalreality.Controller.MainStates;public interface MainStates {
+package cl.uchile.dcc.finalreality.model.States.MainStates;
+
+import cl.uchile.dcc.finalreality.model.States.State;
+
+public interface MainStates extends State {
 }
