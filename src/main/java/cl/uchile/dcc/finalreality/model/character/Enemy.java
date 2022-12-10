@@ -92,6 +92,7 @@ public class Enemy extends AbstractCharacter {
     gmch.getattack(dmg0);
   }
 
+
   /**
    * Returns a boolean that indicates if 2 Enemies are equals.
    *

@@ -1,9 +1,6 @@
 package cl.uchile.dcc.finalreality.model.States;
 
-import cl.uchile.dcc.finalreality.model.States.BurningState;
-import cl.uchile.dcc.finalreality.model.States.NormalState;
-import cl.uchile.dcc.finalreality.model.States.ParalyzedState;
-import cl.uchile.dcc.finalreality.model.States.PoisonedState;
+import cl.uchile.dcc.finalreality.model.States.alteredState.NormalState;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,8 +20,8 @@ public class TestingStates {
 
   @BeforeEach
   void setUp() {
-    badg.setState(new NormalState());
-    enem3.setState(new NormalState());
+    badg.setAlteredState(new NormalState());
+    enem3.setAlteredState(new NormalState());
   }
 
   @Test

@@ -2,7 +2,7 @@ package cl.uchile.dcc.finalreality.model.Magic;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
-import cl.uchile.dcc.finalreality.model.States.NormalState;
+import cl.uchile.dcc.finalreality.model.States.alteredState.NormalState;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.*;
@@ -34,8 +34,8 @@ public class MagicTests extends AxeTest {
 
   @BeforeEach
   void setUp() {
-    badg.setState(new NormalState());
-    enem3.setState(new NormalState());
+    badg.setAlteredState(new NormalState());
+    enem3.setAlteredState(new NormalState());
     badg.setCurrentHp(badg.getMaxHp());
     enem3.setCurrentHp(enem3.getMaxHp());
     Bm_3.setCurrentHp(Bm_3.getMaxHp());
