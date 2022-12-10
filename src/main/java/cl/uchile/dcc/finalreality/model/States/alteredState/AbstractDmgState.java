@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.States.alteredState;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,32 +8,32 @@ package cl.uchile.dcc.finalreality.model.States;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-
 /**
  * A class that holds the common behavior of a Spell that deals damage.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public abstract class AbstractDmgState extends AbstractState {
+public abstract class AbstractDmgState extends AbstractApplicableState {
   private int magicdmg;
 
   /**
    * Creates a new DmgState.
    *
-   * @param dmg  The magicDamage deal by the Spell saved in the State.
+   * @param dmg    The magicDamage deal by the Spell saved in the State.
+   * @param count  The times that the State can be applied to a Character.
+   * @param n      the number that divides the dmg.
    */
-  protected AbstractDmgState(int dmg) {
-    double dmgxturn = (dmg / 3);
+  protected AbstractDmgState(int dmg, int count, int n) {
+    super(count);
+    double dmgxturn = (dmg / n);
     this.magicdmg = (int) dmgxturn;
   }
 
-
-  public void stateattack(GameCharacter pc, int damage) {
-    pc.getattack(damage);
+  public void applyState() {
+    pj.reduceHp(magicdmg);
+    this.timereduce();
   }
-
 
   /**
    * Return the damage of the State.
