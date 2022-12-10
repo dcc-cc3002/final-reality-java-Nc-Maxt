@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.States.alteredState;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,13 +8,15 @@ package cl.uchile.dcc.finalreality.model.States;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.finalreality.model.States.State;
+
 /**
  * The usual {@link State} of a Character.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class NormalState extends AbstractState {
+public class NormalState extends AbstractAlteredState {
 
   @Override
   public void applyState() {

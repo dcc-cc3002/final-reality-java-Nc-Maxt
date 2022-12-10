@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.States.alteredState;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -7,6 +7,9 @@ package cl.uchile.dcc.finalreality.model.States;
  * You should have received a copy of the license along with this
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
+
+import cl.uchile.dcc.finalreality.model.States.State;
+import cl.uchile.dcc.finalreality.model.States.alteredState.AbstractDmgState;
 
 /**
  * A {@link State} that Poison the Character.
@@ -21,8 +24,8 @@ public class PoisonedState extends AbstractDmgState {
    *
    * @param dmg  The magicDamage deal by the Spell saved in the State.
    */
-  protected PoisonedState(int dmg) {
-    super(dmg);
+  public PoisonedState(int dmg) {
+    super(dmg, 4, 3);
   }
 
   @Override
