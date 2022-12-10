@@ -1,4 +1,9 @@
-package cl.uchile.dcc.finalreality.Controller.MainStates;
+package cl.uchile.dcc.finalreality.model.States.MainStates;
 
-public class Dead {
+public class DeadState extends AbstractMainState {
+
+  @Override
+  public boolean isDead() {
+    return true;
+  }
 }
