@@ -84,7 +84,7 @@ public interface Weapons {
    * This method resolve the action to do: if equip the weapon or throw an Exception.
    * it's part of the implementation of Double Dispatch for equip.
    *
-   * @param Mage the Mage who is trying to channel their magic through the Weapon
+   * @param mage the Mage who is trying to channel their magic through the Weapon
    * @param gmCha the Gamecharacter that could recieve the Spell
    */
   void trytochannel(Mages mage, GameCharacter gmCha)
