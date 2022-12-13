@@ -10,7 +10,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestingStates {
+public class TestingAlteredStates {
 
   private BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
 
@@ -48,24 +48,28 @@ public class TestingStates {
 
   @Test
   void setStateError() {
-    badg.toNormal();
+    System.out.println(enem3.getAlteredState());
+    enem3.toNormal();
     assertTrue(enem3.isNormal(), "When an Enemy try to change from Normal to Normal should end in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an Enemy try to change from Normal to Normal shouldn't be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When an Enemy try to change from Normal to Normal shouldn't be in a Burn State");
     assertFalse(enem3.isPoisoned(), "When an Enemy try to change from Normal to Normal shouldn't be in a Poisoned State");
     enem3.toBurn(10);
+    System.out.println(enem3.getAlteredState());
     enem3.toBurn(10);
     assertFalse(enem3.isNormal(), "When an try to change from Burn to Burn State shouldn't be in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an try to change from Burn to Burn State shouldn't be in a Paralyzed State");
     assertTrue(enem3.isBurning(), "When an try to change from Burn to Burn State should be in a Burn State");
     assertFalse(enem3.isPoisoned(), "When an try to change from Burn to Burn State shouldn't be in a Poisoned State");
     enem3.toPoison(10);
+    System.out.println(enem3.getAlteredState());
     enem3.toPoison(10);
     assertFalse(enem3.isNormal(), "When an try to change from Poisoned to Poisoned State shouldn't be in a Normal State");
     assertFalse(enem3.isParalyzed(), "When an try to change from Poisoned to Poisoned State shouldn't be in a Paralyzed State");
     assertFalse(enem3.isBurning(), "When an try to change from Poisoned to Poisoned State shouldn't be in a Burn State");
     assertTrue(enem3.isPoisoned(), "When an try to change from Poisoned to Poisoned State should be in a Poisoned State");
     enem3.toParalyze();
+    System.out.println(enem3.getAlteredState());
     enem3.toParalyze();
     assertFalse(enem3.isNormal(), "When an try to change from Paralyzed to Paralyzed State shouldn't be in a Normal State");
     assertTrue(enem3.isParalyzed(), "When an try to change from Paralyzed to Paralyzed State should be in a Paralyzed State");
@@ -108,9 +112,4 @@ public class TestingStates {
     enem3.toBurn(10);
     assertTrue(enem3.isBurning(), "from Poisoned to Burn State should change");
   }
-
-
-
-
-
 }
