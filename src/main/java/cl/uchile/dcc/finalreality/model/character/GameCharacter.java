@@ -96,6 +96,8 @@ public interface GameCharacter {
 
   // region : State Pattern for Altered States
 
+  void applyState();
+
   /**
    * Change the State of the Character to {@code NormalState}.
    *
@@ -197,6 +199,8 @@ public interface GameCharacter {
   void setAlteredState(AlteredStates alstate);
 
   void setMainState(MainStates mais);
+
+
 
   // endregion
 }
