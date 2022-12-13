@@ -8,6 +8,7 @@ import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.weapon.AxeTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -24,11 +25,6 @@ public class Attackingeveryone extends AxeTest {
 
   @BeforeEach
   void setUp() {
-    Bm_3.setCurrentHp(Bm_3.getMaxHp());
-    eng0.setCurrentHp(eng0.getMaxHp());
-    knt3.setCurrentHp(knt3.getMaxHp());
-    t0.setCurrentHp(t0.getMaxHp());
-    wm2.setCurrentHp(wm2.getMaxHp());
     badg.setCurrentHp(badg.getMaxHp());
     enem3.setCurrentHp(eng0.getMaxHp());
     Bm_3.equip(k2);
@@ -40,12 +36,22 @@ public class Attackingeveryone extends AxeTest {
 
   @Test
   void testattack() {
+    assertEquals(badg.getCurrentHp(), badg.getMaxHp(), "When created the current Hp of a character should be the maxHp");
     Bm_3.attack(badg);
+    assertNotEquals(badg.getCurrentHp(),badg.getMaxHp(), "When attacked the Hp should change");
+    int badghp = badg.getCurrentHp();
     eng0.attack(badg);
+    assertNotEquals(badghp,badg.getCurrentHp(), "When attacked the Hp should change");
+    int badghp2 = badg.getCurrentHp();
     knt3.attack(badg);
+    assertNotEquals(badghp2,badg.getCurrentHp(), "When attacked the Hp should change");
+    int badghp3 = badg.getCurrentHp();
     t0.attack(badg);
-    enem3.attack(knt3);
-    badg.attack(Bm_3);
+    assertNotEquals(badghp3,badg.getCurrentHp(), "When attacked the Hp should change");
     wm2.attack(enem3);
+    assertNotEquals(enem3.getCurrentHp(),enem3.getMaxHp(), "When attacked the Hp should change");
+    enem3.attack(wm2);
+    assertNotEquals(wm2.getCurrentHp(), wm2.getMaxHp(), "When attacked the Hp should change");
   }
+
 }
