@@ -112,12 +112,9 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
     if (currentMp - actualspell.getManacost() < 0) {
       throw new InvalidStatValueException("The Character has no Mana for this Spell");
     }
-    try {
-      actualspell.useSpell(this, gmCha);
-      reduceMp(actualspell.getManacost());
-    } catch (InvalidStatValueException invs) {
-      System.out.println(invs);
-    }
+    actualspell.useSpell(this, gmCha);
+    reduceMp(actualspell.getManacost());
+
   }
 
   // endregion
