@@ -1,12 +1,10 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.states;
 
-import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
-import cl.uchile.dcc.finalreality.model.States.MainStates.InactiveState;
-import cl.uchile.dcc.finalreality.model.States.alteredState.NormalState;
+import cl.uchile.dcc.finalreality.model.states.mainstates.InactiveState;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.WhiteMage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

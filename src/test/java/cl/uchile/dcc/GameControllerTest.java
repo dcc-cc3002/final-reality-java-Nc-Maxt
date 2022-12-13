@@ -1,14 +1,12 @@
 package cl.uchile.dcc;
 
-import cl.uchile.dcc.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.Controller.GameController;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.magic.bmgc.FireSpell;
 import cl.uchile.dcc.finalreality.model.magic.bmgc.ThunderSpell;
@@ -80,7 +78,7 @@ class GameControllerTest {
 
 
   @Test
-  void attack() {
+  void attack() throws InterruptedException {
     gm.nextchar();
     assertTrue(t0.isActive(), "Actual character should be Active ");
     assertNotEquals(null, gm.getActualchar(), "after using for firs time nextchar, this should have a gamecharacter");
@@ -108,7 +106,7 @@ class GameControllerTest {
   }
 
   @RepeatedTest(20)
-  void useMagicFire() {
+  void useMagicFire() throws InterruptedException {
     bm_3.toActive();
     gm.setspell(bm_3, new FireSpell());
     gm.useMagic(bm_3, badg);
@@ -122,7 +120,7 @@ class GameControllerTest {
   }
 
   @RepeatedTest(20)
-  void useMagicThunder() {
+  void useMagicThunder() throws InterruptedException {
     bm_3.toActive();
     gm.setspell(bm_3, new ThunderSpell());
     gm.useMagic(bm_3, badg);
@@ -135,7 +133,7 @@ class GameControllerTest {
   }
 
   @Test
-  void useMagicParalyzed() {
+  void useMagicParalyzed() throws InterruptedException {
     wm2.toActive();
     gm.setspell(wm2, new ParalyzeSpell());
     gm.useMagic(wm2, badg);
@@ -144,7 +142,7 @@ class GameControllerTest {
   }
 
   @Test
-  void useMagicPoison() {
+  void useMagicPoison() throws InterruptedException {
     wm2.toActive();
     gm.setspell(wm2, new PoisonSpell());
     gm.useMagic(wm2, badg);
@@ -154,7 +152,7 @@ class GameControllerTest {
   }
 
   @Test
-  void WrongMagicequippments() {
+  void WrongMagicequippments() throws InterruptedException {
     GameController gm0 = new GameController();
     BlackMage bm = gm0.createBlackMage("Andres");
     Enemy am = gm0.createEnemy("Manu");
@@ -168,7 +166,7 @@ class GameControllerTest {
   }
 
   @Test
-  void WrongMagicequippments2() {
+  void WrongMagicequippments2() throws InterruptedException {
     GameController gm0 = new GameController();
     WhiteMage wm = gm0.createWhiteMage("Miguel");
     Enemy am = gm0.createEnemy("Manu");
@@ -180,7 +178,7 @@ class GameControllerTest {
   }
 
   @Test
-  void Wrongequippments() {
+  void Wrongequippments() throws InterruptedException {
     GameController gm0 = new GameController();
     WhiteMage wm = gm0.createWhiteMage("Miguel");
     Enemy am = gm0.createEnemy("Manu");
@@ -196,7 +194,7 @@ class GameControllerTest {
   }
 
   @Test
-  void onPlayerWin() {
+  void onPlayerWin() throws InterruptedException {
     GameController gm1 = new GameController();
     WhiteMage lc = gm1.createWhiteMage("Claudio");
     Enemy xa = gm1.createEnemy("Axel");
@@ -214,7 +212,7 @@ class GameControllerTest {
 
 
   @Test
-  void onEnemyWin() {
+  void onEnemyWin() throws InterruptedException {
     GameController gm2 = new GameController();
     Enemy en2 = gm2.createEnemy("Marco");
     WhiteMage wm2 = gm2.createWhiteMage("Claudio");

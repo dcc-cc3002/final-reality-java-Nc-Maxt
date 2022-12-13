@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States.alteredState;
+package cl.uchile.dcc.finalreality.model.states.mainstates;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,33 +8,31 @@ package cl.uchile.dcc.finalreality.model.States.alteredState;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.States.State;
-
 /**
- * A {@link State} that Paralyze the Character.
+ * An interface represent an ActiveState in the game.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class ParalyzedState extends AbstractApplicableState {
+public class ActiveState extends AbstractMainState {
 
-  public ParalyzedState() {
-    super(1);
+  @Override
+  public void toactive() {
+    this.changeState(new ActiveState());
   }
 
   @Override
-  public void applyState() {
-    //pj.Inactive();
-    timereduce();
+  public void toinactive() {
+    this.changeState(new InactiveState());
   }
 
   @Override
-  public void toparalyze() {
-    error();
+  public void todead() {
+    this.changeState(new DeadState());
   }
 
   @Override
-  public boolean isParalyzed() {
+  public boolean isActive() {
     return true;
   }
 

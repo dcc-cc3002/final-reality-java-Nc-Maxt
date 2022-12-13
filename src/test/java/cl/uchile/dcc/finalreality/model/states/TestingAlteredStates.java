@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.states;
 
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;

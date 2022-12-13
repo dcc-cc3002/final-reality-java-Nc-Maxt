@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.character.player.Magicusers;
+package cl.uchile.dcc.finalreality.model.character.player.magicusers;
 
 /*
  * "Final Reality" (c) by R8V and MN

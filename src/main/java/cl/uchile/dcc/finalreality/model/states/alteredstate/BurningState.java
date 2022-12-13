@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States.alteredState;
+package cl.uchile.dcc.finalreality.model.states.alteredstate;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,10 +8,7 @@ package cl.uchile.dcc.finalreality.model.States.alteredState;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
-import cl.uchile.dcc.finalreality.model.States.State;
-import cl.uchile.dcc.finalreality.model.States.alteredState.AbstractDmgState;
-import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.states.State;
 
 /**
  * A {@link State} that burn the Character.

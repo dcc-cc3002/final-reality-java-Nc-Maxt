@@ -10,18 +10,16 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
-import cl.uchile.dcc.finalreality.model.States.MainStates.InactiveState;
-import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
-import cl.uchile.dcc.finalreality.model.States.State;
-import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
-import cl.uchile.dcc.finalreality.model.States.alteredState.NormalState;
-
+import cl.uchile.dcc.finalreality.model.states.State;
+import cl.uchile.dcc.finalreality.model.states.alteredstate.AlteredStates;
+import cl.uchile.dcc.finalreality.model.states.alteredstate.NormalState;
+import cl.uchile.dcc.finalreality.model.states.mainstates.InactiveState;
+import cl.uchile.dcc.finalreality.model.states.mainstates.MainStates;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
-
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -190,7 +188,7 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   @Override
   public void toPoison(int mgdmg) {
-      altstate.topoison(mgdmg);
+    altstate.topoison(mgdmg);
   }
 
   @Override

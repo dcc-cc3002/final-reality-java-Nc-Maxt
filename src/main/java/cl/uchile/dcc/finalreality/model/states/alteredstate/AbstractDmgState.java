@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States.alteredState;
+package cl.uchile.dcc.finalreality.model.states.alteredstate;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -30,6 +30,9 @@ public abstract class AbstractDmgState extends AbstractApplicableState {
     this.magicdmg = (int) dmgxturn;
   }
 
+  /**
+   * Apply the effect of the current AlteredState to the character.
+   */
   public void applyState() {
     pj.reduceHp(magicdmg);
     this.timereduce();

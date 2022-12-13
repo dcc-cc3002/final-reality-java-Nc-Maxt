@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States.alteredState;
+package cl.uchile.dcc.finalreality.model.states.alteredstate;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,9 +8,10 @@ package cl.uchile.dcc.finalreality.model.States.alteredState;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.States.State;
+import cl.uchile.dcc.finalreality.model.states.State;
+
 /**
- * An interface represent a State in the game.
+ * An interface represent an AlteredState in the game.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
@@ -47,22 +48,22 @@ public interface AlteredStates extends State {
   void toburn(int dmg);
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    */
   boolean isNormal();
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    */
   boolean isPoisoned();
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    */
   boolean isParalyzed();
 
   /**
-   * Return a Boolean depending on the {@code state} of the Character.
+   * Return a Boolean depending on the {@code alteredstate} of the Character.
    */
   boolean isBurning();
 

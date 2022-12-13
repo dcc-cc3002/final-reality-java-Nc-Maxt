@@ -1,5 +1,3 @@
-package cl.uchile.dcc.finalreality.model.character.player.Magicusers;
-
 /*
  * "Final Reality" (c) by R8V and NM
  * "Final Reality" is licensed under a
@@ -8,26 +6,28 @@ package cl.uchile.dcc.finalreality.model.character.player.Magicusers;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+package cl.uchile.dcc.finalreality.model.character.player.magicusers;
+
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.magic.Spell;
-import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.BlackMagic;
+import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.WhiteMagic;
 import cl.uchile.dcc.finalreality.model.weapon.Weapons;
-import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByBlackMage;
+import cl.uchile.dcc.finalreality.model.weapon.interfacedd.UsedByWhiteMage;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A {@link PlayerCharacter} that can cast black magic, equip {@code Staff}s and {@code Knife}s.
+ * A {@link PlayerCharacter} that can equip {@code Staff}s and use <i>white magic</i>.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class BlackMage extends AbstractMage {
+public class WhiteMage extends AbstractMage {
   /**
-   * Creates a new Black Mage.
+   * Creates a new White Mage.
    *
    * @param name       the character's name
    * @param maxHp      the character's max hp
@@ -35,7 +35,7 @@ public class BlackMage extends AbstractMage {
    * @param maxMp      the character's max mp
    * @param turnsQueue the queue with the characters waiting for their turn
    */
-  public BlackMage(final @NotNull String name, final int maxHp, final int defense,
+  public WhiteMage(final @NotNull String name, final int maxHp, final int defense,
                    int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue) {
     super(name, maxHp, defense, maxMp, turnsQueue);
   }
@@ -43,7 +43,7 @@ public class BlackMage extends AbstractMage {
   // region : UTILITY METHODS
 
   /**
-   * Returns a boolean that indicates if 2 Black Mages are equals.
+   * Returns a boolean that indicates if 2 White Mages are equals.
    *
    * @param obj the object that will be compared with "this"
    */
@@ -52,7 +52,7 @@ public class BlackMage extends AbstractMage {
     if (this == obj) {
       return true;
     }
-    if (!(obj instanceof final BlackMage that)) {
+    if (!(obj instanceof final WhiteMage that)) {
       return false;
     }
     return hashCode() == that.hashCode()
@@ -63,30 +63,30 @@ public class BlackMage extends AbstractMage {
   }
 
   /**
-   * return the Black Mage's hash number.
+   * return the White Mage's hash number.
    */
   @Override
   public int hashCode() {
-    return Objects.hash(BlackMage.class, name, getCurrentHp(), maxHp, defense, maxMp, currentMp);
+    return Objects.hash(WhiteMage.class, name, maxHp, defense, maxMp);
   }
 
   /**
-   * Returns the character class and it's data in a String format.
+   * Returns the character class and it´s data in a String format.
    */
   @Override
   public String toString() {
-    return "BlackMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
+    return "WhiteMage{ name='%s', currentHp=%d, maxHp=%d, currentMp=%d, maxMp=%d, defense=%d }"
         .formatted(name, getCurrentHp(), maxHp, currentMp, maxMp, defense);
   }
 
   // endregion
 
-  // region : Double Dispatch equip methods
+  // region : Double Dispatch for equip
 
   @Override
   public void equip(Weapons weapon) {
     try {
-      weapon.equippedByBlackMage(this);
+      weapon.equippedByWhiteMage(this);
     } catch (UnsupportedEquipmentException usep) {
       System.out.println(usep);
     }
@@ -98,32 +98,32 @@ public class BlackMage extends AbstractMage {
    * <p> This method is <b>public</b>, beacuse it'll be used
    * by the Weapon Classes.</p>
    *
-   * @param ubb the weapon that will be equipped
+   * @param ubw the weapon that will be equipped
    */
-  public void equipusedbyblackmage(UsedByBlackMage ubb) {
-    this.underequip(ubb);
+  public void equipusedbywhitemage(UsedByWhiteMage ubw) {
+    this.underequip(ubw);
   }
 
   // endregion
 
-  // region : Double Dispatch Magic methods
+  // region : Double Dispatch for Magic
+
   @Override
   public void setSpell(Spell spl) throws UnsupportedEquipmentException {
-    spl.BM_trytosetSpll(this);
+    spl.WM_trytosetSpll(this);
   }
 
   /**
-   * Sets the {@code actualspell} of the BlackMage to {@code bm}.
+   * Sets the {@code actualspell} of the WhiteMage to {@code wm}.
    *
    * <p> This method is <b>public</b>, beacuse it'll be used
    * by the Spell Classes.</p>
    *
-   * @param bm the spell that will be setted.
+   * @param wm the spell that will be setted.
    */
-  public void equipblackmagic(BlackMagic bm) {
-    this.actualspell = bm;
+  public void equipwhitemagic(WhiteMagic wm) {
+    this.actualspell = wm;
   }
 
   // endregion
-
 }

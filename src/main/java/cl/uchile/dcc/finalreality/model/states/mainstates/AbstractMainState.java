@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States.MainStates;
+package cl.uchile.dcc.finalreality.model.states.mainstates;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,11 +8,10 @@ package cl.uchile.dcc.finalreality.model.States.MainStates;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-
-import cl.uchile.dcc.finalreality.model.States.AbstractState;
-import cl.uchile.dcc.finalreality.model.States.State;
-import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.states.AbstractState;
+import cl.uchile.dcc.finalreality.model.states.State;
+import cl.uchile.dcc.finalreality.model.states.alteredstate.AlteredStates;
 
 /**
  * A class that holds the common behavior of a MainState.
@@ -31,33 +30,42 @@ public abstract class AbstractMainState extends AbstractState implements MainSta
     state.setMainState(this, pj);
   }
 
+  @Override
   public void setMainState(MainStates mainstate, GameCharacter pj) {
     pj.setMainState(this);
   }
 
+  @Override
   public void setAlteredState(AlteredStates alteredstate, GameCharacter pj) {
     error();
   }
-  public void toinactive() {
-    error();
+
+  @Override
+  public void toinactive() throws AssertionError {
+    this.error();
   }
 
+  @Override
   public void toactive() {
     error();
   }
 
+  @Override
   public void todead() {
     error();
   }
 
+  @Override
   public boolean isActive() {
     return false;
   }
 
+  @Override
   public boolean isInactive() {
     return false;
   }
 
+  @Override
   public boolean isDead() {
     return false;
   }

@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.character.player.Magicusers;
+package cl.uchile.dcc.finalreality.model.character.player.magicusers;
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;

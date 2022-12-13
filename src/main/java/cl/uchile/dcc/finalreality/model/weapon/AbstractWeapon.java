@@ -12,7 +12,7 @@ import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.Require;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.Mages;
 
 /**
  * An abstract class that holds the common behaviour of all the weapons in the game.

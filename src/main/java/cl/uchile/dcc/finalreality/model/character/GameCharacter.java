@@ -9,12 +9,9 @@ package cl.uchile.dcc.finalreality.model.character;
  */
 
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.model.States.MainStates.AbstractMainState;
-import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
-import cl.uchile.dcc.finalreality.model.States.State;
-import cl.uchile.dcc.finalreality.model.States.alteredState.AbstractAlteredState;
-import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
-
+import cl.uchile.dcc.finalreality.model.states.State;
+import cl.uchile.dcc.finalreality.model.states.alteredstate.AlteredStates;
+import cl.uchile.dcc.finalreality.model.states.mainstates.MainStates;
 import java.beans.PropertyChangeListener;
 
 /**

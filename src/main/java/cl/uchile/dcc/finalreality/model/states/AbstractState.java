@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.states;
 
 /*
  * "Final Reality" (c) by R8V and NM

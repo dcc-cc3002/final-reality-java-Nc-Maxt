@@ -15,8 +15,6 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States;
+package cl.uchile.dcc.finalreality.model.states;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,8 +8,8 @@ package cl.uchile.dcc.finalreality.model.States;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
-import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
+import cl.uchile.dcc.finalreality.model.states.mainstates.MainStates;
+import cl.uchile.dcc.finalreality.model.states.alteredstate.AlteredStates;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 
 /**

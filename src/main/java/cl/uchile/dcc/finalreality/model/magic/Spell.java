@@ -11,9 +11,9 @@ package cl.uchile.dcc.finalreality.model.magic;
 import cl.uchile.dcc.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.Mages;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.WhiteMage;
 
 /**
  * An interface represent a Spell in the game.

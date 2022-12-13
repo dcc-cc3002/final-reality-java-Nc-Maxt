@@ -18,7 +18,7 @@ import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.BlackMagic;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public class FireSpell extends AbstractBMSpell {
+public class FireSpell extends Abstractbmspell {
   /**
    * Creates a new FireSpell.
    *

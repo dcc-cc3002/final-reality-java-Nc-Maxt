@@ -10,9 +10,9 @@ package cl.uchile.dcc.finalreality.model.magic.bmgc;
 
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.Mages;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.Mages;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.magic.AbstractSpell;
 import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.BlackMagic;
 import java.util.Random;
@@ -23,7 +23,7 @@ import java.util.Random;
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
  */
-public abstract class AbstractBMSpell extends AbstractSpell implements BlackMagic {
+public abstract class Abstractbmspell extends AbstractSpell implements BlackMagic {
   private final int probrequired;
 
   /**
@@ -31,7 +31,7 @@ public abstract class AbstractBMSpell extends AbstractSpell implements BlackMagi
    *
    * @param reqpro  The percentage needed to apply an Altered State.
    */
-  protected AbstractBMSpell(int reqpro) {
+  protected Abstractbmspell(int reqpro) {
     super(15);
     this.probrequired = reqpro;
   }

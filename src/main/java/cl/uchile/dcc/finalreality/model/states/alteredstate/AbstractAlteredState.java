@@ -1,4 +1,4 @@
-package cl.uchile.dcc.finalreality.model.States.alteredState;
+package cl.uchile.dcc.finalreality.model.states.alteredstate;
 
 /*
  * "Final Reality" (c) by R8V and NM
@@ -8,13 +8,13 @@ package cl.uchile.dcc.finalreality.model.States.alteredState;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-import cl.uchile.dcc.finalreality.model.States.AbstractState;
-import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
-import cl.uchile.dcc.finalreality.model.States.State;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.states.AbstractState;
+import cl.uchile.dcc.finalreality.model.states.State;
+import cl.uchile.dcc.finalreality.model.states.mainstates.MainStates;
 
 /**
- * A class that holds the common behavior of a State.
+ * A class that holds the common behavior of an AlteredState.
  *
  * @author <a href="https://github.com/Nc-Maxt">NM</a>
  * @author Matias Nunez
@@ -30,10 +30,12 @@ public abstract class AbstractAlteredState extends AbstractState implements Alte
     state.setAlteredState(this, pj);
   }
 
+  @Override
   public void setMainState(MainStates mainstate, GameCharacter gm) {
     error();
   }
 
+  @Override
   public void setAlteredState(AlteredStates alteredstate, GameCharacter pj) {
     pj.setAlteredState(this);
   }

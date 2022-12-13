@@ -9,8 +9,8 @@ package cl.uchile.dcc.finalreality.model.magic.wmgc;
  */
 
 import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Magicusers.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.magicusers.WhiteMage;
 import cl.uchile.dcc.finalreality.model.magic.AbstractSpell;
 import cl.uchile.dcc.finalreality.model.magic.interfaceddmg.WhiteMagic;
 
