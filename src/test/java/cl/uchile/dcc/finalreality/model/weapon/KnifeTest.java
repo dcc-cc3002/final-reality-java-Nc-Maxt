@@ -1,5 +1,6 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.exceptions.UnsupportedEquipmentException;
 import cl.uchile.dcc.finalreality.model.weapon.magical.Staff;
 import cl.uchile.dcc.finalreality.model.weapon.nomagical.Knife;
 import org.junit.jupiter.api.Test;
@@ -42,5 +43,15 @@ public class KnifeTest extends StaffTest {
         assertEquals(0, k1_test.getDamage(), "Damage should be 0 if given 0 to the constructor");
         Knife k2_test = new Knife("Lucy", 42, 32);
         assertEquals(42, k2_test.getDamage(), "Damage should be the same as the given to the constructor if it's possitive");
+    }
+
+    @Test
+    void Magicexceptions() throws UnsupportedEquipmentException {
+        assertThrows(UnsupportedEquipmentException.class,() -> k1.getMagicDamage(),
+            "A weapon thats not Magical should throw an error when asking its magic damage");
+        assertThrows(UnsupportedEquipmentException.class,() -> k2.getMagicDamage(),
+            "A weapon thats not Magical should throw an error when asking its magic damage");
+        assertThrows(UnsupportedEquipmentException.class,() -> k3.getMagicDamage(),
+            "A weapon thats not Magical should throw an error when asking its magic damage");
     }
 }

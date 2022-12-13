@@ -29,8 +29,9 @@ public class StaffTest extends SwordTest {
         String name = st3.getName();
         int Dmg = st3.getDamage();
         int weight = st3.getWeight();
-        String swdstr = "Staff{name='%s', damage=%d, weight=%d}"
-                .formatted(name, Dmg, weight);
+        int mgcDmg = st3.getMagicDamage();
+        String swdstr = "Staff{name='%s', damage=%d, magicdamage=%d, weight=%d}"
+                .formatted(name, Dmg, mgcDmg,weight);
         assertEquals(swdstr,st3.toString(), "if pass toString get correct the data of the Staff");
         assertNotEquals(st1.toString(), st3.toString(), "The string data of Two different intances with different data should be diferent");
         assertEquals(st2.toString(), st3.toString(), "The string data of Two different intances with equal data should be equal");
