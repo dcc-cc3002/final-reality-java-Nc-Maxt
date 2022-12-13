@@ -58,4 +58,14 @@ class ThiefTest extends AxeTest {
         t3.setCurrentHp(1);
         assertEquals(1, t3.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
     }
+
+    @Test
+    void testreduceHp() {
+        t3.reduceHp(t3.getMaxHp()+1);
+        assertEquals(0, t3.getCurrentHp(), "The current Hp of a Character should be 0 when its hp go lower than 0");
+        t2.reduceHp(t2.getMaxHp());
+        assertEquals(0, t2.getCurrentHp(), "The current Hp of a Character should be 0 if its hp went to 0");
+        t1.reduceHp(14);
+        assertEquals(16, t1.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
+    }
 }

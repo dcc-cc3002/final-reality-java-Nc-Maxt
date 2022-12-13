@@ -65,4 +65,14 @@ public class EnemyTest {
         enem4.setCurrentHp(1);
         assertEquals(1, enem4.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
     }
+
+    @Test
+    void testreduceHp() {
+        enem3.reduceHp(enem3.getMaxHp()+1);
+        assertEquals(0, enem3.getCurrentHp(), "The current Hp of a Character should be 0 when its hp go lower than 0");
+        enem2.reduceHp(enem2.getMaxHp());
+        assertEquals(0, enem2.getCurrentHp(), "The current Hp of a Character should be 0 if its hp went to 0");
+        enem1.reduceHp(16);
+        assertEquals(16, enem1.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
+    }
 }

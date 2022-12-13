@@ -71,4 +71,14 @@ class WhiteMageTest extends AxeTest {
         wm3.setCurrentMp(1);
         assertEquals(1, wm3.getCurrentMp(), "Every change in the currentMp, that's between 0 and maxMp should change correctly");
     }
+
+    @Test
+    void testreduceHp() {
+        wm3.reduceHp(wm3.getMaxHp()+1);
+        assertEquals(0, wm3.getCurrentHp(), "The current Hp of a Character should be 0 when its hp go lower than 0");
+        wm2.reduceHp(wm2.getMaxHp());
+        assertEquals(0, wm2.getCurrentHp(), "The current Hp of a Character should be 0 if its hp went to 0");
+        wm1.reduceHp(4);
+        assertEquals(16, wm1.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
+    }
 }

@@ -57,4 +57,14 @@ class KnightTest extends AxeTest {
         knt2.setCurrentHp(1);
         assertEquals(1, knt2.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
     }
+
+    @Test
+    void testreduceHp() {
+        knt3.reduceHp(knt3.getMaxHp()+1);
+        assertEquals(0, knt3.getCurrentHp(), "The current Hp of a Character should be 0 when its hp go lower than 0");
+        knt2.reduceHp(knt2.getMaxHp());
+        assertEquals(0, knt2.getCurrentHp(), "The current Hp of a Character should be 0 if its hp went to 0");
+        knt1.reduceHp(104);
+        assertEquals(16, knt1.getCurrentHp(), "Every change in the currentHP, that's between 0 and maxHp should change correctly");
+    }
 }
