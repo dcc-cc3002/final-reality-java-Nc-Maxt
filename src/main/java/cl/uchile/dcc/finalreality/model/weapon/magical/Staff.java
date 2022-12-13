@@ -77,8 +77,8 @@ public class Staff extends AbstractMagicWeapon
    */
   @Override
   public String toString() {
-    return "Staff{name='%s', damage=%d, weight=%d}"
-        .formatted(getName(), getDamage(), getWeight());
+    return "Staff{name='%s', damage=%d, magicdamage=%d, weight=%d}"
+        .formatted(getName(), getDamage(), getMagicDamage(), getWeight());
   }
 
   // endregion
