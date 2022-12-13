@@ -15,11 +15,13 @@ import cl.uchile.dcc.finalreality.model.States.MainStates.MainStates;
 import cl.uchile.dcc.finalreality.model.States.State;
 import cl.uchile.dcc.finalreality.model.States.alteredState.AlteredStates;
 import cl.uchile.dcc.finalreality.model.States.alteredState.NormalState;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -113,7 +115,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   public void setCurrentHp(int hp) {
     int value = hp;
     try {
-      Require.statValueAtLeast(0, hp, "Current HP");
+      Require.statValueAtLeast(1, hp, "Current HP");
     } catch (InvalidStatValueException inv) {
       System.out.println(this.getName() + " died");
       value = 0;
@@ -182,12 +184,13 @@ public abstract class AbstractCharacter implements GameCharacter {
   // region : State Pattern for Altered States
 
   @Override
+  public void applyState() {
+    altstate.applyState();
+  }
+
+  @Override
   public void toPoison(int mgdmg) {
-    try {
       altstate.topoison(mgdmg);
-    } catch (AssertionError as) {
-      System.out.println("The Enemy is already Poisoned");
-    }
   }
 
   @Override
@@ -244,29 +247,21 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   @Override
   public void toActive() {
-    try {
-      mainstate.toactive();
-    } catch (AssertionError as) {
-      System.out.println("The Enemy is already Poisoned");
+    boolean mst = mainstate.isInactive();
+    mainstate.toactive();
+    if (mst) {
+      changes.firePropertyChange(new PropertyChangeEvent(this, "InactivetoActive", null, null));
     }
   }
 
   @Override
   public void toInactive() {
-    try {
-      mainstate.toinactive();
-    } catch (AssertionError as) {
-      System.out.println("The Enemy is already Paralyzed");
-    }
+    mainstate.toinactive();
   }
 
   @Override
   public void toDead() {
-    try {
-      mainstate.todead();
-    } catch (AssertionError as) {
-      System.out.println("The Character is already Dead");
-    }
+    mainstate.todead();
   }
 
   @Override

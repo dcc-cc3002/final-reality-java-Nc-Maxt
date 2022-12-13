@@ -27,7 +27,7 @@ public class PoisonedState extends AbstractDmgState {
   public PoisonedState(int dmg) {
     super(dmg, 4, 3);
   }
-  
+
   @Override
   public boolean isPoisoned() {
     return true;
