@@ -29,7 +29,6 @@ public abstract class AbstractState implements State {
    */
   protected abstract void changeState(State state);
 
-
   @Override
   public void setChar(GameCharacter gc) {
     this.pj = gc;
