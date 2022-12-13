@@ -90,10 +90,25 @@ public class MagicTests extends AxeTest {
   void borderHealTest() throws UnsupportedEquipmentException, InvalidStatValueException {
     eng0.setCurrentHp(-13);
     wm2.setSpell(new CureWounds());
-    wm2.useSpell(eng0);
+    assertThrows(InvalidStatValueException.class, () -> wm2.useSpell(eng0),
+        "Trying to heal a character 0 health should fail");
     assertEquals(wm2.getMaxMp(),wm2.getCurrentMp(), "When a spell can't be cast the Mp shouln't change ");
     assertEquals(0, eng0.getCurrentHp(), "After dead a character shouldn't be healed by HealingSpell");
-    wm2.useSpell(knt3);
+    assertThrows(InvalidStatValueException.class, () -> wm2.useSpell(knt3),
+        "Trying to heal a character with maximum health should fail");
     assertEquals(wm2.getMaxMp(),wm2.getCurrentMp(), "When a spell can't be cast the Mp shouln't change");
   }
+
+  @Test
+  void Magicexceptions() throws UnsupportedEquipmentException {
+    Bm_3.equip(k2);
+    Bm_3.setSpell(new FireSpell());
+    assertThrows(UnsupportedEquipmentException.class,() -> Bm_3.useSpell(eng0),
+        "A weapon thats not part of ChannelingMgWp should fail when castinng a spell");
+    assertThrows(UnsupportedEquipmentException.class,() -> Bm_3.setSpell(new CureWounds()),
+        "A weapon thats not part of ChannelingMgWp should fail when castinng a spell");
+    assertThrows(UnsupportedEquipmentException.class,() -> wm2.setSpell(new FireSpell()),
+        "A weapon thats not part of ChannelingMgWp should fail when castinng a spell");
+  }
+
 }
