@@ -112,7 +112,8 @@ public class Enemy extends AbstractCharacter {
         && name.equals(enemy.name)
         && maxHp == enemy.maxHp
         && defense == enemy.defense
-        && weight == enemy.weight;
+        && weight == enemy.weight
+        && damage == enemy.damage;
   }
 
   /**
@@ -128,8 +129,8 @@ public class Enemy extends AbstractCharacter {
    */
   @Override
   public String toString() {
-    return "Enemy{ name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d}"
-        .formatted(name, getCurrentHp(), maxHp, defense, weight);
+    return "Enemy{ name='%s', currentHp=%d, maxHp=%d, defense=%d, weight=%d, damage=%d}"
+        .formatted(name, getCurrentHp(), maxHp, defense, weight, damage);
   }
 
   // endregion
