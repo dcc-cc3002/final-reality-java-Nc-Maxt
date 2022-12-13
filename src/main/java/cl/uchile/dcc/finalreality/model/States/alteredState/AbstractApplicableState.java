@@ -11,7 +11,7 @@ public abstract class AbstractApplicableState extends AbstractAlteredState {
   }
 
   protected void timereduce() {
-    if (actualtime == 0) {
+    if (actualtime == 1) {
       tonormal();
     } else {
       actualtime -= 1;
